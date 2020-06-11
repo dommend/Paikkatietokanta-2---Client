@@ -1,0 +1,65 @@
+{
+  "name": "paikkatietokanta",
+  "version": "2.0.0",
+  "homepage": "https://paikkatietokanta.net/",
+  "private": false,
+  "main": "server.js",
+  "dependencies": {
+    "@material-ui/core": "^4.9.12",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
+    "cache-manager": "^3.3.0",
+    "cors": "^2.8.5",
+    "css-spinners-react": "^1.0.2",
+    "dotenv": "^8.2.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "express-cache-middleware": "^1.0.1",
+    "jw-paginate": "^1.0.4",
+    "leaflet": "^1.6.0",
+    "moment": "^2.26.0",
+    "mysql2": "^2.1.0",
+    "node-sass": "^4.14.1",
+    "nodemon": "^2.0.4",
+    "patch-package": "^6.2.2",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
+    "react-dom": "^16.13.1",
+    "react-flickr-lightbox": "^1.8.5",
+    "react-leaflet": "^2.6.3",
+    "react-leaflet-markercluster": "^2.0.0",
+    "react-modal-image": "^2.5.0",
+    "react-moment": "^0.9.7",
+    "react-player": "^2.0.1",
+    "react-preloading-screen": "^1.0.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.1",
+    "react-show-more-text": "^1.4.2",
+    "react-slicer": "^0.5.1",
+    "react-textscramble": "^1.0.7",
+    "sequelize": "^5.21.12",
+    "sequelize-simple-cache": "^1.1.1",
+    "simple-react-weather": "^1.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "dev": "nodemon server.js",
+    "eject": "react-scripts eject",
+    "postinstall": "patch-package"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
