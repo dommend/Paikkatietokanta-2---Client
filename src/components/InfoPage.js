@@ -25,7 +25,7 @@ class Info extends React.Component {
 
               <p>Sivuston lähdekoodi on ladattavissa GitHubissa.</p>
 
-              <a href="https://github.com/dommend/paikkatietokanta" style={{ margin: '40px 0px 0px 0px', padding: '25px' }} className="btn btn-outline-info btn-block">
+              <a href="https://github.com/dommend/paikkatietokanta" style={{ margin: '40px 0px 20px 0px', padding: '25px' }} className="btn btn-outline-info btn-block">
 
                 <span style={{ fontSize: '50px' }} className="material-icons">save</span>
                 <br />
@@ -46,7 +46,7 @@ class Info extends React.Component {
 
           <div className="col-sm">
               
-              <a href="https://github.com/dommend/Paikkatietokanta-2---Client" style={{ padding: '25px' }} className="btn btn-outline-info btn-block">
+              <a href="https://github.com/dommend/Paikkatietokanta-2---Client" style={{ marginBottom:'20px', padding: '25px' }} className="btn btn-outline-info btn-block">
   
   <span style={{ fontSize: '50px' }} className="material-icons">save</span>
   <br />
@@ -56,7 +56,7 @@ class Info extends React.Component {
               </div>
   
               <div className="col-sm">
-              <a href="https://github.com/dommend/Paikkatietokanta-2----Admin" style={{ padding: '25px' }} className="btn btn-outline-info btn-block">
+              <a href="https://github.com/dommend/Paikkatietokanta-2----Admin" style={{ marginBottom:'20px', padding: '25px' }} className="btn btn-outline-info btn-block">
   
   <span style={{ fontSize: '50px' }} className="material-icons">save</span>
   <br />
