@@ -19,7 +19,7 @@ REACT_APP_OW_API="12345"
 
 REACT_APP_FLICKR_API is for Flickr api (https://www.flickr.com/services/apps/create/apply) \
 REACT_APP_FLICKR_USERNAME is for Flickr username (https://help.flickr.com/find-your-flickr-login-id-HytypXj1Q) \
-REACT_APP_OW_API is for OpenWeather api (https://openweathermap.org/) \
+REACT_APP_OW_API is for OpenWeather api (https://openweathermap.org/)
 
 Note! The site uses Stadiamaps.com's map layer as maps. In order for the maps to be displayed online correctly, you must create an account.
 
