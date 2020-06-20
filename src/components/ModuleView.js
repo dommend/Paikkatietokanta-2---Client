@@ -210,7 +210,8 @@ const LocationsList = () => {
         <ul id="places" className="list-group">
         {locations &&
             locations.map ((location, index) => (
-              <LazyLoad overflow once={location.once} scroll={true} key={index} throttle={100}  height={50}>
+              <LazyLoad overflow once={location.once} 
+              placeholder={<li className="list-group-item">...</li>}  scroll={true} key={index} throttle={100}  height={30}>
               <li
                 key={index}
                 className={
@@ -230,7 +231,7 @@ const LocationsList = () => {
                 </div>
               </li>
               </LazyLoad>
-            ))}  
+            ))}   
         </ul>
       </aside>
       <div id="place">
