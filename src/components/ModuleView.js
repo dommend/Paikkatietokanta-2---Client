@@ -11,6 +11,7 @@ import {Dropdown} from 'react-bootstrap';
 import Moment from 'react-moment';
 import ModalImage from 'react-modal-image';
 import Weather from 'simple-react-weather';
+import LazyLoad from 'react-lazyload';
 
 const LocationsList = () => {
   const [locations, setLocations] = useState ([]);
@@ -207,8 +208,9 @@ const LocationsList = () => {
         </div>
         <Throbber />
         <ul id="places" className="list-group">
-          {locations &&
+        {locations &&
             locations.map ((location, index) => (
+              <LazyLoad overflow once={location.once} scroll={true} key={index} throttle={100}  height={50}>
               <li
                 key={index}
                 className={
@@ -227,7 +229,8 @@ const LocationsList = () => {
                   {[location.coordinateN + ', ' + location.coordinateE]}
                 </div>
               </li>
-            ))}
+              </LazyLoad>
+            ))}  
         </ul>
       </aside>
       <div id="place">
