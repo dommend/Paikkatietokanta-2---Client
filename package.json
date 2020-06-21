@@ -25,6 +25,8 @@
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-flickr-lightbox": "^1.8.5",
+    "react-lazy-load": "^3.0.13",
+    "react-lazyload": "^2.6.8",
     "react-leaflet": "^2.6.3",
     "react-leaflet-markercluster": "^2.0.0",
     "react-modal-image": "^2.5.0",
