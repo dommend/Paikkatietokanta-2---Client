@@ -54,12 +54,25 @@ const LocationsList = () => {
 
   return (
     <div id="fullpage" className="map-view">
-            <SEO
-      title={"Paikkatietokanta - Karttanäkymä"}
+<SEO
+      title="Karttanäkymä - Paikkatietokanta"
       description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+      locale="fi_FI"
       siteUrl={process.env.REACT_APP_BASE_URL + '/map/'}
       image={{
         src: process.env.REACT_APP_BASE_URL + '/logo512.png'
+      }}
+      openGraph={{
+        title:"Karttanäkymä - Paikkatietokanta",
+        description:"Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.",
+        type: "article",
+        siteName: "Paikkatietokanta",
+        url: process.env.REACT_APP_BASE_URL + '/map/',
+        locale: "fi_FI",
+        image: {
+          src: process.env.REACT_APP_BASE_URL + '/logo512.png',
+          alt: 'Karttanäkymä - Paikkatietokanta'
+        }
       }}
     />
       <LeafletMap

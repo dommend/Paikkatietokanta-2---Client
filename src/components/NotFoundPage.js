@@ -14,12 +14,23 @@ class NotFoundPage extends React.Component {
   render () {
     return (
       <div id="page">
-              <SEO
-      title={"Paikkatietokanta - 404"}
+          <SEO
+      title="404 - Paikkatietokanta"
       description="Sivua ei löydy."
-      siteUrl={process.env.REACT_APP_BASE_URL + '/404/'}
+      locale="fi_FI"
       image={{
         src: process.env.REACT_APP_BASE_URL + '/logo512.png'
+      }}
+      openGraph={{
+        title:"404 - Paikkatietokanta",
+        description:"Sivua ei löydy.",
+        type: "article",
+        siteName: "Paikkatietokanta",
+        locale: "fi_FI",
+        image: {
+          src: process.env.REACT_APP_BASE_URL + '/logo512.png',
+          alt: '404 - Paikkatietokanta'
+        }
       }}
     />
         <div style={{marginTop: '40px', textAlign: 'center'}}>

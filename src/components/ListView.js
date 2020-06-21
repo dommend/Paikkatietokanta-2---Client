@@ -67,12 +67,25 @@ class GridView extends React.Component {
 
     return (
       <div id="page" className="location-management">
-              <SEO
-      title={"Paikkatietokanta - Listanäkymä"}
+<SEO
+      title="Listanäkymä - Paikkatietokanta"
       description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+      locale="fi_FI"
       siteUrl={process.env.REACT_APP_BASE_URL + '/list/'}
       image={{
         src: process.env.REACT_APP_BASE_URL + '/logo512.png'
+      }}
+      openGraph={{
+        title:"Listanäkymä - Paikkatietokanta",
+        description:"Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.",
+        type: "article",
+        siteName: "Paikkatietokanta",
+        url: process.env.REACT_APP_BASE_URL + '/list/',
+        locale: "fi_FI",
+        image: {
+          src: process.env.REACT_APP_BASE_URL + '/logo512.png',
+          alt: 'Listanäkymä - Paikkatietokanta'
+        }
       }}
     />
         {pager.pages &&

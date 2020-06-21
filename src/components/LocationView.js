@@ -79,11 +79,24 @@ const Location = props => {
   
     <div>
   <SEO
-      title={"Paikkatietokanta - " + currentLocation.title}
+      title={currentLocation.title + " - Paikkatietokanta"}
       description={currentLocation.description}
+      locale="fi_FI"
       siteUrl={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
       image={{
         src: currentLocation.featuredImage
+      }}
+      openGraph={{
+        title: currentLocation.title + " - Paikkatietokanta",
+        description: currentLocation.description,
+        type: "article",
+        siteName: "Paikkatietokanta",
+        url: process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id,
+        locale: "fi_FI",
+        image: {
+          src: currentLocation.featuredImage,
+          alt: currentLocation.title,
+        }
       }}
     />
       {currentLocation

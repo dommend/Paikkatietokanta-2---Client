@@ -163,12 +163,25 @@ const LocationsList = () => {
 
   return (
     <div id="location-list" className="module-view">
-            <SEO
-      title={"Paikkatietokanta - Moduulinäkymä"}
+<SEO
+      title="Moduulinäkymä - Paikkatietokanta"
       description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+      locale="fi_FI"
       siteUrl={process.env.REACT_APP_BASE_URL + '/module/'}
       image={{
         src: process.env.REACT_APP_BASE_URL + '/logo512.png'
+      }}
+      openGraph={{
+        title:"Moduulinäkymä - Paikkatietokanta",
+        description:"Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.",
+        type: "article",
+        siteName: "Paikkatietokanta",
+        url: process.env.REACT_APP_BASE_URL + '/module/',
+        locale: "fi_FI",
+        image: {
+          src: process.env.REACT_APP_BASE_URL + '/logo512.png',
+          alt: 'Moduulinäkymä - Paikkatietokanta'
+        }
       }}
     />
       <aside>

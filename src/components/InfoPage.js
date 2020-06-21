@@ -12,12 +12,25 @@ class Info extends React.Component {
   render() {
     return (
       <div id="page" className="content-page">
-              <SEO
-      title={"Paikkatietokanta - Info"}
+<SEO
+      title="Info - Paikkatietokanta"
       description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+      locale="fi_FI"
       siteUrl={process.env.REACT_APP_BASE_URL + '/info/'}
       image={{
         src: process.env.REACT_APP_BASE_URL + '/logo512.png'
+      }}
+      openGraph={{
+        title:"Info - Paikkatietokanta",
+        description:"Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.",
+        type: "article",
+        siteName: "Paikkatietokanta",
+        url: process.env.REACT_APP_BASE_URL + '/info/',
+        locale: "fi_FI",
+        image: {
+          src: process.env.REACT_APP_BASE_URL + '/logo512.png',
+          alt: 'Info - Paikkatietokanta'
+        }
       }}
     />
         <div className="innerwidth">
