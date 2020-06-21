@@ -8,6 +8,7 @@ import Icon from '@material-ui/core/Icon';
 import {icon as leafletIcon} from 'leaflet';
 import ShowMoreText from 'react-show-more-text';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
+import SEO from '@americanexpress/react-seo';
 
 const LocationsList = () => {
   const [locations, setLocations] = useState ([]);
@@ -53,6 +54,14 @@ const LocationsList = () => {
 
   return (
     <div id="fullpage" className="map-view">
+            <SEO
+      title={"Paikkatietokanta - Karttanäkymä"}
+      description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+      siteUrl={process.env.REACT_APP_BASE_URL + '/map/'}
+      image={{
+        src: process.env.REACT_APP_BASE_URL + '/logo512.png'
+      }}
+    />
       <LeafletMap
         center={[61, 20]}
         zoom={5}

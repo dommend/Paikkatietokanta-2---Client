@@ -6,6 +6,7 @@ import FlickrLightbox from 'react-flickr-lightbox';
 import Icon from '@material-ui/core/Icon';
 import {icon as leafletIcon} from 'leaflet';
 import ShowMoreText from 'react-show-more-text';
+import SEO from '@americanexpress/react-seo';
 
 document.onkeydown = function (evt) {
   evt = evt || window.event;
@@ -72,6 +73,14 @@ class GridView extends React.Component {
 
     return (
       <div id="page" className="locationGrid-page">
+      <SEO
+      title={"Paikkatietokanta - Grid"}
+      description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+      siteUrl={process.env.REACT_APP_BASE_URL + '/grid/'}
+      image={{
+        src: process.env.REACT_APP_BASE_URL + '/logo512.png'
+      }}
+    />
         {pager.pages &&
           pager.pages.length &&
           <div className="page-navigation">

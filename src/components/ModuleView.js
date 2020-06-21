@@ -12,6 +12,7 @@ import Moment from 'react-moment';
 import ModalImage from 'react-modal-image';
 import Weather from 'simple-react-weather';
 import LazyLoad from 'react-lazyload';
+import SEO from '@americanexpress/react-seo';
 
 const LocationsList = () => {
   const [locations, setLocations] = useState ([]);
@@ -162,6 +163,14 @@ const LocationsList = () => {
 
   return (
     <div id="location-list" className="module-view">
+            <SEO
+      title={"Paikkatietokanta - Moduulinäkymä"}
+      description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+      siteUrl={process.env.REACT_APP_BASE_URL + '/module/'}
+      image={{
+        src: process.env.REACT_APP_BASE_URL + '/logo512.png'
+      }}
+    />
       <aside>
         <div className="search input-group mb-3">
           <input

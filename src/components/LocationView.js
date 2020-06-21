@@ -9,6 +9,7 @@ import {ThreeQuarters} from 'css-spinners-react';
 import Moment from 'react-moment';
 import ModalImage from 'react-modal-image';
 import Weather from 'simple-react-weather';
+import SEO from '@americanexpress/react-seo';
 
 const Location = props => {
   const initialLocationState = {
@@ -75,7 +76,16 @@ const Location = props => {
     }
   };
   return (
+  
     <div>
+  <SEO
+      title={"Paikkatietokanta - " + currentLocation.title}
+      description={currentLocation.description}
+      siteUrl={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
+      image={{
+        src: currentLocation.featuredImage
+      }}
+    />
       {currentLocation
         ? <div id="page" className="locationView-page">
             <div className="container">

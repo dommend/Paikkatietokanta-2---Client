@@ -6,6 +6,7 @@ import {icon as leafletIcon} from 'leaflet';
 import 'react-slicer/build/react-slicer.css';
 import ShowMoreText from 'react-show-more-text';
 import Moment from 'react-moment';
+import SEO from '@americanexpress/react-seo';
 
 document.onkeydown = function (evt) {
   evt = evt || window.event;
@@ -66,6 +67,14 @@ class GridView extends React.Component {
 
     return (
       <div id="page" className="location-management">
+              <SEO
+      title={"Paikkatietokanta - Listanäkymä"}
+      description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+      siteUrl={process.env.REACT_APP_BASE_URL + '/list/'}
+      image={{
+        src: process.env.REACT_APP_BASE_URL + '/logo512.png'
+      }}
+    />
         {pager.pages &&
           pager.pages.length &&
           <div className="page-navigation">

@@ -1,5 +1,6 @@
 import React from 'react';
 import Diver from '../resources/diver.png'
+import SEO from '@americanexpress/react-seo';
 
 document.onkeydown = function (evt) {
   evt = evt || window.event;
@@ -11,6 +12,14 @@ class Info extends React.Component {
   render() {
     return (
       <div id="page" className="content-page">
+              <SEO
+      title={"Paikkatietokanta - Info"}
+      description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+      siteUrl={process.env.REACT_APP_BASE_URL + '/info/'}
+      image={{
+        src: process.env.REACT_APP_BASE_URL + '/logo512.png'
+      }}
+    />
         <div className="innerwidth">
           <div className="innercontainer">
 

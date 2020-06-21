@@ -4,7 +4,7 @@
 
 
 body {
-  overflow: hidden;
+   overflow: hidden;
 }
 
 /* Colors */
@@ -666,6 +666,7 @@ body.locations-loaded .locationGrid-page #filter {
   width: 30%;
   float: right;
   margin: 0px 15px 5px 5px;
+  background:$neutral2;
 }
 
 .frontpage #place #details .no-description #featuredImage { width:auto; margin-right:4px;}
