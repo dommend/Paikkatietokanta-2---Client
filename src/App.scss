@@ -474,6 +474,7 @@ aside {
 #places .list-group-item {
   border-color: $neutral2;
   font-size: .9em;
+  border-left:0px;
 }
 
 #places .list-group-item:first-of-type {
@@ -500,7 +501,7 @@ aside {
 
 #places .list-group-item.active {
   background: $primary;
-  border: 1px solid $primary;
+  border: 0px solid $primary;
 }
 
 #places .list-group-item .coordinates {
