@@ -15,7 +15,6 @@ import Weather from 'simple-react-weather';
 import LazyLoad from 'react-lazyload';
 import SEO from '@americanexpress/react-seo';
 
-
 const LocationsList = () => {
   const [locations, setLocations] = useState ([]);
   const [currentLocation, setCurrentLocation] = useState (null);
@@ -234,7 +233,7 @@ const LocationsList = () => {
           {locations &&
             locations.map ((location, index) => (
               <LazyLoad overflow once={location.once} 
-              placeholder={<li className="list-group-item">...</li>}  scroll={true} key={index} throttle={100}  height={30}>
+              placeholder={<li className="list-group-item">...</li>}  scroll={true} key={index} throttle={30}  height={30}>
               <li
                 key={index}
                 className={
