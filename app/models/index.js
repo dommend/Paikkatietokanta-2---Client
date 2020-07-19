@@ -16,8 +16,8 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 });
 
 const cache = new SequelizeSimpleCache({
-  User: { ttl: 5 * 60 }, // 5 minutes
-  Page: { }, // default ttl is 1 hour
+  User: { ttl: 5 * 60  }, // 5 minutes
+  Page: {   }, // default ttl is 1 hour
 });
 
 const Location = cache.init(sequelize.import('./location.model.js'));

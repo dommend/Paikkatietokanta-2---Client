@@ -28,10 +28,6 @@ class GridView extends React.Component {
     this.loadPage ();
   }
 
-  componentDidUpdate () {
-    this.loadPage ();
-  }
-
   loadPage () {
     // get page of items from api
     const params = new URLSearchParams (window.location.search);
