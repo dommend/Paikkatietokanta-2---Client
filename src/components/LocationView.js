@@ -10,6 +10,19 @@ import Moment from 'react-moment';
 import ModalImage from 'react-modal-image';
 import Weather from 'simple-react-weather';
 import SEO from '@americanexpress/react-seo';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure ({
+  position: 'top-center',
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+});
+
 
 const Location = props => {
   const initialLocationState = {
@@ -75,6 +88,17 @@ const Location = props => {
         : window.open (process.env.REACT_APP_ADMIN_BASE_URL + '/add', '_self');
     }
   };
+
+  const copyToClipBoard = async copyMe => {
+    try {
+      await navigator.clipboard.writeText(copyMe);
+      toast ('Osoite kopioitu leikepöydälle ' + process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id);
+    } catch (err) {
+      toast ('Permalinkiä ei kopioitu');
+    }
+  };
+
+
   return (
   
     <div>
@@ -243,6 +267,8 @@ const Location = props => {
                                 {currentLocation.flickrMore}
                               </a>
                             : ''}
+<button title="Kopioi osoite leikepöydälle" className="copyToClipBoard" onClick={() => copyToClipBoard(process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id)}>
+<span className="material-icons">content_copy</span> {process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}</button>
                           {currentLocation.flickrTag
                             ? <div className="flickr-lightbox-container">
                                 <ThreeQuarters />

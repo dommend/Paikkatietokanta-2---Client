@@ -13,6 +13,19 @@ import ModalImage from 'react-modal-image';
 import Weather from 'simple-react-weather';
 import LazyLoad from 'react-lazyload';
 import SEO from '@americanexpress/react-seo';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure ({
+  position: 'top-center',
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+});
+
 
 const LocationsList = () => {
   const [locations, setLocations] = useState ([]);
@@ -158,6 +171,15 @@ const LocationsList = () => {
             '_self'
           )
         : window.open (process.env.REACT_APP_ADMIN_BASE_URL + '/add', '_self');
+    }
+  };
+
+  const copyToClipBoard = async copyMe => {
+    try {
+      await navigator.clipboard.writeText(copyMe);
+      toast ('Osoite kopioitu leikepöydälle ' + process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id);
+    } catch (err) {
+      toast ('Permalinkiä ei kopioitu');
     }
   };
 
@@ -342,6 +364,10 @@ const LocationsList = () => {
                             {currentLocation.flickrMore}
                           </a>
                         : ''}
+
+<button title="Kopioi osoite leikepöydälle" className="copyToClipBoard" onClick={() => copyToClipBoard(process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id)}>
+<span className="material-icons">content_copy</span> {process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}</button>
+
                       {currentLocation.flickrTag
                         ? <div className="flickr-lightbox-container">
                             <ThreeQuarters />
