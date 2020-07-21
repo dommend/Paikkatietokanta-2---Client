@@ -7,6 +7,7 @@ This project is unfinished and will be updated.
 1. npm install
 2. Change database settings from db.config. Can be found @ app/congig/db.config.js
 3. Create a .env.local file and specify the following paths:
+
 ```
 PORT=8080
 REACT_APP_BASE_URL=https://paikkatietokanta.net
@@ -15,11 +16,13 @@ REACT_APP_API_URL=https://paikkatietokanta.net/api/
 REACT_APP_FLICKR_API="12345"
 REACT_APP_FLICKR_USERNAME="12345@N00"
 REACT_APP_OW_API="12345"
+REACT_APP_MAPTILER_API="12345"
 ```
 
 REACT_APP_FLICKR_API is for Flickr api (https://www.flickr.com/services/apps/create/apply) 
 REACT_APP_FLICKR_USERNAME is for Flickr username (https://help.flickr.com/find-your-flickr-login-id-HytypXj1Q)
 REACT_APP_OW_API is for OpenWeather api (https://openweathermap.org/)
+REACT_APP_MAPTILER_API= is for MapTiler ( https://www.maptiler.com/ )
 
 Note! The site uses Stadiamaps.com's map layer as maps. In order for the maps to be displayed online correctly, you must create an account.
 

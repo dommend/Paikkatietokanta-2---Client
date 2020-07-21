@@ -1816,8 +1816,9 @@ h4 .material-icons {
 
 @media screen and (max-width: 600px) {
 
-  .leaflet-control-container {
-    display: none;}
+  .leaflet-control-container {display: none;}
+  .map-view .leaflet-control-container {display: block;} 
+
   .frontpage .styles_simpleReactWeatherCity__zyECF {
     left: -15px;
     font-size: .7rem !important;

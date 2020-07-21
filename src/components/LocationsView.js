@@ -429,11 +429,11 @@ const LocationsList = () => {
                   </BaseLayer>
 
                   <BaseLayer name="Korkealaatuinen satelliittinäkymä">
-                    <TileLayer url="https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}@2x.jpg?key=jJUAv4qRQJq0F3KAP2Y9" />
+                    <TileLayer url={"https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=" + process.env.REACT_APP_MAPTILER_API} />
                   </BaseLayer>
 
                   <BaseLayer name="Matalalaatuinen satelliittinäkymä">
-                    <TileLayer url="https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=jJUAv4qRQJq0F3KAP2Y9" />
+                    <TileLayer url={"https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=" + process.env.REACT_APP_MAPTILER_API} />
                   </BaseLayer>
                 </LayersControl>
 
