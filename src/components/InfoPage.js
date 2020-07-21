@@ -40,20 +40,13 @@ class Info extends React.Component {
               <div className="col-sm">
                 <h2>Tietoa paikkatietokannasta</h2>
                 <p>
-                  Paikkatietokanta on
-                  {' '}
-                  <a href="http://penttinen.fi/">Jani Penttisen</a>
-                  {' '}
+                  Paikkatietokanta on <a href="http://penttinen.fi/">Jani Penttisen</a>
                   päättöprojektina syntynyt sivusto. Paikkatietokannan tarkoitus on yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.
                 </p>
 
                 <p>
                   Sivusto on rakennettu käyttämällä: <br />
-                  <code>HTML5, SASS, MySQL, React, Node</code>
-                  {' '}
-                  ja palju
-                  {' '}
-                  <code>kohvi.</code>
+                  <code>HTML5, SASS, MySQL, React, Node</code> ja palju <code>kohvi.</code>
                 </p>
 
                 <p>Sivuston lähdekoodi on ladattavissa GitHubissa.</p>
@@ -69,7 +62,6 @@ class Info extends React.Component {
                   </span>
                   <br />
                   <strong>Paikkatietokanta 1.4.9 (Client with Admin)</strong>
-                  {' '}
                   <br />
                   <small>
                     Huom. Versiossa ei olla eroteltu ylläpitoa ja käyttäjärajapintaa.
@@ -129,41 +121,23 @@ class Info extends React.Component {
                 </h4>
 
                 <p>
-                  Ajaekseen sivua, sinulla tulee olla
-                  {' '}
-                  <a href="https://nodejs.org/en/">node.js</a>
-                  {' '}
-                  ja mysql-tietokanta.
+                  Ajaekseen sivua, sinulla tulee olla <a href="https://nodejs.org/en/">node.js</a> ja mysql-tietokanta.
                 </p>
 
                 <blockquote>
                   <ol>
                     <li>Aja <code>npm install</code></li>
                     <li>
-                      Muuta tietokanta-asetukset tiedostosta
-                      {' '}
-                      <code>db.config.</code>
-                      {' '}
-                      Tiedosto löytyy @
-                      {' '}
-                      <code>app/config/db.config.js</code>
+                      Muuta tietokanta-asetukset tiedostosta <code>db.config.</code>                      Tiedosto löytyy @ <code>app/config/db.config.js</code>
                     </li>
                     <li>
-                      Luo esimerkin mukainen
-                      {' '}
-                      <code>.env.local</code>
-                      {' '}
-                      -tiedosto kansion juureen:
+                      Luo esimerkin mukainen <code>.env.local</code> -tiedosto kansion juureen:
                       <blockquote>
                         <code>
                           PORT=8080 <br />
                           REACT_APP_BASE_URL=https://paikkatietokanta.net <br />
-                          REACT_APP_ADMIN_BASE_URL=https://admin.paikkatietokanta.net
-                          {' '}
-                          <br />
-                          REACT_APP_API_URL=https://paikkatietokanta.net/api/
-                          {' '}
-                          <br />
+                          REACT_APP_ADMIN_BASE_URL=https://admin.paikkatietokanta.net<br />
+                          REACT_APP_API_URL=https://paikkatietokanta.net/api/ <br />
                           REACT_APP_FLICKR_API="12345" <br />
                           REACT_APP_FLICKR_USERNAME="12345@N00" <br />
                           REACT_APP_OW_API="12345" <br />
@@ -171,82 +145,48 @@ class Info extends React.Component {
                         </code>
                       </blockquote>
                       <small>
-                        <code>REACT_APP_FLICKR_API</code>
-                        {' '}
-                        on Flickr:n api (
+                        <code>REACT_APP_FLICKR_API</code> on Flickr:n api (
                         <a href="https://www.flickr.com/services/apps/create/apply">
                           https://www.flickr.com/services/apps/create/apply
                         </a>
                         )
                         <br />
-                        <code>REACT_APP_FLICKR_USERNAME</code>
-                        {' '}
-                        on Flickr:n käyttäjänimi (
+                        <code>REACT_APP_FLICKR_USERNAME</code> on Flickr:n käyttäjänimi (
                         <a href="https://help.flickr.com/find-your-flickr-login-id-HytypXj1Q">
                           https://help.flickr.com/find-your-flickr-login-id-HytypXj1Q
                         </a>
                         )
                         <br />
-                        <code>REACT_APP_OW_API</code>
-                        {' '}
-                        on OpenWeather api (
+                        <code>REACT_APP_OW_API</code> on OpenWeather api (
                         <a href="https://openweathermap.org/">
                           https://openweathermap.org/
                         </a>
                         )
                         <br />
-                        <code>REACT_APP_MAPTILER_API</code>
-                        {' '}
-                        on MapTiler api (
+                        <code>REACT_APP_MAPTILER_API</code> on MapTiler api (
                           <a href="https://www.maptiler.com/">
                           https://www.maptiler.com/
-                        </a>)  
-                        
+                        </a>)   
                         <br />  <br />
                         Huom! Sivusto käyttää karttoina
-                        {' '}
                         <a href="https://stadiamaps.com/">Stadiamaps.com</a>
                         :n kartta layeriä. Jotta kartat näkyisivät verkossa oikein, tulee sinun tehdä tunnus palveluun.
                       </small>  <br /> <br />
                     </li>
                     <li>
-                      Aja
-                      {' '}
-                      <code>node.server</code>
-                      {' '}
-                      tai
-                      {' '}
-                      <code>npm run-script dev</code>
-                      {' '}
-                      -- Jos tietokantoja ei ole, ne luodaan.
-                      {' '}
-                      <code>Server.js</code>
-                      {' '}
-                      pyörii portissa 8080.
+                      Aja <code>node.server</code> tai <code>npm run-script dev</code> -- Jos tietokantoja ei ole, ne luodaan. <code>Server.js</code> pyörii portissa 8080.
                     </li>
                     <li>
-                      Aja
-                      {' '}
-                      <code>npm start</code>
-                      {' '}
-                      -- Käynnistää sivuston portissa 8081.
+                      Aja <code>npm start</code> -- Käynnistää sivuston portissa 8081.
                     </li>
                   </ol>
                 </blockquote>
 
                 <h5>Porteista</h5>
                 <p>
-                  Portien asetukset määritetään
-                  {' '}
-                  <code>.env.local</code>
-                  {' '}
+                  Portien asetukset määritetään <code>.env.local</code>
                   -tiedososta. Varsinaiset asetukset löytyvät tiedostoista
-                  {' '}
-                  <code>server.js</code>
-                  {' '}
-                  ja
-                  {' '}
-                  <code>src/http-commons.</code>
+                  <code>server.js</code> ja <code>src/http-commons.</code>
                 </p>
 
                 <p>
@@ -256,37 +196,12 @@ class Info extends React.Component {
 
                 <h5>Ennen kuin ajat build-scriptin</h5>
                 <p>
-                  Ennen kuin ajat build-scriptin, käy muuttamassa
-                  {' '}
-                  <code>REACT_APP_API_URL</code>
-                  {' '}
-                  oikeaksi
-                  {' '}
-                  <code>.env.local</code>
-                  {' '}
-                  -tiedostosta. Tarkista myös
-                  {' '}
-                  <code>'homepage address'</code>
-                  {' '}
-                  tiedostosta
-                  {' '}
-                  <code>package.json.</code>
-                  {' '}
-                  Ajattaessa lokaalisti
-                  {' '}
-                  <code>homepage address</code>
-                  {' '}
-                  voi olla
-                  {' '}
-                  <code>"./"</code>
-                  . Mikäli osoite on väärin, sivusto avautuu pelkkänä valkoisena näkymänä. Verkkoa varten tämän voi muuttaa vastaamaan verkkotunnusta.
+                  Ennen kuin ajat build-scriptin, käy muuttamassa <code>REACT_APP_API_URL</code> oikeaksi <code>.env.local</code> -tiedostosta. Tarkista myös <code>'homepage address'</code> tiedostosta <code>package.json.</code> Ajattaessa lokaalisti <code>homepage address</code> voi olla<code>"./"</code>.  Mikäli osoite on väärin, sivusto avautuu pelkkänä valkoisena näkymänä. Verkkoa varten tämän voi muuttaa vastaamaan verkkotunnusta.
                 </p>
 
                 <h5>Sivuston ajaminen verkossa ja htaccess</h5>
                 <p>
-                  Jotta sivusto päivittyisi oikein, täytyy alla oleva
-                  {' '}
-                  <code>.htaccess</code>
+                  Jotta sivusto päivittyisi oikein, täytyy alla oleva <code>.htaccess</code>
                   -tiedosto olla olemassa sivuston juuressa. Ilman htaccess-tiedostoa sivuston päivitys saattaa aiheuttaa valkoisen ruudun.
                 </p>
                 <blockquote>
@@ -307,7 +222,10 @@ class Info extends React.Component {
                 <p>
                   Tämä kytkee aikaisemmin määrittämät rewrite-arvot pois api-kansiosta.
                 </p>
+
+                <blockquote>
                 <code>RewriteEngine Off</code>
+                </blockquote>
 
                 <hr style={{margin: '50px 0px 50px 0px'}} />
 
@@ -316,11 +234,7 @@ class Info extends React.Component {
                 </h4>
 
                 <p>
-                  Ohjeet ovat muuten samat, mutta
-                  {' '}
-                  <code>.env.local</code>
-                  {' '}
-                  -tiedoston sisältö on seuraava:
+                  Ohjeet ovat muuten samat, mutta <code>.env.local</code> -tiedoston sisältö on seuraava:
                 </p>
 
                 <blockquote>
@@ -331,9 +245,7 @@ class Info extends React.Component {
                   </code>
                 </blockquote>
 
-                <p>
-                  Huom. Ylläpito ei sisällä kirjautumista tai käyttäjärooleja.
-                </p>
+                <p>Huom. Ylläpito ei sisällä kirjautumista tai käyttäjärooleja.</p>
               </div>
             </div>
           </div>
