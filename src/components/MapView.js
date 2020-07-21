@@ -1,7 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import LocationDataService from '../services/LocationService';
 import {Link} from 'react-router-dom';
-import {Map as LeafletMap, TileLayer, Marker, Popup} from 'react-leaflet';
+import {
+  Map as LeafletMap,
+  TileLayer,
+  Marker,
+  Popup,
+  LayersControl,
+} from 'react-leaflet';
 import ReactPlayer from 'react-player';
 import FlickrLightbox from 'react-flickr-lightbox';
 import Icon from '@material-ui/core/Icon';
@@ -52,29 +58,31 @@ const LocationsList = () => {
     }
   };
 
+  const {BaseLayer} = LayersControl;
+
   return (
     <div id="fullpage" className="map-view">
-<SEO
-      title="Karttanäkymä - Paikkatietokanta"
-      description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
-      locale="fi_FI"
-      siteUrl={process.env.REACT_APP_BASE_URL + '/map/'}
-      image={{
-        src: process.env.REACT_APP_BASE_URL + '/logo512.png'
-      }}
-      openGraph={{
-        title:"Karttanäkymä - Paikkatietokanta",
-        description:"Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.",
-        type: "article",
-        siteName: "Paikkatietokanta",
-        url: process.env.REACT_APP_BASE_URL + '/map/',
-        locale: "fi_FI",
-        image: {
+      <SEO
+        title="Karttanäkymä - Paikkatietokanta"
+        description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+        locale="fi_FI"
+        siteUrl={process.env.REACT_APP_BASE_URL + '/map/'}
+        image={{
           src: process.env.REACT_APP_BASE_URL + '/logo512.png',
-          alt: 'Karttanäkymä - Paikkatietokanta'
-        }
-      }}
-    />
+        }}
+        openGraph={{
+          title: 'Karttanäkymä - Paikkatietokanta',
+          description: 'Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.',
+          type: 'article',
+          siteName: 'Paikkatietokanta',
+          url: process.env.REACT_APP_BASE_URL + '/map/',
+          locale: 'fi_FI',
+          image: {
+            src: process.env.REACT_APP_BASE_URL + '/logo512.png',
+            alt: 'Karttanäkymä - Paikkatietokanta',
+          },
+        }}
+      />
       <LeafletMap
         center={[61, 20]}
         zoom={5}
@@ -87,7 +95,28 @@ const LocationsList = () => {
         animate={true}
         easeLinearity={0.35}
       >
-        <TileLayer url="https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png" />
+
+        <LayersControl>
+          <BaseLayer checked name="Karttanäkymä">
+            <TileLayer
+              url="https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png"
+              attribution="&copy; <a href=&quot;https://stadiamaps.com/&quot;>Stadia Maps</a>, &copy; <a href=&quot;https://openmaptiles.org/&quot;>OpenMapTiles</a> &copy; <a href=&quot;http://openstreetmap.org&quot;>OpenStreetMap</a> contributors"
+            />
+          </BaseLayer>
+
+          <BaseLayer name="Korkealaatuinen satelliittinäkymä">
+            <TileLayer
+              url="https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}@2x.jpg?key=jJUAv4qRQJq0F3KAP2Y9"
+            />
+          </BaseLayer>
+
+          <BaseLayer name="Matalalaatuinen satelliittinäkymä">
+            <TileLayer
+              url="https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=jJUAv4qRQJq0F3KAP2Y9"
+            />
+          </BaseLayer>
+        </LayersControl>
+
         <MarkerClusterGroup>
           {locations.reverse &&
             locations.map ((location, index) => (

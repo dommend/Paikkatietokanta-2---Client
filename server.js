@@ -15,7 +15,7 @@ const cacheMiddleware = new ExpressCache(
 
 // Enable Cors
 var corsOptions = {
-  origin: ['https://paikkatietokanta.net', 'https://www.paikkatietokanta.net']
+  origin: ['http://localhost:8080', 'http://localhost:8081', 'https://paikkatietokanta.net', 'https://www.paikkatietokanta.net']
 };
 
 app.use(cors(corsOptions));

@@ -1,7 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import LocationDataService from '../services/LocationService';
 import {Link} from 'react-router-dom';
-import {Map as LeafletMap, TileLayer, Marker, Popup} from 'react-leaflet';
+import {
+  Map as LeafletMap,
+  TileLayer,
+  Marker,
+  Popup,
+  LayersControl,
+} from 'react-leaflet';
 import Icon from '@material-ui/core/Icon';
 import ReactPlayer from 'react-player';
 import FlickrLightbox from 'react-flickr-lightbox';
@@ -17,7 +23,6 @@ import SEO from '@americanexpress/react-seo';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 toast.configure ({
   position: 'top-center',
   autoClose: 5000,
@@ -28,14 +33,11 @@ toast.configure ({
   progress: undefined,
 });
 
-
 const LocationsList = () => {
   const [locations, setLocations] = useState ([]);
   const [currentLocation, setCurrentLocation] = useState (null);
   const [currentIndex, setCurrentIndex] = useState ();
   const [searchTitle, setSearchTitle] = useState ('');
-  const [copySuccess, setCopySuccess] = useState('');
-
 
   useEffect (() => {
     retrieveLocations ();
@@ -170,7 +172,7 @@ const LocationsList = () => {
         : window.open (process.env.REACT_APP_ADMIN_BASE_URL + '/add', '_self');
     }
   };
- 
+
   const handleKeyDown = e => {
     if (e.key === 'Enter') {
       findByTitle ();
@@ -179,36 +181,43 @@ const LocationsList = () => {
 
   const copyToClipBoard = async copyMe => {
     try {
-      await navigator.clipboard.writeText(copyMe);
-      toast ('Osoite kopioitu leikepöydälle ' + process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id);
+      await navigator.clipboard.writeText (copyMe);
+      toast (
+        'Osoite kopioitu leikepöydälle ' +
+          process.env.REACT_APP_BASE_URL +
+          '/view/' +
+          currentLocation.id
+      );
     } catch (err) {
       toast ('Permalinkiä ei kopioitu');
     }
   };
 
+  const {BaseLayer} = LayersControl;
+
   return (
     <div id="location-list" className="frontpage">
-<SEO
-      title="Paikkalista - Paikkatietokanta"
-      description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
-      locale="fi_FI"
-      siteUrl={process.env.REACT_APP_BASE_URL + '/locations/'}
-      image={{
-        src: process.env.REACT_APP_BASE_URL + '/logo512.png'
-      }}
-      openGraph={{
-        title:"Paikkalista - Paikkatietokanta",
-        description:"Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.",
-        type: "article",
-        siteName: "Paikkatietokanta",
-        url: process.env.REACT_APP_BASE_URL + '/locations/',
-        locale: "fi_FI",
-        image: {
+      <SEO
+        title="Paikkalista - Paikkatietokanta"
+        description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+        locale="fi_FI"
+        siteUrl={process.env.REACT_APP_BASE_URL + '/locations/'}
+        image={{
           src: process.env.REACT_APP_BASE_URL + '/logo512.png',
-          alt: 'Paikkalista - Paikkatietokanta' 
-        }
-      }}
-    />
+        }}
+        openGraph={{
+          title: 'Paikkalista - Paikkatietokanta',
+          description: 'Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.',
+          type: 'article',
+          siteName: 'Paikkatietokanta',
+          url: process.env.REACT_APP_BASE_URL + '/locations/',
+          locale: 'fi_FI',
+          image: {
+            src: process.env.REACT_APP_BASE_URL + '/logo512.png',
+            alt: 'Paikkalista - Paikkatietokanta',
+          },
+        }}
+      />
       <aside>
         <div className="search input-group mb-3">
           <input
@@ -257,28 +266,36 @@ const LocationsList = () => {
         <ul id="places" className="list-group">
           {locations &&
             locations.map ((location, index) => (
-              <LazyLoad overflow once={location.once} 
-              placeholder={<li className="list-group-item">...</li>}  scroll={true} key={index} throttle={30}  height={30}>
-              <li
+              <LazyLoad
+                overflow
+                once={location.once}
+                placeholder={<li className="list-group-item">...</li>}
+                scroll={true}
                 key={index}
-                className={
-                  'list-group-item ' + (index === currentIndex ? 'active' : '')
-                }
-                onClick={() => setActiveLocation (location, index)}
+                throttle={30}
+                height={30}
               >
-                {location.markedImportant
-                  ? <div className="float-right">
-                      <Icon className="favorite">favorite</Icon>
-                    </div>
-                  : ''}
-                {location.title} <br />
-                <div className="coordinates">
-                  <Icon className="material-icons">place</Icon>
-                  {[location.coordinateN + ', ' + location.coordinateE]}
-                </div>
-              </li>
+                <li
+                  key={index}
+                  className={
+                    'list-group-item ' +
+                      (index === currentIndex ? 'active' : '')
+                  }
+                  onClick={() => setActiveLocation (location, index)}
+                >
+                  {location.markedImportant
+                    ? <div className="float-right">
+                        <Icon className="favorite">favorite</Icon>
+                      </div>
+                    : ''}
+                  {location.title} <br />
+                  <div className="coordinates">
+                    <Icon className="material-icons">place</Icon>
+                    {[location.coordinateN + ', ' + location.coordinateE]}
+                  </div>
+                </li>
               </LazyLoad>
-            ))}               
+            ))}
         </ul>
       </aside>
       <div id="place">
@@ -293,7 +310,13 @@ const LocationsList = () => {
                         ? <Icon className="favorite">favorite</Icon>
                         : ''}
                     </h4>
-                    <div className={currentLocation.description ?  "description white-space" : "no-description white-space"} >
+                    <div
+                      className={
+                        currentLocation.description
+                          ? 'description white-space'
+                          : 'no-description white-space'
+                      }
+                    >
                       {currentLocation.featuredImage
                         ? <div id="featuredImage">
                             <ModalImage
@@ -302,7 +325,7 @@ const LocationsList = () => {
                               hideDownload={true}
                               hideZoom={true}
                               showRotate={false}
-                              alt={currentLocation.title}     
+                              alt={currentLocation.title}
                             />
                           </div>
                         : ''}
@@ -333,8 +356,22 @@ const LocationsList = () => {
                           </a>
                         : ''}
 
-<button title="Kopioi osoite leikepöydälle" className="copyToClipBoard" onClick={() => copyToClipBoard(process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id)}>
-<span className="material-icons">content_copy</span> {process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}</button>
+                      <button
+                        title="Kopioi osoite leikepöydälle"
+                        className="copyToClipBoard"
+                        onClick={() =>
+                          copyToClipBoard (
+                            process.env.REACT_APP_BASE_URL +
+                              '/view/' +
+                              currentLocation.id
+                          )}
+                      >
+                        <span className="material-icons">content_copy</span>
+                        {' '}
+                        {process.env.REACT_APP_BASE_URL +
+                          '/view/' +
+                          currentLocation.id}
+                      </button>
 
                       {currentLocation.flickrTag
                         ? <div className="flickr-lightbox-container">
@@ -386,7 +423,20 @@ const LocationsList = () => {
                 animate={true}
                 easeLinearity={0.35}
               >
-                <TileLayer url="https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png" />
+                <LayersControl position="topleft">
+                  <BaseLayer checked name="Karttanäkymä">
+                    <TileLayer url="https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png" />
+                  </BaseLayer>
+
+                  <BaseLayer name="Korkealaatuinen satelliittinäkymä">
+                    <TileLayer url="https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}@2x.jpg?key=jJUAv4qRQJq0F3KAP2Y9" />
+                  </BaseLayer>
+
+                  <BaseLayer name="Matalalaatuinen satelliittinäkymä">
+                    <TileLayer url="https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=jJUAv4qRQJq0F3KAP2Y9" />
+                  </BaseLayer>
+                </LayersControl>
+
                 <Marker
                   icon={
                     currentLocation.markedImportant

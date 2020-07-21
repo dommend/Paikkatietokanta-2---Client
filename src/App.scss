@@ -1,9 +1,8 @@
-
 @import '~leaflet/dist/leaflet.css';
 @import '~react-leaflet-markercluster/dist/styles.min.css';
 
 body {
-   overflow: hidden;
+  overflow: hidden;
 }
 
 /* Colors */
@@ -186,12 +185,27 @@ main {
   position: relative;
 }
 
-.copyToClipBoard { font-size:.75rem; width:100% !important; border:1px solid $neutral3; color:$base3; background:$neutral1;  margin-top:20px;
-padding:10px; }
+.copyToClipBoard {
+  font-size: .75rem;
+  width: 100% !important;
+  border: 1px solid $neutral3;
+  color: $base3;
+  background: $neutral1;
+  margin-top: 20px;
+  padding: 10px;
+}
 
-.copyToClipBoard:hover { background:$neutral7; border-color:$neutral7;}
+.copyToClipBoard:hover {
+  background: $neutral7;
+  border-color: $neutral7;
+}
 
-.copyToClipBoard .material-icons { font-size:.85rem; top:2px; margin-right:2px; position:relative;}
+.copyToClipBoard .material-icons {
+  font-size: .85rem;
+  top: 2px;
+  margin-right: 2px;
+  position: relative;
+}
 
 /** List and forms **/
 .list {
@@ -480,7 +494,7 @@ aside {
 #places .list-group-item {
   border-color: $neutral2;
   font-size: .9em;
-  border-left:0px;
+  border-left: 0px;
 }
 
 #places .list-group-item:first-of-type {
@@ -673,10 +687,13 @@ body.locations-loaded .locationGrid-page #filter {
   width: 30%;
   float: right;
   margin: 0px 15px 5px 5px;
-  background:$neutral2;
+  background: $neutral2;
 }
 
-.frontpage #place #details .no-description #featuredImage { width:auto; margin-right:4px;}
+.frontpage #place #details .no-description #featuredImage {
+  width: auto;
+  margin-right: 4px;
+}
 
 #place #details .meta {
   clear: both;
@@ -1080,12 +1097,15 @@ a:visited.link-to-flickr {
 }
 
 // Weather
+
+
 #weather p {
   color: $base;
   margin: 0px -100px;
-  text-shadow: 1px 1px 2px $neutral1;
-  text-shadow: -1px -1px 1px $neutral1;
-  text-shadow: 0px 0px 10px $neutral1;
+  text-shadow: -0.8px 0.8px 5px $neutral1, 
+  0.8px 0.8px  5px $neutral1, 
+  0.8px -0.8px 5px $neutral1, 
+  0.8px -0.8px 5px $neutral1;
   font-weight: bold;
   font-size: 0.9rem;
 }
@@ -1129,9 +1149,10 @@ a:visited.link-to-flickr {
   position: relative;
   color: $base;
   z-index: 9991;
-  text-shadow: 1px 1px 1px $neutral1;
-  text-shadow: -1px -1px 1px $neutral1;
-  text-shadow: 0px 0px 10px $neutral1;
+  text-shadow: -0.8px 0.8px 5px $neutral1, 
+  0.8px 0.8px  5px $neutral1, 
+  0.8px -0.8px 5px $neutral1, 
+  0.8px -0.8px 5px $neutral1;
 }
 
 .frontpage #weather,
@@ -1794,6 +1815,9 @@ h4 .material-icons {
 }
 
 @media screen and (max-width: 600px) {
+
+  .leaflet-control-container {
+    display: none;}
   .frontpage .styles_simpleReactWeatherCity__zyECF {
     left: -15px;
     font-size: .7rem !important;
@@ -1981,6 +2005,7 @@ h4 .material-icons {
 }
 
 @media screen and (max-width: 575px) {
+
   #page.content-page .innercontainer,
   #page.content-page .innerwidth {
     margin: 0px !important;

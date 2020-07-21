@@ -39,8 +39,7 @@ class GridView extends React.Component {
     const page = parseInt (params.get ('page')) || 1;
     if (page !== this.state.pager.currentPage) {
       fetch (
-        process.env.REACT_APP_BASE_URL +
-          `/api/locations/paged?page=${page}`,
+        process.env.REACT_APP_BASE_URL + `/api/locations/paged?page=${page}`,
         {
           method: 'GET',
         }
@@ -73,27 +72,27 @@ class GridView extends React.Component {
 
     return (
       <div id="page" className="locationGrid-page">
-<SEO
-      title="Ruudukkonäkymä - Paikkatietokanta"
-      description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
-      locale="fi_FI"
-      siteUrl={process.env.REACT_APP_BASE_URL + '/grid/'}
-      image={{
-        src: process.env.REACT_APP_BASE_URL + '/logo512.png'
-      }}
-      openGraph={{
-        title:"Ruudukkonäkymä - Paikkatietokanta",
-        description:"Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.",
-        type: "article",
-        siteName: "Paikkatietokanta",
-        url: process.env.REACT_APP_BASE_URL + '/grid/',
-        locale: "fi_FI",
-        image: {
-          src: process.env.REACT_APP_BASE_URL + '/logo512.png',
-          alt: 'Ruudukkonäkymä  - Paikkatietokanta'
-        }
-      }}
-    />
+        <SEO
+          title="Ruudukkonäkymä - Paikkatietokanta"
+          description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+          locale="fi_FI"
+          siteUrl={process.env.REACT_APP_BASE_URL + '/grid/'}
+          image={{
+            src: process.env.REACT_APP_BASE_URL + '/logo512.png',
+          }}
+          openGraph={{
+            title: 'Ruudukkonäkymä - Paikkatietokanta',
+            description: 'Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.',
+            type: 'article',
+            siteName: 'Paikkatietokanta',
+            url: process.env.REACT_APP_BASE_URL + '/grid/',
+            locale: 'fi_FI',
+            image: {
+              src: process.env.REACT_APP_BASE_URL + '/logo512.png',
+              alt: 'Ruudukkonäkymä  - Paikkatietokanta',
+            },
+          }}
+        />
         {pager.pages &&
           pager.pages.length &&
           <div className="page-navigation">

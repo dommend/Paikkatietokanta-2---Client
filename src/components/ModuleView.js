@@ -1,7 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import LocationDataService from '../services/LocationService';
 import {Link} from 'react-router-dom';
-import {Map as LeafletMap, TileLayer, Marker, Popup} from 'react-leaflet';
+import {
+  Map as LeafletMap,
+  TileLayer,
+  Marker,
+  Popup,
+  LayersControl,
+} from 'react-leaflet';
 import Icon from '@material-ui/core/Icon';
 import ReactPlayer from 'react-player';
 import FlickrLightbox from 'react-flickr-lightbox';
@@ -25,7 +31,6 @@ toast.configure ({
   draggable: true,
   progress: undefined,
 });
-
 
 const LocationsList = () => {
   const [locations, setLocations] = useState ([]);
@@ -176,36 +181,43 @@ const LocationsList = () => {
 
   const copyToClipBoard = async copyMe => {
     try {
-      await navigator.clipboard.writeText(copyMe);
-      toast ('Osoite kopioitu leikepöydälle ' + process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id);
+      await navigator.clipboard.writeText (copyMe);
+      toast (
+        'Osoite kopioitu leikepöydälle ' +
+          process.env.REACT_APP_BASE_URL +
+          '/view/' +
+          currentLocation.id
+      );
     } catch (err) {
       toast ('Permalinkiä ei kopioitu');
     }
   };
 
+  const {BaseLayer} = LayersControl;
+
   return (
     <div id="location-list" className="module-view">
-<SEO
-      title="Moduulinäkymä - Paikkatietokanta"
-      description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
-      locale="fi_FI"
-      siteUrl={process.env.REACT_APP_BASE_URL + '/module/'}
-      image={{
-        src: process.env.REACT_APP_BASE_URL + '/logo512.png'
-      }}
-      openGraph={{
-        title:"Moduulinäkymä - Paikkatietokanta",
-        description:"Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.",
-        type: "article",
-        siteName: "Paikkatietokanta",
-        url: process.env.REACT_APP_BASE_URL + '/module/',
-        locale: "fi_FI",
-        image: {
+      <SEO
+        title="Moduulinäkymä - Paikkatietokanta"
+        description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+        locale="fi_FI"
+        siteUrl={process.env.REACT_APP_BASE_URL + '/module/'}
+        image={{
           src: process.env.REACT_APP_BASE_URL + '/logo512.png',
-          alt: 'Moduulinäkymä - Paikkatietokanta'
-        }
-      }}
-    />
+        }}
+        openGraph={{
+          title: 'Moduulinäkymä - Paikkatietokanta',
+          description: 'Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.',
+          type: 'article',
+          siteName: 'Paikkatietokanta',
+          url: process.env.REACT_APP_BASE_URL + '/module/',
+          locale: 'fi_FI',
+          image: {
+            src: process.env.REACT_APP_BASE_URL + '/logo512.png',
+            alt: 'Moduulinäkymä - Paikkatietokanta',
+          },
+        }}
+      />
       <aside>
         <div className="search input-group mb-3">
           <input
@@ -252,30 +264,38 @@ const LocationsList = () => {
         </div>
         <Throbber />
         <ul id="places" className="list-group">
-        {locations &&
+          {locations &&
             locations.map ((location, index) => (
-              <LazyLoad overflow once={location.once} 
-              placeholder={<li className="list-group-item">...</li>}  scroll={true} key={index} throttle={30}  height={30}>
-              <li
+              <LazyLoad
+                overflow
+                once={location.once}
+                placeholder={<li className="list-group-item">...</li>}
+                scroll={true}
                 key={index}
-                className={
-                  'list-group-item ' + (index === currentIndex ? 'active' : '')
-                }
-                onClick={() => setActiveLocation (location, index)}
+                throttle={30}
+                height={30}
               >
-                {location.markedImportant
-                  ? <div className="float-right">
-                      <Icon className="favorite">favorite</Icon>
-                    </div>
-                  : ''}
-                {location.title} <br />
-                <div className="coordinates">
-                  <Icon className="material-icons">place</Icon>
-                  {[location.coordinateN + ', ' + location.coordinateE]}
-                </div>
-              </li>
+                <li
+                  key={index}
+                  className={
+                    'list-group-item ' +
+                      (index === currentIndex ? 'active' : '')
+                  }
+                  onClick={() => setActiveLocation (location, index)}
+                >
+                  {location.markedImportant
+                    ? <div className="float-right">
+                        <Icon className="favorite">favorite</Icon>
+                      </div>
+                    : ''}
+                  {location.title} <br />
+                  <div className="coordinates">
+                    <Icon className="material-icons">place</Icon>
+                    {[location.coordinateN + ', ' + location.coordinateE]}
+                  </div>
+                </li>
               </LazyLoad>
-            ))}   
+            ))}
         </ul>
       </aside>
       <div id="place">
@@ -364,10 +384,22 @@ const LocationsList = () => {
                             {currentLocation.flickrMore}
                           </a>
                         : ''}
-
-<button title="Kopioi osoite leikepöydälle" className="copyToClipBoard" onClick={() => copyToClipBoard(process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id)}>
-<span className="material-icons">content_copy</span> {process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}</button>
-
+                      <button
+                        title="Kopioi osoite leikepöydälle"
+                        className="copyToClipBoard"
+                        onClick={() =>
+                          copyToClipBoard (
+                            process.env.REACT_APP_BASE_URL +
+                              '/view/' +
+                              currentLocation.id
+                          )}
+                      >
+                        <span className="material-icons">content_copy</span>
+                        {' '}
+                        {process.env.REACT_APP_BASE_URL +
+                          '/view/' +
+                          currentLocation.id}
+                      </button>
                       {currentLocation.flickrTag
                         ? <div className="flickr-lightbox-container">
                             <ThreeQuarters />
@@ -418,7 +450,19 @@ const LocationsList = () => {
                 animate={true}
                 easeLinearity={0.35}
               >
-                <TileLayer url="https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png" />
+                <LayersControl>
+                  <BaseLayer checked name="Karttanäkymä">
+                    <TileLayer url="https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png" />
+                  </BaseLayer>
+
+                  <BaseLayer name="Korkealaatuinen satelliittinäkymä">
+                    <TileLayer url="https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}@2x.jpg?key=jJUAv4qRQJq0F3KAP2Y9" />
+                  </BaseLayer>
+
+                  <BaseLayer name="Matalalaatuinen satelliittinäkymä">
+                    <TileLayer url="https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=jJUAv4qRQJq0F3KAP2Y9" />
+                  </BaseLayer>
+                </LayersControl>
                 <Marker
                   icon={
                     currentLocation.markedImportant

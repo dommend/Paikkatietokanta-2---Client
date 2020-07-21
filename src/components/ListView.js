@@ -27,19 +27,23 @@ class GridView extends React.Component {
   componentDidMount () {
     this.loadPage ();
   }
-  
+
   componentDidUpdate () {
     this.loadPage ();
   }
-  
+
   loadPage () {
     // get page of items from api
     const params = new URLSearchParams (window.location.search);
     const page = parseInt (params.get ('page')) || 1;
     if (page !== this.state.pager.currentPage) {
-      fetch (process.env.REACT_APP_BASE_URL + `/api/locations/paged-long?page=${page}`, {
-        method: 'GET',
-      })
+      fetch (
+        process.env.REACT_APP_BASE_URL +
+          `/api/locations/paged-long?page=${page}`,
+        {
+          method: 'GET',
+        }
+      )
         .then (response => response.json ())
         .then (({pager, pageOfItems}) => {
           this.setState ({pager, pageOfItems});
@@ -67,27 +71,27 @@ class GridView extends React.Component {
 
     return (
       <div id="page" className="location-management">
-<SEO
-      title="Listanäkymä - Paikkatietokanta"
-      description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
-      locale="fi_FI"
-      siteUrl={process.env.REACT_APP_BASE_URL + '/list/'}
-      image={{
-        src: process.env.REACT_APP_BASE_URL + '/logo512.png'
-      }}
-      openGraph={{
-        title:"Listanäkymä - Paikkatietokanta",
-        description:"Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.",
-        type: "article",
-        siteName: "Paikkatietokanta",
-        url: process.env.REACT_APP_BASE_URL + '/list/',
-        locale: "fi_FI",
-        image: {
-          src: process.env.REACT_APP_BASE_URL + '/logo512.png',
-          alt: 'Listanäkymä - Paikkatietokanta'
-        }
-      }}
-    />
+        <SEO
+          title="Listanäkymä - Paikkatietokanta"
+          description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+          locale="fi_FI"
+          siteUrl={process.env.REACT_APP_BASE_URL + '/list/'}
+          image={{
+            src: process.env.REACT_APP_BASE_URL + '/logo512.png',
+          }}
+          openGraph={{
+            title: 'Listanäkymä - Paikkatietokanta',
+            description: 'Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.',
+            type: 'article',
+            siteName: 'Paikkatietokanta',
+            url: process.env.REACT_APP_BASE_URL + '/list/',
+            locale: 'fi_FI',
+            image: {
+              src: process.env.REACT_APP_BASE_URL + '/logo512.png',
+              alt: 'Listanäkymä - Paikkatietokanta',
+            },
+          }}
+        />
         {pager.pages &&
           pager.pages.length &&
           <div className="page-navigation">

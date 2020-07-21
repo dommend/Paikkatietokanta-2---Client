@@ -1,6 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import LocationDataService from '../services/LocationService';
-import {Map as LeafletMap, TileLayer, Marker, Popup} from 'react-leaflet';
+import {
+  Map as LeafletMap,
+  TileLayer,
+  Marker,
+  Popup,
+  LayersControl,
+} from 'react-leaflet';
 import ReactPlayer from 'react-player';
 import FlickrLightbox from 'react-flickr-lightbox';
 import Icon from '@material-ui/core/Icon';
@@ -23,7 +29,6 @@ toast.configure ({
   progress: undefined,
 });
 
-
 const Location = props => {
   const initialLocationState = {
     id: null,
@@ -37,7 +42,7 @@ const Location = props => {
     flickrTag: '',
     featuredImage: '',
   };
-  
+
   const [currentLocation, setCurrentLocation] = useState (initialLocationState);
 
   const getLocation = id => {
@@ -91,38 +96,43 @@ const Location = props => {
 
   const copyToClipBoard = async copyMe => {
     try {
-      await navigator.clipboard.writeText(copyMe);
-      toast ('Osoite kopioitu leikepöydälle ' + process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id);
+      await navigator.clipboard.writeText (copyMe);
+      toast (
+        'Osoite kopioitu leikepöydälle ' +
+          process.env.REACT_APP_BASE_URL +
+          '/view/' +
+          currentLocation.id
+      );
     } catch (err) {
       toast ('Permalinkiä ei kopioitu');
     }
   };
 
+  const {BaseLayer} = LayersControl;
 
   return (
-  
     <div>
-  <SEO
-      title={currentLocation.title + " - Paikkatietokanta"}
-      description={currentLocation.description}
-      locale="fi_FI"
-      siteUrl={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
-      image={{
-        src: currentLocation.featuredImage
-      }}
-      openGraph={{
-        title: currentLocation.title + " - Paikkatietokanta",
-        description: currentLocation.description,
-        type: "article",
-        siteName: "Paikkatietokanta",
-        url: process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id,
-        locale: "fi_FI",
-        image: {
+      <SEO
+        title={currentLocation.title + ' - Paikkatietokanta'}
+        description={currentLocation.description}
+        locale="fi_FI"
+        siteUrl={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
+        image={{
           src: currentLocation.featuredImage,
-          alt: currentLocation.title,
-        }
-      }}
-    />
+        }}
+        openGraph={{
+          title: currentLocation.title + ' - Paikkatietokanta',
+          description: currentLocation.description,
+          type: 'article',
+          siteName: 'Paikkatietokanta',
+          url: process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id,
+          locale: 'fi_FI',
+          image: {
+            src: currentLocation.featuredImage,
+            alt: currentLocation.title,
+          },
+        }}
+      />
       {currentLocation
         ? <div id="page" className="locationView-page">
             <div className="container">
@@ -143,7 +153,19 @@ const Location = props => {
                     animate={true}
                     easeLinearity={0.35}
                   >
-                    <TileLayer url="https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png" />
+                    <LayersControl>
+                      <BaseLayer checked name="Karttanäkymä">
+                        <TileLayer url="https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png" />
+                      </BaseLayer>
+
+                      <BaseLayer name="Korkealaatuinen satelliittinäkymä">
+                        <TileLayer url="https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}@2x.jpg?key=jJUAv4qRQJq0F3KAP2Y9" />
+                      </BaseLayer>
+
+                      <BaseLayer name="Matalalaatuinen satelliittinäkymä">
+                        <TileLayer url="https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=jJUAv4qRQJq0F3KAP2Y9" />
+                      </BaseLayer>
+                    </LayersControl>
                     <Marker
                       icon={
                         currentLocation.markedImportant
@@ -267,8 +289,22 @@ const Location = props => {
                                 {currentLocation.flickrMore}
                               </a>
                             : ''}
-<button title="Kopioi osoite leikepöydälle" className="copyToClipBoard" onClick={() => copyToClipBoard(process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id)}>
-<span className="material-icons">content_copy</span> {process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}</button>
+                          <button
+                            title="Kopioi osoite leikepöydälle"
+                            className="copyToClipBoard"
+                            onClick={() =>
+                              copyToClipBoard (
+                                process.env.REACT_APP_BASE_URL +
+                                  '/view/' +
+                                  currentLocation.id
+                              )}
+                          >
+                            <span className="material-icons">content_copy</span>
+                            {' '}
+                            {process.env.REACT_APP_BASE_URL +
+                              '/view/' +
+                              currentLocation.id}
+                          </button>
                           {currentLocation.flickrTag
                             ? <div className="flickr-lightbox-container">
                                 <ThreeQuarters />
@@ -276,7 +312,9 @@ const Location = props => {
                                   <FlickrLightbox
                                     api_key={process.env.REACT_APP_FLICKR_API}
                                     searchTerm={currentLocation.flickrTag}
-                                    user_id={process.env.REACT_APP_FLICKR_USERNAME}
+                                    user_id={
+                                      process.env.REACT_APP_FLICKR_USERNAME
+                                    }
                                   />
                                 </div>
                               </div>
