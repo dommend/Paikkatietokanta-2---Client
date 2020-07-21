@@ -1892,7 +1892,7 @@ h4 .material-icons {
 }
 
 @media screen and (max-width: 600px) {
-
+  .metadata .open-page.button { line-height: 2rem;}
   .leaflet-control-container {display: none;}
   .map-view .leaflet-control-container {display: block;} 
 
