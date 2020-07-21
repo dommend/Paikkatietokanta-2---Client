@@ -492,11 +492,10 @@ const LocationsList = () => {
             </div>
           : <div className="innercontainer">
               <div className="welcome">
-                <img
-                  src={require ('../resources/happyrobot.gif')}
-                  width="300"
-                  alt="Happy Robot"
-                />
+              <video width="320" height="240" autoPlay loop muted >
+                <source src={require ('../resources/happyrobot.mp4')} type="video/mp4" />
+                Your browser does not support the video tag.
+                </video>
               </div>
             </div>}
       </div>

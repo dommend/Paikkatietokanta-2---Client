@@ -96,7 +96,7 @@ class Info extends React.Component {
                     save
                   </span>
                   <br />
-                  <strong>Paikkatietokanta 2.0 (Client)</strong> <br />
+                  <strong>Paikkatietokanta 2.x (Client)</strong> <br />
                   <small>Käyttäjärajapinta</small>
                 </a>
               </div>
@@ -112,7 +112,7 @@ class Info extends React.Component {
                     save
                   </span>
                   <br />
-                  <strong>Paikkatietokanta 2.0 (Admin)</strong> <br />
+                  <strong>Paikkatietokanta 2.x (Admin)</strong> <br />
                   <small>Ylläpito</small>
                 </a>
               </div>
@@ -166,7 +166,8 @@ class Info extends React.Component {
                           <br />
                           REACT_APP_FLICKR_API="12345" <br />
                           REACT_APP_FLICKR_USERNAME="12345@N00" <br />
-                          REACT_APP_OW_API="12345"
+                          REACT_APP_OW_API="12345" <br />
+                          REACT_APP_MAPTILER_API="12345"
                         </code>
                       </blockquote>
                       <small>
@@ -194,11 +195,19 @@ class Info extends React.Component {
                         </a>
                         )
                         <br />
+                        <code>REACT_APP_MAPTILER_API</code>
+                        {' '}
+                        on MapTiler api (
+                          <a href="https://www.maptiler.com/">
+                          https://www.maptiler.com/
+                        </a>)  
+                        
+                        <br />  <br />
                         Huom! Sivusto käyttää karttoina
                         {' '}
                         <a href="https://stadiamaps.com/">Stadiamaps.com</a>
                         :n kartta layeriä. Jotta kartat näkyisivät verkossa oikein, tulee sinun tehdä tunnus palveluun.
-                      </small>
+                      </small>  <br /> <br />
                     </li>
                     <li>
                       Aja
