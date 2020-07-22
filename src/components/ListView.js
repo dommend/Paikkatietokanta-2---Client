@@ -7,6 +7,7 @@ import 'react-slicer/build/react-slicer.css';
 import ShowMoreText from 'react-show-more-text';
 import Moment from 'react-moment';
 import SEO from '@americanexpress/react-seo';
+import {Throbber} from 'css-spinners-react';
 
 document.onkeydown = function (evt) {
   evt = evt || window.event;
@@ -14,6 +15,7 @@ document.onkeydown = function (evt) {
     window.open (process.env.REACT_APP_ADMIN_BASE_URL + '/add', '_self');
   }
 };
+
 class GridView extends React.Component {
   constructor (props) {
     super (props);
@@ -21,6 +23,7 @@ class GridView extends React.Component {
     this.state = {
       pager: {},
       pageOfItems: [],
+      isLoading: true
     };
   }
 
@@ -29,7 +32,9 @@ class GridView extends React.Component {
   }
 
   componentDidUpdate () {
+
     this.loadPage ();
+
   }
 
   loadPage () {
@@ -46,7 +51,7 @@ class GridView extends React.Component {
       )
         .then (response => response.json ())
         .then (({pager, pageOfItems}) => {
-          this.setState ({pager, pageOfItems});
+          this.setState ({pager, pageOfItems, isLoading: false});
         });
     }
   }
@@ -71,6 +76,9 @@ class GridView extends React.Component {
 
     return (
       <div id="page" className="location-management">
+
+        {this.state.isLoading && <Throbber />}
+
         <SEO
           title="Listanäkymä - Paikkatietokanta"
           description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."

@@ -7,6 +7,8 @@ import Icon from '@material-ui/core/Icon';
 import {icon as leafletIcon} from 'leaflet';
 import ShowMoreText from 'react-show-more-text';
 import SEO from '@americanexpress/react-seo';
+import {Throbber} from 'css-spinners-react';
+
 
 document.onkeydown = function (evt) {
   evt = evt || window.event;
@@ -22,6 +24,7 @@ class GridView extends React.Component {
     this.state = {
       pager: {},
       pageOfItems: [],
+      isLoading: true
     };
   }
 
@@ -46,7 +49,7 @@ class GridView extends React.Component {
       )
         .then (response => response.json ())
         .then (({pager, pageOfItems}) => {
-          this.setState ({pager, pageOfItems});
+          this.setState ({pager, pageOfItems, isLoading: false});
         });
     }
   }
@@ -72,6 +75,9 @@ class GridView extends React.Component {
 
     return (
       <div id="page" className="locationGrid-page">
+
+        {this.state.isLoading && <Throbber />}
+
         <SEO
           title="Ruudukkonäkymä - Paikkatietokanta"
           description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
