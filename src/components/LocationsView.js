@@ -22,6 +22,7 @@ import LazyLoad from 'react-lazyload';
 import SEO from '@americanexpress/react-seo';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {Modal, Button} from 'react-bootstrap'
 
 toast.configure ({
   position: 'top-center',
@@ -69,6 +70,15 @@ const LocationsList = () => {
   const findByTitle = () => {
     LocationDataService.findByTitle (searchTitle)
       .then (response => {
+        if (searchTitle.toLowerCase === "lets have a break dance party" || 
+        "lets have a breakdance party" || "let's have a break dance party" || "let's have a breakdance party") {
+          document.body.classList.add("breakdance");
+          toast ('Here it comes! Prepare yourselves!');
+          setTimeout(function(){
+            document.getElementById("breakdance").click(); 
+        }, 6000);
+
+        }
         setLocations (response.data);
         console.log (response.data);
       })
@@ -195,8 +205,11 @@ const LocationsList = () => {
 
   const {BaseLayer} = LayersControl;
 
+  const [show, setShow] = useState(false);
+
+
   return (
-    <div id="location-list" className="frontpage">
+    <div id="location-list" className="frontpage">      
       <SEO
         title="Paikkalista - Paikkatietokanta"
         description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
@@ -478,6 +491,31 @@ const LocationsList = () => {
                     </small>
                   </p>
                   <MainScreen />
+                  <Button id="breakdance" variant="primary" onClick={() => setShow(true)}>
+                    Let's have a break dance party!
+                  </Button>
+
+                  <Modal
+                    show={show}
+                    onHide={() => setShow(false)}
+                    size="lg"
+                    dialogClassName="modal-90w"
+                    aria-labelledby="example-custom-modal-styling-title"
+                    centered
+                  >
+
+                    <Modal.Body>
+                    <div className="player-wrapper" style={{margin: '-20px 0px 20px 0px'}}>
+                    <ReactPlayer
+                      className="react-player"
+                      width="100%"
+                      height="100%"
+                      url="https://www.youtube.com/watch?v=_stUY1h_qmM"
+                      playing={true}    
+                    />;
+                      </div>
+                    </Modal.Body>
+                  </Modal>
                 </div>
               </div>
             </div>}

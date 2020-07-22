@@ -1774,11 +1774,8 @@ nav ul li a.nav-link:visited {
   }
 }
 
-
 @media screen and (max-width: 766px) {
-
   #page .throbber-loader { margin:50px 0px 50px 0px; position: relative !important; top:0 !important;}
-
   .locationView-page .styles_simpleReactWeatherCity__zyECF {
     left: -10px;
     font-size: .7rem !important;
@@ -2133,3 +2130,7 @@ nav ul li a.nav-link:visited {
 nav a .material-icons {top:3px;}
 nav .nav-title { display:none !important;}
 }
+
+/** Disco **/
+#breakdance { display:none;}
+.modal-90w { max-width: 90% !important; }
