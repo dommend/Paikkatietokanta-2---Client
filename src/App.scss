@@ -471,10 +471,11 @@ small.even-smaller {
 
 
 .navbar-dark .navbar-brand {
-  font-size: .9em;
+  font-size: 1em;
   font-weight: bold;
   margin-left: -10px;
-  margin-right: 0px
+  margin-right:20px;
+
 }
 
 nav {
@@ -484,11 +485,11 @@ nav {
 
 nav a,
 nav a:visited {
-  font-size: 1em;
+  font-size: .95em;
   color: $neutral1 !important;
-  margin: 0px 5px 0px 5px;
+  margin: 0px 5px 0px 0px;
   border-radius: 5px;
-  padding: 8px 10px 9px 10px !important;
+  padding: 8px 15px 9px 15px !important;
 }
 
 nav ul {
@@ -500,7 +501,10 @@ nav ul {
 nav ul li {
   list-style: none;
   display: inline-block;
+  margin-right:15px;
+  font-weight: bold;
 }
+
 
 nav a:hover,
 nav a:active,
@@ -508,13 +512,14 @@ nav .nav-link.active,
 nav .nav-link.active:hover {
   color: $neutral1;
   background: $secondary;
+
 }
 
 nav a .material-icons {
   font-size: 15px !important;
   position: relative;
-  top: 1.7px;
-  margin-right: 2px;
+  top: 2px;
+  margin-right: 5px;
 }
 
 nav .nav-link.add-new {
@@ -597,7 +602,7 @@ aside {
 }
 
 #places .list-group-item .coordinates {
-  font-size: .7em;
+  font-size: .75em;
   color: $base3;
 }
 
@@ -1333,7 +1338,7 @@ a:visited.link-to-flickr {
 }
 
 .location-management .row .description {
-  font-size: .8em !important;
+  font-size: .85em !important;
   line-height:1.45em;
   margin: 10px 20px 0px 20px;
 }
@@ -1420,7 +1425,7 @@ h4 .material-icons {
   font-size: .75em;
   border-radius: 20px;
   background: transparent;
-  padding: 6.5px 20px 5px 12px;
+  padding: 6px 20px 4px 12px;
   border: 1px solid $neutral2;
   font-weight: bold;
   color: $base2;
@@ -1464,6 +1469,13 @@ h4 .material-icons {
 }
 
 /** Sisältösivut **/
+
+.content-page h1, 
+.content-page h2,
+.content-page h3,
+.content-page h4,
+.content-page h5 { margin-bottom:15px;}
+
 .content-page p {
   max-width: calc(100em * 0.5);
 }
@@ -1651,6 +1663,33 @@ h4 .material-icons {
 }
 
 @media screen and (max-width: 960px) {
+
+nav ul li {
+  display: inline-block;
+  margin-right:0px;}
+
+nav a .material-icons {
+  top:4.8px;
+  margin-right: 0px;}
+
+.navbar { padding:0px;}
+a.navbar-brand { display:none;}
+nav .nav-title  { font-size:.75rem !important; display:block;}
+
+.navbar-nav,
+nav ul { width:100%;}
+
+li.nav-item {   width:16.666%; }
+
+nav ul li a.nav-link,
+nav ul li a.nav-link:visited {
+  padding: 10px;
+  text-align: center;
+  margin: 0px 0px 0px 0px;
+  border-radius: 0px;
+
+}
+
   .locationGrid-page .location {
     width: 100%;
     margin: 0 0 0 10px;
@@ -1663,6 +1702,8 @@ h4 .material-icons {
 }
 
 @media screen and (max-width: 875px) {
+
+  
 
   #location-list .throbber-loader {
     left: 105px !important;
@@ -1710,6 +1751,8 @@ h4 .material-icons {
 }
 
 @media screen and (max-width: 850px) {
+
+  
   aside {
     width: 251px;
   }
@@ -1731,6 +1774,9 @@ h4 .material-icons {
 
 
 @media screen and (max-width: 766px) {
+
+
+
   .locationView-page .styles_simpleReactWeatherCity__zyECF {
     left: -10px;
     font-size: .7rem !important;
@@ -1858,40 +1904,10 @@ h4 .material-icons {
     margin-top: 200px !important;
     height: auto;
   }
-
-  nav ul li {
-    display: block;
-  }
-
-  nav ul li a.nav-link,
-  nav ul li a.nav-link:visited {
-    padding: 10px;
-    text-align: center;
-    margin: 0px 0px 0px 0px;
-    border-radius: 0px;
-  }
-
-  nav .nav-link.add-new {
-    position: static;
-    background: transparent;
-  }
-
-  nav .nav-link.add-new:hover,
-  nav a:hover,
-  nav a:active,
-  nav .nav-link.active,
-  nav .nav-link.active:hover {
-    color: $neutral1;
-    background: $fifth;
-  }
-
-  div#basic-navbar-nav {
-    background: $fourth;
-    margin: 10px -16px -8px;
-  }
 }
 
 @media screen and (max-width: 600px) {
+
   .metadata .open-page.button { line-height: 2rem;}
   .leaflet-control-container {display: none;}
   .map-view .leaflet-control-container {display: block;} 
@@ -1967,9 +1983,11 @@ h4 .material-icons {
     font-size: 2em;
   }
 
-  nav .module {
+  nav li.module {
     display: none;
   }
+
+  nav li.nav-item {  width:20%; }
 
   aside {
     width: 100%;
@@ -2103,4 +2121,10 @@ h4 .material-icons {
   .flickr-lightbox {
     overflow: hidden;
   }
+}
+
+
+@media screen and (max-width: 350px) {
+nav a .material-icons {top:3px;}
+nav .nav-title { display:none !important;}
 }

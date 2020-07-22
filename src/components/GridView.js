@@ -101,7 +101,7 @@ class GridView extends React.Component {
                 className={`page-item first-item ${pager.currentPage === 1 ? 'disabled' : ''}`}
               >
                 <Link to={{search: `?page=1`}} className="page-link">
-                  <span class="material-icons">first_page</span>
+                  <span className="material-icons">first_page</span>
                 </Link>
               </li>
               <li
@@ -111,7 +111,7 @@ class GridView extends React.Component {
                   to={{search: `?page=${pager.currentPage - 1}`}}
                   className="page-link"
                 >
-                  <span class="material-icons">chevron_left</span>
+                  <span className="material-icons">chevron_left</span>
                 </Link>
               </li>
               {pager.pages.map (page => (
@@ -131,7 +131,7 @@ class GridView extends React.Component {
                   to={{search: `?page=${pager.currentPage + 1}`}}
                   className="page-link"
                 >
-                  <span class="material-icons">chevron_right</span>
+                  <span className="material-icons">chevron_right</span>
                 </Link>
               </li>
               <li
@@ -141,7 +141,7 @@ class GridView extends React.Component {
                   to={{search: `?page=${pager.totalPages}`}}
                   className="page-link"
                 >
-                  <span class="material-icons">last_page</span>
+                  <span className="material-icons">last_page</span>
                 </Link>
               </li>
             </ul>
@@ -262,7 +262,7 @@ class GridView extends React.Component {
                 className={`page-item first-item ${pager.currentPage === 1 ? 'disabled' : ''}`}
               >
                 <Link to={{search: `?page=1`}} className="page-link">
-                  <span class="material-icons">first_page</span>
+                  <span className="material-icons">first_page</span>
                 </Link>
               </li>
               <li
@@ -272,7 +272,7 @@ class GridView extends React.Component {
                   to={{search: `?page=${pager.currentPage - 1}`}}
                   className="page-link"
                 >
-                  <span class="material-icons">chevron_left</span>
+                  <span className="material-icons">chevron_left</span>
                 </Link>
               </li>
               {pager.pages.map (page => (
@@ -292,7 +292,7 @@ class GridView extends React.Component {
                   to={{search: `?page=${pager.currentPage + 1}`}}
                   className="page-link"
                 >
-                  <span class="material-icons">chevron_right</span>
+                  <span className="material-icons">chevron_right</span>
                 </Link>
               </li>
               <li
@@ -302,7 +302,7 @@ class GridView extends React.Component {
                   to={{search: `?page=${pager.totalPages}`}}
                   className="page-link"
                 >
-                  <span class="material-icons">last_page</span>
+                  <span className="material-icons">last_page</span>
                 </Link>
               </li>
             </ul>

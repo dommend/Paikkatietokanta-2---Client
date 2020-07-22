@@ -12,50 +12,51 @@ import ListView from "./components/ListView";
 import InfoPage from "./components/InfoPage";
 import LocationView from "./components/LocationView";
 import NotFoundPage from './components/NotFoundPage';
+import DiverHead from './resources/diver-head.png';
 
 function App() {
   return (
     <Router>
       <Navbar expand="md" variant="dark">
-        <Navbar.Brand href="/">Paikkatietokanta</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto navbar-nav">
+        <Navbar.Brand href="/">
+          Paikkatietokanta
+        </Navbar.Brand>
+  
+           <Nav> 
             <ul>
               <li className="nav-item">
                 <NavLink to={"/locations"} className="nav-link frontpage" activeClassName="active">
-                <span className="material-icons">home</span> Etusivu
+                <span className="material-icons">home</span> <span className="nav-title">Etusivu</span>
               </NavLink >
               </li>
-              <li className="nav-item">
+              <li className="nav-item module">
                 <NavLink to={"/module"} className="nav-link module" activeClassName="active">
-                <span className="material-icons">dashboard</span> Moduuli
+                <span className="material-icons">dashboard</span> <span className="nav-title">Moduuli</span>
               </NavLink >
               </li>
               <li className="nav-item">
                 <NavLink to={"/map"} className="nav-link map" activeClassName="active">
-                <span className="material-icons">map</span> Map
+                <span className="material-icons">map</span> <span className="nav-title">Map</span>
               </NavLink >
               </li>
               <li className="nav-item">
                 <NavLink to={"/grid"} className="nav-link grid" activeClassName="active">
-                <span className="material-icons">grid_on</span> Grid
+                <span className="material-icons">grid_on</span> <span className="nav-title">Grid</span>
               </NavLink >
               </li>
               <li className="nav-item">
                 <NavLink to={"/list"} className="nav-link list" activeClassName="active">
-                <span className="material-icons">reorder</span> Lista
+                <span className="material-icons">reorder</span> <span className="nav-title">Lista</span>
               </NavLink >
               </li>
               <li className="nav-item">
                 <NavLink to={"/info"} className="nav-link info" activeClassName="active">
-                <span className="material-icons">info</span> Info
+                <span className="material-icons">info</span> <span className="nav-title">Info</span>
               </NavLink >
               </li>
             </ul>
           </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      </Navbar> 
 
       <main>
         { /* Switch / Route */}

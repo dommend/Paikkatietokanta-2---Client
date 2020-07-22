@@ -40,8 +40,7 @@ class Info extends React.Component {
               <div className="col-sm">
                 <h2>Tietoa paikkatietokannasta</h2>
                 <p>
-                  Paikkatietokanta on <a href="http://penttinen.fi/">Jani Penttisen</a>
-                  päättöprojektina syntynyt sivusto. Paikkatietokannan tarkoitus on yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.
+                  Paikkatietokanta on <a href="http://penttinen.fi/">Jani Penttisen</a> päättöprojektina syntynyt sivusto. Paikkatietokannan tarkoitus on yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.
                 </p>
 
                 <p>
@@ -184,9 +183,7 @@ class Info extends React.Component {
 
                 <h5>Porteista</h5>
                 <p>
-                  Portien asetukset määritetään <code>.env.local</code>
-                  -tiedososta. Varsinaiset asetukset löytyvät tiedostoista
-                  <code>server.js</code> ja <code>src/http-commons.</code>
+                  Portien asetukset määritetään <code>.env.local</code> -tiedososta. Varsinaiset asetukset löytyvät tiedostoista <code>server.js</code> ja <code>src/http-commons.</code>
                 </p>
 
                 <p>
