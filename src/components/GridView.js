@@ -34,6 +34,8 @@ class GridView extends React.Component {
 
   componentDidUpdate () {
     this.loadPage ();
+    const backToTop = document.getElementById('page');
+    backToTop.scrollTop = 0;
   }
 
   loadPage () {
@@ -175,9 +177,9 @@ class GridView extends React.Component {
                     maxZoom={20}
                     attributionControl={true}
                     zoomControl={false}
-                    doubleClickZoom={true}
-                    scrollWheelZoom={true}
-                    dragging={true}
+                    doubleClickZoom={false}
+                    scrollWheelZoom={false}
+                    dragging={false}
                     animate={true}
                     easeLinearity={0.35}
                   >
