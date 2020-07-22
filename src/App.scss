@@ -259,7 +259,7 @@ main {
 
 .copyToClipBoard {
   font-size: .7rem;
-  width: 100% !important;
+  width: 100%;
   border: 1px solid $neutral2;
   color: $base3;
   background: $neutral1;
@@ -269,7 +269,7 @@ main {
 
 .copyToClipBoard:hover {
   background: $neutral7;
-  border-color: $neutral7;
+  border-color: $neutral6;
 }
 
 .copyToClipBoard .material-icons {
@@ -278,6 +278,23 @@ main {
   margin-right: 2px;
   position: relative;
 }
+#ShareAndCopy { margin:23px 0px 25px 0px;}
+#ShareAndCopy .copyToClipBoard { width:calc(100% - 60px); margin-top:0px;}
+#ShareAndCopy .shareButton {width:60px; border-radius: none !important; font-size:.8rem;
+background:$base3; border:none; border-radius: 0px !important;}
+#ShareAndCopy .shareButton:hover {
+  background:$secondary;
+}
+button.react-share__ShareButton {
+  margin: 5px;
+ }
+ .modal-dialog.modal-sm.modal-dialog-centered {
+ max-width: 340px; margin:0 auto;}
+
+ .modal-backdrop { z-index:9999 !important; }
+ .modal { z-index:99992 !important;}
+
+ .shareButtons .modal-body { text-align: center;}
 
 /** List and forms **/
 .list {

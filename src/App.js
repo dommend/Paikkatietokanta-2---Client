@@ -12,7 +12,6 @@ import ListView from "./components/ListView";
 import InfoPage from "./components/InfoPage";
 import LocationView from "./components/LocationView";
 import NotFoundPage from './components/NotFoundPage';
-import DiverHead from './resources/diver-head.png';
 
 function App() {
   return (
