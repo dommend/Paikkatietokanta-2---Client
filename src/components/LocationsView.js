@@ -254,6 +254,7 @@ const LocationsList = () => {
           <input
             type="text"
             className="form-control"
+            title="Mitä hakea? Kokeile: Let's have a break dance party"
             placeholder="Hae otsikon perusteella"
             value={searchTitle}
             onChange={onChangeSearchTitle}
