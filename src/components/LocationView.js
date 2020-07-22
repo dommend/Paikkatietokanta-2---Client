@@ -18,6 +18,8 @@ import Weather from 'simple-react-weather';
 import SEO from '@americanexpress/react-seo';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {Throbber} from 'css-spinners-react';
+
 
 toast.configure ({
   position: 'top-center',
@@ -44,11 +46,13 @@ const Location = props => {
   };
 
   const [currentLocation, setCurrentLocation] = useState (initialLocationState);
+  const [isLoading, setLoading] = useState (true);
 
   const getLocation = id => {
     LocationDataService.get (id)
       .then (response => {
         setCurrentLocation (response.data);
+        setLoading(false);
         console.log (response.data);
       })
       .catch (e => {
@@ -204,6 +208,8 @@ const Location = props => {
                   </div>
                 </div>
                 <div className="col-sm details">
+
+                {isLoading ? <Throbber /> :
                   <div className="innercontainer">
                     <button
                       type="button"
@@ -211,7 +217,6 @@ const Location = props => {
                       onClick={() => props.history.goBack ()}
                     >
                       <span className="material-icons">arrow_back_ios</span>
-                      {' '}
                       Takaisin edelliselle sivulle
                     </button>
                     <h4>
@@ -225,7 +230,6 @@ const Location = props => {
                     <div className="time-and-place">
                       <div className="coordinates">
                         <span className="material-icons">place</span>
-                        {' '}{' '}
                         {currentLocation.coordinateN}
                         ,
                         {currentLocation.coordinateE}
@@ -345,8 +349,8 @@ const Location = props => {
                       </div>
                     </div>
                   </div>
-
-                </div>
+                }
+                </div> 
               </div>
             </div>
           </div>

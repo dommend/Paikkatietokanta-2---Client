@@ -1103,6 +1103,8 @@ a:visited.link-to-flickr {
   font-size: 0.98em;
 }
 
+.leaflet-control-layers.leaflet-control { margin:14px !important;}
+
 /** Location Grid **/
 .locationGrid-page {
   padding: 60px 20px 60px 20px;
@@ -1775,7 +1777,7 @@ nav ul li a.nav-link:visited {
 
 @media screen and (max-width: 766px) {
 
-
+  #page .throbber-loader { margin:50px 0px 50px 0px; position: relative !important; top:0 !important;}
 
   .locationView-page .styles_simpleReactWeatherCity__zyECF {
     left: -10px;
@@ -1818,9 +1820,10 @@ nav ul li a.nav-link:visited {
     margin: 5px;
     left: 20px;
     right: 0;
-    top: -48px;
+    top:145px;
     height: 62px !important;
     width: 200px;
+    position:absolute;
   }
 
   .locationView-page #weather {
@@ -1829,7 +1832,7 @@ nav ul li a.nav-link:visited {
   }
 
   .locationView-page .innercontainer {
-    margin: 25px 20px 0 20px !important;
+    margin: 25px 20px 30px 20px !important;
   }
 
   #page.content-page .row {
@@ -1893,15 +1896,15 @@ nav ul li a.nav-link:visited {
     top: 0px;
     right: 0;
     width: 100vw !important;
-    height: 200px !important;
+    height: 60vh !important;
   }
 
   .locationView-page .map .leaflet-container {
-    height: 200px !important;
+    height: 60vh !important;
   }
 
   .locationView-page .details {
-    margin-top: 200px !important;
+    margin-top: 60vh !important;
     height: auto;
   }
 }
@@ -1910,6 +1913,8 @@ nav ul li a.nav-link:visited {
 
   .metadata .open-page.button { line-height: 2rem;}
   .leaflet-control-container {display: none;}
+
+  .locationView-page .leaflet-control-container,
   .map-view .leaflet-control-container {display: block;} 
 
   .frontpage .styles_simpleReactWeatherCity__zyECF {
@@ -1951,9 +1956,9 @@ nav ul li a.nav-link:visited {
 
   .frontpage #weather-bg {
     margin: 5px;
-    left: 20px;
+    left: 8px;
     right: 0;
-    top: 150px;
+    top: 144px;
     height: 59px !important;
     width: 200px;
   }

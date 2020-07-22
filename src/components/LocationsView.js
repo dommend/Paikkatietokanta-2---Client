@@ -38,6 +38,7 @@ const LocationsList = () => {
   const [currentLocation, setCurrentLocation] = useState (null);
   const [currentIndex, setCurrentIndex] = useState ();
   const [searchTitle, setSearchTitle] = useState ('');
+  const [isLoading, setLoading] = useState (true);
 
   useEffect (() => {
     retrieveLocations ();
@@ -50,10 +51,9 @@ const LocationsList = () => {
 
   const retrieveLocations = () => {
     LocationDataService.getAll ()
-      .then (response => {
-        document.body.classList.remove ('locations-loaded');
+      .then (response => {      
         setLocations (response.data);
-        document.body.classList.add ('locations-loaded');
+        setLoading(false);
         console.log (response.data);
       })
       .catch (e => {
@@ -262,7 +262,8 @@ const LocationsList = () => {
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        <Throbber />
+        
+        {isLoading ? <Throbber /> : 
         <ul id="places" className="list-group">
           {locations &&
             locations.map ((location, index) => (
@@ -296,7 +297,7 @@ const LocationsList = () => {
                 </li>
               </LazyLoad>
             ))}
-        </ul>
+        </ul>}
       </aside>
       <div id="place">
         {currentLocation
