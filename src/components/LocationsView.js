@@ -77,7 +77,6 @@ const LocationsList = () => {
           setTimeout(function(){
             document.getElementById("breakdance").click(); 
         }, 6000);
-
         }
         setLocations (response.data);
         console.log (response.data);
