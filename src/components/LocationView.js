@@ -68,7 +68,8 @@ const Location = props => {
 
   const [currentLocation, setCurrentLocation] = useState (initialLocationState);
   const [isLoading, setLoading] = useState (true);
-
+  const [show, setShow] = useState(false);
+  
   const getLocation = id => {
     LocationDataService.get (id)
       .then (response => {
@@ -134,7 +135,7 @@ const Location = props => {
   };
 
   const {BaseLayer} = LayersControl;
-  const [show, setShow] = useState(false);
+
 
   return (
     <div>

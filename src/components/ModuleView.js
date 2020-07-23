@@ -59,6 +59,8 @@ const LocationsList = () => {
   const [currentIndex, setCurrentIndex] = useState (-1);
   const [searchTitle, setSearchTitle] = useState ('');
   const [isLoading, setLoading] = useState (true);
+  const [show, setShow] = useState(false);
+
 
   useEffect (() => {
     retrieveLocations ();
@@ -225,9 +227,6 @@ const LocationsList = () => {
   };
 
   const {BaseLayer} = LayersControl;
-
-  const [show, setShow] = useState(false);
-
 
   return (
     <div id="location-list" className="module-view">

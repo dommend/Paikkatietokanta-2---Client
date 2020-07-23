@@ -15,6 +15,9 @@ import {icon as leafletIcon} from 'leaflet';
 import ShowMoreText from 'react-show-more-text';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import SEO from '@americanexpress/react-seo';
+import { BoxZoomControl } from 'react-leaflet-box-zoom';
+import ReactLeafletSearch from "react-leaflet-search";
+
 
 const LocationsList = () => {
   const [locations, setLocations] = useState ([]);
@@ -60,6 +63,8 @@ const LocationsList = () => {
 
   const {BaseLayer} = LayersControl;
 
+
+
   return (
     <div id="fullpage" className="map-view">
       <SEO
@@ -94,7 +99,10 @@ const LocationsList = () => {
         dragging={true}
         animate={true}
         easeLinearity={0.35}
+
       >
+
+
 
         <LayersControl>
           <BaseLayer checked name="Karttanäkymä">
@@ -123,6 +131,23 @@ const LocationsList = () => {
           </BaseLayer>
         </LayersControl>
 
+        <BoxZoomControl 
+            position="topright"
+            sticky={false}
+          />
+
+        <ReactLeafletSearch
+            position="topleft"
+            inputPlaceholder="Hae"
+            search={[]} 
+            zoom={14} 
+            showMarker={false}
+            showPopup={false}
+            openSearchOnLoad={false} 
+            closeResultsOnClick={false} 
+            providerOptions={{searchBounds: []}} 
+            customProvider={undefined | {search: (searchString)=> {}}} 
+        />
         <MarkerClusterGroup>
           {locations.reverse &&
             locations.map ((location, index) => (
