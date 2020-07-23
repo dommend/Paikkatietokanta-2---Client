@@ -15,8 +15,8 @@ import {icon as leafletIcon} from 'leaflet';
 import ShowMoreText from 'react-show-more-text';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import SEO from '@americanexpress/react-seo';
-import { BoxZoomControl } from 'react-leaflet-box-zoom';
-import ReactLeafletSearch from "react-leaflet-search";
+import {BoxZoomControl} from 'react-leaflet-box-zoom';
+import ReactLeafletSearch from 'react-leaflet-search';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import Moment from 'react-moment';
@@ -24,7 +24,6 @@ import {Modal, Button} from 'react-bootstrap';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ModalImage from 'react-modal-image';
-
 
 import {
   EmailShareButton,
@@ -34,7 +33,7 @@ import {
   TumblrShareButton,
   TwitterShareButton,
   WhatsappShareButton,
-} from "react-share";
+} from 'react-share';
 
 import {
   EmailIcon,
@@ -44,7 +43,7 @@ import {
   TumblrIcon,
   TwitterIcon,
   WhatsappIcon,
-} from "react-share";
+} from 'react-share';
 
 toast.configure ({
   position: 'top-center',
@@ -58,7 +57,7 @@ toast.configure ({
 
 const LocationsList = () => {
   const [locations, setLocations] = useState ([]);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState (false);
 
   useEffect (() => {
     retrieveLocations ();
@@ -97,19 +96,16 @@ const LocationsList = () => {
     if (evt.keyCode === 220) {
       window.open (process.env.REACT_APP_ADMIN_BASE_URL + '/add', '_self');
     }
-  }
-
+  };
 
   const copyToClipBoard = async copyMe => {
     try {
       await navigator.clipboard.writeText (copyMe);
-      toast (
-        'Osoite kopioitu leikepöydälle');
+      toast ('Osoite kopioitu leikepöydälle');
     } catch (err) {
       toast ('Permalinkiä ei kopioitu');
     }
   };
-
 
   const {BaseLayer} = LayersControl;
 
@@ -117,7 +113,7 @@ const LocationsList = () => {
     <div id="fullpage" className="map-view">
       <SEO
         title="Karttanäkymä - Paikkatietokanta"
-        description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+        description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen päämäärä kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
         locale="fi_FI"
         siteUrl={process.env.REACT_APP_BASE_URL + '/map/'}
         image={{
@@ -125,7 +121,7 @@ const LocationsList = () => {
         }}
         openGraph={{
           title: 'Karttanäkymä - Paikkatietokanta',
-          description: 'Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.',
+          description: 'Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen päämäärä kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.',
           type: 'article',
           siteName: 'Paikkatietokanta',
           url: process.env.REACT_APP_BASE_URL + '/map/',
@@ -147,10 +143,7 @@ const LocationsList = () => {
         dragging={true}
         animate={true}
         easeLinearity={0.35}
-
       >
-
-
 
         <LayersControl>
           <BaseLayer checked name="Karttanäkymä">
@@ -179,22 +172,19 @@ const LocationsList = () => {
           </BaseLayer>
         </LayersControl>
 
-        <BoxZoomControl 
-            position="topright"
-            sticky={false}
-          />
+        <BoxZoomControl position="topright" sticky={false} />
 
         <ReactLeafletSearch
-            position="topleft"
-            inputPlaceholder="Hae"
-            search={[]} 
-            zoom={14} 
-            showMarker={false}
-            showPopup={false}
-            openSearchOnLoad={false} 
-            closeResultsOnClick={false} 
-            providerOptions={{searchBounds: []}} 
-            customProvider={undefined | {search: (searchString)=> {}}} 
+          position="topleft"
+          inputPlaceholder="Hae"
+          search={[]}
+          zoom={14}
+          showMarker={false}
+          showPopup={false}
+          openSearchOnLoad={false}
+          closeResultsOnClick={false}
+          providerOptions={{searchBounds: []}}
+          customProvider={undefined | {search: searchString => {}}}
         />
         <MarkerClusterGroup>
           {locations.reverse &&
@@ -210,127 +200,125 @@ const LocationsList = () => {
               >
                 <Popup>
                   <div className="map-innercontainer">
+                    <Tabs
+                      defaultActiveKey="Kuvaus"
+                      transition={false}
+                      id="noanim-tab-example"
+                    >
+                      <Tab eventKey="Kuvaus" title="Kuvaus">
 
+                        {location.markedImportant
+                          ? <div className="float-right">
+                              <Icon className="favorite">favorite</Icon>
+                            </div>
+                          : ''}
+                        <h5>
+                          <Link to={'/view/' + location.id}>
+                            {location.title}
+                          </Link>
+                        </h5>
 
-
-                  <Tabs defaultActiveKey="Yleistiedot" transition={false} id="noanim-tab-example">
-  <Tab eventKey="Yleistiedot" title="Yleistiedot">
- 
-  {location.markedImportant
-                      ? <div className="float-right">
-                          <Icon className="favorite">favorite</Icon>
+                        <div className="description white-space">
+                          <ShowMoreText
+                            lines={6}
+                            more="Näytä enemmän"
+                            less="Näytä vähemmän"
+                            anchorClass=""
+                            expanded={false}
+                          >
+                            {location.description}
+                          </ShowMoreText>
                         </div>
-                      : ''}
-                    <h5>
-                      <Link to={'/view/' + location.id}>{location.title}</Link>
-                    </h5>
-
-                    <div className="description white-space">
-                      <ShowMoreText
-                        lines={6}
-                        more="Näytä enemmän"
-                        less="Näytä vähemmän"
-                        anchorClass=""
-                        expanded={false}
-                      >
-                        {location.description}
-                      </ShowMoreText>
-                    </div>
-                    <div className="meta">
-
-                      {location.flickrTag
-                        ? <div className="flickr-lightbox">
-                            {' '}
-                            <FlickrLightbox
-                              api_key={process.env.REACT_APP_FLICKR_API}
-                              searchTerm={location.flickrTag}
-                              user_id={process.env.REACT_APP_FLICKR_USERNAME}
-                              limit={4}
-                            />
-                          </div>
-                        : ''}
-                      {location.videoEmbed
-                        ? <div className="player-wrapper">
-                            <ReactPlayer
-                              className="react-player"
-                              width="100%"
-                              height="100%"
-                              url={location.videoEmbed}
-                            />
-                          </div>
-                        : ''}
-                    </div>
-
-
-  </Tab>
-  <Tab eventKey="Tiedot" title="Tiedot">
-   
-
+                        <div className="meta">
+                          {location.flickrTag
+                            ? <div className="flickr-lightbox">
+                                {' '}
+                                <FlickrLightbox
+                                  api_key={process.env.REACT_APP_FLICKR_API}
+                                  searchTerm={location.flickrTag}
+                                  user_id={
+                                    process.env.REACT_APP_FLICKR_USERNAME
+                                  }
+                                  limit={4}
+                                />
+                              </div>
+                            : ''}
+                          {location.videoEmbed
+                            ? <div className="player-wrapper">
+                                <ReactPlayer
+                                  className="react-player"
+                                  width="100%"
+                                  height="100%"
+                                  url={location.videoEmbed}
+                                />
+                              </div>
+                            : ''}
+                        </div>
+                      </Tab>
+                      <Tab eventKey="Tiedot" title="Tiedot">
                         <div class="time-and-place">
-                    <div className="coordinates">
-                      <span className="material-icons">place</span>
-                      {location.coordinateN}, {location.coordinateE}
-                    </div>
-                    <div className="date">
-                      <div>
-                        <span className="material-icons" title="Julkaistu">
-                          schedule
-                        </span>
-                        <Moment format="DD.MM.YYYY">
-                          {location.createdAt}
-                        </Moment>
-                      </div>
-                      <div>
-                        <span className="material-icons" title="Päivitetty">
-                          update
-                        </span>
-                        <Moment format="DD.MM.YYYY">
-                          {location.updatedAt}
-                        </Moment>
-                      </div>
-                    </div>
-                  </div>
-
-<div className="get-directions">
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-info btn-sm"
-                        href={
-                          'https://www.google.com/maps/dir/Current+Location/' +
-                          location.coordinateN +
-                            ',' +
-                            location.coordinateE
-                        }
-                      >
-                        <span className="material-icons">near_me</span>
-                        Google Maps: Hae reittiohje
-                      </a>
-</div> 
-
-
-{location.url
-                            ? <a
-                                className="link-to-out"
-                                href={location.url}
+                          <div className="coordinates">
+                            <span className="material-icons">place</span>
+                            {location.coordinateN}, {location.coordinateE}
+                          </div>
+                          <div className="date">
+                            <div>
+                              <span
+                                className="material-icons"
+                                title="Julkaistu"
                               >
-                                <Icon className="material-icons">link</Icon>
-                                {location.url}
-                              </a>
-                            : ''}
-                          {location.flickrMore
-                            ? <a
-                                className="link-to-flickr"
-                                href={location.flickrMore}
+                                schedule
+                              </span>
+                              <Moment format="DD.MM.YYYY">
+                                {location.createdAt}
+                              </Moment>
+                            </div>
+                            <div>
+                              <span
+                                className="material-icons"
+                                title="Päivitetty"
                               >
-                                <Icon className="material-icons">link</Icon>
-                                {location.flickrMore}
-                              </a>
-                            : ''}
+                                update
+                              </span>
+                              <Moment format="DD.MM.YYYY">
+                                {location.updatedAt}
+                              </Moment>
+                            </div>
+                          </div>
+                        </div>
 
-
-
-<div id="ShareAndCopy" className="flex">  
+                        <div className="get-directions">
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-info btn-sm"
+                            href={
+                              'https://www.google.com/maps/dir/Current+Location/' +
+                                location.coordinateN +
+                                ',' +
+                                location.coordinateE
+                            }
+                          >
+                            <span className="material-icons">near_me</span>
+                            Google Maps: Hae reittiohje
+                          </a>
+                        </div>
+                        {location.url
+                          ? <a className="link-to-out" href={location.url}>
+                              <Icon className="material-icons">link</Icon>
+                              {location.url}
+                            </a>
+                          : ''}
+                        {location.flickrMore
+                          ? <a
+                              className="link-to-flickr"
+                              href={location.flickrMore}
+                            >
+                              <Icon className="material-icons">link</Icon>
+                              {location.flickrMore}
+                            </a>
+                          : ''}
+                        <div id="ShareAndCopy" className="flex">
                           <button
                             title="Kopioi osoite leikepöydälle"
                             className="copyToClipBoard"
@@ -342,15 +330,19 @@ const LocationsList = () => {
                               )}
                           >
                             <span className="material-icons">content_copy</span>
-                            {' '}
                             {process.env.REACT_APP_BASE_URL +
                               '/view/' +
                               location.id}
                           </button>
-                          <Button className="shareButton" variant="primary" onClick={() => setShow(true)}>Jaa</Button>
-                          </div>
-
-                            <Modal
+                          <Button
+                            className="shareButton"
+                            variant="primary"
+                            onClick={() => setShow (true)}
+                          >
+                            Jaa
+                          </Button>
+                        </div>
+                        <Modal
                           show={show}
                           onHide={() => setShow (false)}
                           size="sm"
@@ -358,14 +350,17 @@ const LocationsList = () => {
                           aria-labelledby="example-custom-modal-styling-title"
                           centered
                         >
-
                           <Modal.Body>
                             <FacebookShareButton
-                              url={process.env.REACT_APP_BASE_URL + '/view/' + location.id}
+                              url={
+                                process.env.REACT_APP_BASE_URL +
+                                  '/view/' +
+                                  location.id
+                              }
                               subject={location.title}
                               quote={
                                 'Paikkatietokanta.net - ' +
-                                location.title +
+                                  location.title +
                                   '\n \n' +
                                   location.description
                               }
@@ -375,11 +370,15 @@ const LocationsList = () => {
                             </FacebookShareButton>
 
                             <TwitterShareButton
-                              url={process.env.REACT_APP_BASE_URL + '/view/' + location.id}
+                              url={
+                                process.env.REACT_APP_BASE_URL +
+                                  '/view/' +
+                                  location.id
+                              }
                               subject={location.title}
                               quote={
                                 'Paikkatietokanta.net - ' +
-                                location.title +
+                                  location.title +
                                   '\n \n' +
                                   location.description
                               }
@@ -389,11 +388,15 @@ const LocationsList = () => {
                             </TwitterShareButton>
 
                             <WhatsappShareButton
-                              url={process.env.REACT_APP_BASE_URL + '/view/' + location.id}
+                              url={
+                                process.env.REACT_APP_BASE_URL +
+                                  '/view/' +
+                                  location.id
+                              }
                               subject={location.title}
                               quote={
                                 'Paikkatietokanta.net - ' +
-                                location.title +
+                                  location.title +
                                   '\n \n' +
                                   location.description
                               }
@@ -403,11 +406,15 @@ const LocationsList = () => {
                             </WhatsappShareButton>
 
                             <TumblrShareButton
-                              url={process.env.REACT_APP_BASE_URL + '/view/' + location.id}
+                              url={
+                                process.env.REACT_APP_BASE_URL +
+                                  '/view/' +
+                                  location.id
+                              }
                               subject={location.title}
                               quote={
                                 'Paikkatietokanta.net - ' +
-                                location.title +
+                                  location.title +
                                   '\n \n' +
                                   location.description
                               }
@@ -417,11 +424,15 @@ const LocationsList = () => {
                             </TumblrShareButton>
 
                             <LinkedinShareButton
-                              url={process.env.REACT_APP_BASE_URL + '/view/' + location.id}
+                              url={
+                                process.env.REACT_APP_BASE_URL +
+                                  '/view/' +
+                                  location.id
+                              }
                               subject={location.title}
                               quote={
                                 'Paikkatietokanta.net - ' +
-                                location.title +
+                                  location.title +
                                   '\n \n' +
                                   location.description
                               }
@@ -431,11 +442,15 @@ const LocationsList = () => {
                             </LinkedinShareButton>
 
                             <RedditShareButton
-                              url={process.env.REACT_APP_BASE_URL + '/view/' + location.id}
+                              url={
+                                process.env.REACT_APP_BASE_URL +
+                                  '/view/' +
+                                  location.id
+                              }
                               subject={location.title}
                               quote={
                                 'Paikkatietokanta.net - ' +
-                                location.title +
+                                  location.title +
                                   '\n \n' +
                                   location.description
                               }
@@ -445,11 +460,15 @@ const LocationsList = () => {
                             </RedditShareButton>
 
                             <EmailShareButton
-                              url={process.env.REACT_APP_BASE_URL + '/view/' + location.id}
+                              url={
+                                process.env.REACT_APP_BASE_URL +
+                                  '/view/' +
+                                  location.id
+                              }
                               subject={location.title}
                               quote={
                                 'Paikkatietokanta.net - ' +
-                                location.title +
+                                  location.title +
                                   '\n \n' +
                                   location.description
                               }
@@ -459,36 +478,31 @@ const LocationsList = () => {
                             </EmailShareButton>
                           </Modal.Body>
                         </Modal>
-
-  </Tab>
-
-
-<Tab eventKey="Kuvat" title="Kuvat">
-
-{location.featuredImage
-                    ? <div id="featuredImage">
-                      <img src={location.featuredImage} alt={location.title} />
-                      </div>
-                    : ''}
-
-{location.flickrTag
-                        ? <div className="flickr-lightbox-container">
-                            <div className="flickr-lightbox">
-                              <FlickrLightbox
-                                api_key={process.env.REACT_APP_FLICKR_API}
-                                searchTerm={location.flickrTag}
-                                user_id={process.env.REACT_APP_FLICKR_USERNAME}
+                      </Tab>
+                      <Tab eventKey="Kuvat" title="Kuvat">
+                       {location.featuredImage
+                          ? <div id="featuredImage">
+                              <img
+                                src={location.featuredImage}
+                                alt={location.title}
                               />
                             </div>
-                          </div>
-                        : ''}
-
-</Tab>
-
-</Tabs>
-
-
-     
+                          : ''}
+                        {location.flickrTag
+                          ? <div className="flickr-lightbox-container">
+                              <div className="flickr-lightbox">
+                                <FlickrLightbox
+                                  api_key={process.env.REACT_APP_FLICKR_API}
+                                  searchTerm={location.flickrTag}
+                                  user_id={
+                                    process.env.REACT_APP_FLICKR_USERNAME
+                                  }
+                                />
+                              </div>
+                            </div>
+                          : ''}
+                      </Tab>
+                    </Tabs>
                   </div>
                   <div className="metadata flex">
                     <Link

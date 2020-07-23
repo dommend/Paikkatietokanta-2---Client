@@ -14,7 +14,7 @@ class Info extends React.Component {
       <div id="page" className="content-page">
         <SEO
           title="Info - Paikkatietokanta"
-          description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+          description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen päämäärä kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
           locale="fi_FI"
           siteUrl={process.env.REACT_APP_BASE_URL + '/info/'}
           image={{
@@ -22,7 +22,7 @@ class Info extends React.Component {
           }}
           openGraph={{
             title: 'Info - Paikkatietokanta',
-            description: 'Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.',
+            description: 'Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen päämäärä kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.',
             type: 'article',
             siteName: 'Paikkatietokanta',
             url: process.env.REACT_APP_BASE_URL + '/info/',
@@ -40,7 +40,7 @@ class Info extends React.Component {
               <div className="col-sm">
                 <h2>Tietoa paikkatietokannasta</h2>
                 <p>
-                  Paikkatietokanta on <a href="http://penttinen.fi/">Jani Penttisen</a> päättöprojektina syntynyt sivusto. Paikkatietokannan tarkoitus on yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.
+                  Paikkatietokanta on <a href="http://penttinen.fi/">Jani Penttisen</a> päättöprojektina syntynyt sivusto. Paikkatietokannan tarkoitus on yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen päämäärä kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.
                 </p>
 
                 <p>

@@ -82,7 +82,7 @@ class GridView extends React.Component {
 
         <SEO
           title="Ruudukkonäkymä - Paikkatietokanta"
-          description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+          description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen päämäärä kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
           locale="fi_FI"
           siteUrl={process.env.REACT_APP_BASE_URL + '/grid/'}
           image={{
@@ -90,7 +90,7 @@ class GridView extends React.Component {
           }}
           openGraph={{
             title: 'Ruudukkonäkymä - Paikkatietokanta',
-            description: 'Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.',
+            description: 'Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen päämäärä kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.',
             type: 'article',
             siteName: 'Paikkatietokanta',
             url: process.env.REACT_APP_BASE_URL + '/grid/',

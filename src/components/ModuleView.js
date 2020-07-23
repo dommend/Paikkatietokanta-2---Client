@@ -232,7 +232,7 @@ const LocationsList = () => {
     <div id="location-list" className="module-view">
       <SEO
         title="Moduulinäkymä - Paikkatietokanta"
-        description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
+        description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen päämäärä kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
         locale="fi_FI"
         siteUrl={process.env.REACT_APP_BASE_URL + '/module/'}
         image={{
@@ -240,7 +240,7 @@ const LocationsList = () => {
         }}
         openGraph={{
           title: 'Moduulinäkymä - Paikkatietokanta',
-          description: 'Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen focus kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.',
+          description: 'Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen päämäärä kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.',
           type: 'article',
           siteName: 'Paikkatietokanta',
           url: process.env.REACT_APP_BASE_URL + '/module/',

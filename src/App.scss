@@ -9,53 +9,70 @@
   font-style: normal;
   font-weight: 400;
   src: local('Roboto'), local('Roboto-Regular'),
-       url('resources/fonts/roboto-v20-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('resources/fonts/roboto-v20-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    url('resources/fonts/roboto-v20-latin-regular.woff2') format('woff2'),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('resources/fonts/roboto-v20-latin-regular.woff') format('woff');
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+
 /* roboto-italic - latin */
 @font-face {
   font-family: 'Roboto';
   font-style: italic;
   font-weight: 400;
   src: local('Roboto Italic'), local('Roboto-Italic'),
-       url('resources/fonts/roboto-v20-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('resources/fonts/roboto-v20-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    url('resources/fonts/roboto-v20-latin-italic.woff2') format('woff2'),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('resources/fonts/roboto-v20-latin-italic.woff') format('woff');
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+
 /* roboto-500 - latin */
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   src: local('Roboto Medium'), local('Roboto-Medium'),
-       url('resources/fonts/roboto-v20-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('resources/fonts/roboto-v20-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    url('resources/fonts/roboto-v20-latin-500.woff2') format('woff2'),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('resources/fonts/roboto-v20-latin-500.woff') format('woff');
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+
 /* roboto-500italic - latin */
 @font-face {
   font-family: 'Roboto';
   font-style: italic;
   font-weight: 500;
   src: local('Roboto Medium Italic'), local('Roboto-MediumItalic'),
-       url('resources/fonts/roboto-v20-latin-500italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('resources/fonts/roboto-v20-latin-500italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    url('resources/fonts/roboto-v20-latin-500italic.woff2') format('woff2'),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('resources/fonts/roboto-v20-latin-500italic.woff') format('woff');
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+
 /* roboto-700 - latin */
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
   src: local('Roboto Bold'), local('Roboto-Bold'),
-       url('resources/fonts/roboto-v20-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('resources/fonts/roboto-v20-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    url('resources/fonts/roboto-v20-latin-700.woff2') format('woff2'),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('resources/fonts/roboto-v20-latin-700.woff') format('woff');
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+
 /* roboto-700italic - latin */
 @font-face {
   font-family: 'Roboto';
   font-style: italic;
   font-weight: 700;
   src: local('Roboto Bold Italic'), local('Roboto-BoldItalic'),
-       url('resources/fonts/roboto-v20-latin-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('resources/fonts/roboto-v20-latin-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    url('resources/fonts/roboto-v20-latin-700italic.woff2') format('woff2'),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('resources/fonts/roboto-v20-latin-700italic.woff') format('woff');
+  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* roboto-mono-500 - latin */
@@ -63,17 +80,23 @@
   font-family: 'Roboto Mono';
   font-style: normal;
   font-weight: 500;
-  src: url('resources/fonts/roboto-mono-v12-latin-500.eot'); /* IE9 Compat Modes */
+  src: url('resources/fonts/roboto-mono-v12-latin-500.eot');
+  /* IE9 Compat Modes */
   src: local(''),
-       url('resources/fonts/roboto-mono-v12-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('resources/fonts/roboto-mono-v12-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
-       url('resources/fonts/roboto-mono-v12-latin-500.woff') format('woff'), /* Modern Browsers */
-       url('resources/fonts/roboto-mono-v12-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('resources/fonts/roboto-mono-v12-latin-500.svg#RobotoMono') format('svg'); /* Legacy iOS */
+    url('resources/fonts/roboto-mono-v12-latin-500.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('resources/fonts/roboto-mono-v12-latin-500.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('resources/fonts/roboto-mono-v12-latin-500.woff') format('woff'),
+    /* Modern Browsers */
+    url('resources/fonts/roboto-mono-v12-latin-500.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('resources/fonts/roboto-mono-v12-latin-500.svg#RobotoMono') format('svg');
+  /* Legacy iOS */
 }
 
 body {
-  font:90%/165% 'Roboto', Arial, Helvetica, sans-serif, sans-serif;
+  font: 90%/165% 'Roboto', Arial, Helvetica, sans-serif, sans-serif;
   overflow: hidden;
 }
 
@@ -107,8 +130,8 @@ $favorie: crimson;
 
 * {
   transition: none !important;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important; 
-  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important; 
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
   outline: none !important;
 }
 
@@ -288,30 +311,59 @@ main {
   margin-right: 5px;
   position: relative;
 }
-#ShareAndCopy { margin:23px 0px 25px 0px;}
-#ShareAndCopy .copyToClipBoard { width:calc(100% - 60px); margin-top:0px;}
-#ShareAndCopy .shareButton {width:60px; border-radius: none !important; font-size:.8rem;
-background:$base3; border:none; border-radius: 0px !important;}
-#ShareAndCopy .shareButton:hover {
-  background:$secondary;
+
+#ShareAndCopy {
+  margin: 23px 0px 25px 0px;
 }
+
+#ShareAndCopy .copyToClipBoard {
+  width: calc(100% - 60px);
+  margin-top: 0px;
+}
+
+#ShareAndCopy .shareButton {
+  width: 60px;
+  border-radius: none !important;
+  font-size: .8rem;
+  background: $base3;
+  border: none;
+  border-radius: 0px !important;
+}
+
+#ShareAndCopy .shareButton:hover {
+  background: $secondary;
+}
+
 button.react-share__ShareButton {
   margin: 5px;
- }
+}
 
- button.react-share__ShareButton:hover {
+button.react-share__ShareButton:hover {
   transform: scale(1.3);
- }
- .modal-dialog.modal-sm.modal-dialog-centered {
- max-width: 340px; margin:0 auto;}
- .modal-dialog.modal-90w.modal-lg.modal-dialog-centered { margin:0 auto;}
+}
 
- .modal-backdrop { z-index:9999 !important; }
- .modal { z-index:99992 !important;}
+.modal-dialog.modal-sm.modal-dialog-centered {
+  max-width: 340px;
+  margin: 0 auto;
+}
 
- .shareButtons .modal-body { text-align: center;}
+.modal-dialog.modal-90w.modal-lg.modal-dialog-centered {
+  margin: 0 auto;
+}
 
- 
+.modal-backdrop {
+  z-index: 9999 !important;
+}
+
+.modal {
+  z-index: 99992 !important;
+}
+
+.shareButtons .modal-body {
+  text-align: center;
+}
+
+
 
 /** List and forms **/
 .list {
@@ -508,7 +560,7 @@ small.even-smaller {
   font-size: 1em;
   font-weight: bold;
   margin-left: -10px;
-  margin-right:20px;
+  margin-right: 20px;
 
 }
 
@@ -535,7 +587,7 @@ nav ul {
 nav ul li {
   list-style: none;
   display: inline-block;
-  margin-right:15px;
+  margin-right: 15px;
   font-weight: bold;
 }
 
@@ -655,7 +707,8 @@ aside {
 #location-list .spinner-border {
   position: absolute !important;
   top: 50vh !important;
-  left: 155px !important;;
+  left: 155px !important;
+  ;
   font-size: 8px !important;
 }
 
@@ -666,8 +719,11 @@ aside {
   font-size: 8px !important;
 }
 
-#location-list  .flickr-lightbox-container .spinner-border.text-primary { 
-  position:absolute !important; left:50% !important; top:0px  !important; margin:0px !important;
+#location-list .flickr-lightbox-container .spinner-border.text-primary {
+  position: absolute !important;
+  left: 50% !important;
+  top: 0px !important;
+  margin: 0px !important;
 }
 
 
@@ -836,7 +892,7 @@ body.locations-loaded .locationGrid-page #filter {
   background: $secondary;
   color: $neutral1;
   text-decoration: none;
-  border-color:$secondary;
+  border-color: $secondary;
 }
 
 .favorite {
@@ -875,6 +931,11 @@ body.locations-loaded .locationGrid-page #filter {
   width: 500px !important;
   margin-top: -260px !important;
   position: absolute;
+}
+
+
+#location-list #ShareAndCopy {
+  margin: 23px 8px 25px 0px !important;
 }
 
 /** Pagination **/
@@ -1008,13 +1069,13 @@ a:visited.link-to-flickr .material-icons {
 
 .meta {
   margin-top: 20px;
-  line-height:1.1rem;
+  line-height: 1.1rem;
 }
 
 .description {
-  margin-top: 20px;
+  margin: 20px 8px 0px 0px;
   font-size: .85rem !important;
-  line-height:1.4rem;
+  line-height: 1.4rem;
 }
 
 a.link-to-out,
@@ -1022,6 +1083,7 @@ a.link-to-out,
 a.link-to-flickr,
 a:visited.link-to-flickr {
   font-size: .67rem;
+  margin-right: 8px;
   color: $base2;
   display: block;
   overflow: hidden;
@@ -1095,19 +1157,18 @@ a:visited.link-to-flickr {
 .leaflet-popup-content .metadata {
   font-size: 0.9em;
   line-height: 1em;
-
   margin: 10px 0px;
 }
 
 .leaflet-popup-content .map-innercontainer {
   height: 280px;
   overflow-x: auto;
-  margin:20px 0;
+  margin: 20px 0;
 }
 
 .leaflet-popup-content .description {
   font-size: 1.05em !important;
-  line-height:1.45em;
+  line-height: 1.45em;
   margin-bottom: -5px;
 }
 
@@ -1124,105 +1185,159 @@ a:visited.link-to-flickr {
   font-size: 0.98em;
 }
 
-.leaflet-control-layers.leaflet-control { margin:14px !important;}
-button#box-zoom-button,  {
+.leaflet-control-layers.leaflet-control {
+  margin: 14px !important;
+}
+
+button#box-zoom-button {
   margin: 5px 15px !important;
   width: 35px !important;
   height: 35px !important;
   background-repeat: no-repeat !important;
   background-position: 3px 4px !important;
-  border:none !important;
+  border: none !important;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
   border-radius: 5px !important;
 }
 
-.search-control-info-list-item { border-color:$neutral2 !important;}
+.search-control-info-list-item {
+  border-color: $neutral2 !important;
+}
 
-article.search-control-wrap { margin:5px 8px;}
+article.search-control-wrap {
+  margin: 5px 8px;
+}
 
 button.search-control-icon-button {
   width: 35px !important;
   height: 35px !important;
- }
+}
 
- 
- .search-control-active .search-control-icon-button,
-  button.search-control-close-button.search-control-close-button-active,
-  input.search-input.search-control-input,
-  .search-control { height:35px !important;}
 
-  
-  button.search-control-icon-button svg {
-    max-height: 15px !important;
-    max-width: 15px !important;
-    margin:10px !important;
-   }
+.search-control-active .search-control-icon-button,
+button.search-control-close-button.search-control-close-button-active,
+input.search-input.search-control-input,
+.search-control {
+  height: 35px !important;
+}
 
-  section.search-control-info-wrapper { box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4); }
+
+button.search-control-icon-button svg {
+  max-height: 15px !important;
+  max-width: 15px !important;
+  margin: 10px !important;
+}
+
+section.search-control-info-wrapper {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
 
 li.search-control-info-list-item.active,
 li.search-control-info-list-item.active:hover {
-   background:$neutral4 !important;
+  background: $neutral4 !important;
 
 }
 
 
 li.search-control-info-list-item:hover {
-  background:$neutral4 !important;
+  background: $neutral4 !important;
 }
 
 li.search-control-info-list-item:visited,
 li.search-control-info-list-item:hover,
-li.search-control-info-list:focus, 
+li.search-control-info-list:focus,
 li.search-control-info-list-item.candidate,
 li.search-control-info-list-item:active,
 li.search-control-info-list-item:focus,
 li.search-control-info-list-item:not(.active).candidate,
 li.search-control-info-list-item:not(.active):active,
 li.search-control-info-list-item:not(.active):focus {
-  background:$neutral4 !important;
+  background: $neutral4 !important;
 }
 
 
 li.search-control-info-list-item {
-  padding: 10px 15px 10px 15px; }
-
-  .nav-tabs { border-bottom:0px; margin-bottom:0px; position: sticky; top:0; z-index:9999;
-  background:$neutral1 !important; padding-bottom:15px; margin-top:-1px;   align-items: center; justify-content: center;
+  padding: 10px 15px 10px 15px;
 }
-  
+
+.nav-tabs {
+  border-bottom: 0px;
+  margin-bottom: 0px;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: $neutral1 !important;
+  padding-bottom: 15px;
+  margin-top: -1px;
+  align-items: center;
+  justify-content: center;
+}
+
 .nav-tabs .nav-link.active:hover,
-  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    background:$secondary;
-    color:$neutral1 !important;
-    border-color:$secondary;
-  }
-
-  
-  .leaflet-popup-content .metadata .open-page.button { border:1px solid $neutral6; border-radius:5px; margin-bottom:5px;}
-
-  .nav-tabs .nav-link {
-    background:$neutral1;
-    color:$base !important;
-    border:1px solid $neutral6;
-    width:77px;
-    text-align: center;
-    padding:10px !important;
-  }
-
-  .nav-tabs .nav-link:hover { border-color:$neutral4; background:$neutral4;}
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  background: $secondary;
+  color: $neutral1 !important;
+  border-color: $secondary;
+}
 
 
-  .tab-content>.tab-pane img { width:auto; min-width:100%; max-width:100%;}
+.leaflet-popup-content .metadata .open-page.button {
+  border: 1px solid $neutral6;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
 
-.tab-content>.tab-pane .coordinates { width: 280px; line-height: 2.5rem; text-align:center;}
-.tab-content>.tab-pane .get-directions a.btn.btn-info.btn-sm { width:100%; padding:10px; margin:10px 0 15px 0;}
+.nav-tabs .nav-link {
+  background: $neutral1;
+  color: $base !important;
+  border: 1px solid $neutral6;
+  width: 77px;
+  text-align: center;
+  padding: 10px !important;
+}
 
-.tab-content>.tab-pane #ShareAndCopy { margin-top:20px; margin-bottom:0px;}
-.tab-content>.tab-pane #ShareAndCopy span.material-icons { margin-left:30px;}
-div#noanim-tab-example-tabpane-Tiedot { padding-top:0px;}
+.nav-tabs .nav-link:hover {
+  border-color: $neutral4;
+  background: $neutral4;
+}
 
-.tab-content>.tab-pane .date div { width:100px; text-align: center;}
+
+.tab-content>.tab-pane img {
+  width: auto;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.tab-content>.tab-pane .coordinates {
+  width: 280px;
+  line-height: 2.5rem;
+  text-align: center;
+}
+
+.tab-content>.tab-pane .get-directions a.btn.btn-info.btn-sm {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 15px 0;
+}
+
+.tab-content>.tab-pane #ShareAndCopy {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.tab-content>.tab-pane #ShareAndCopy span.material-icons {
+  margin-left: 30px;
+}
+
+div#noanim-tab-example-tabpane-Tiedot {
+  padding-top: 0px;
+}
+
+.tab-content>.tab-pane .date div {
+  width: 100px;
+  text-align: center;
+}
 
 /** Location Grid **/
 .locationGrid-page {
@@ -1302,10 +1417,10 @@ div#noanim-tab-example-tabpane-Tiedot { padding-top:0px;}
 #weather p {
   color: $base;
   margin: 0px -100px;
-  text-shadow: -0.8px 0.8px 5px $neutral1, 
-  0.8px 0.8px  5px $neutral1, 
-  0.8px -0.8px 5px $neutral1, 
-  0.8px -0.8px 5px $neutral1;
+  text-shadow: -0.8px 0.8px 5px $neutral1,
+    0.8px 0.8px 5px $neutral1,
+    0.8px -0.8px 5px $neutral1,
+    0.8px -0.8px 5px $neutral1;
   font-weight: bold;
   font-size: 0.9rem;
 }
@@ -1349,10 +1464,10 @@ div#noanim-tab-example-tabpane-Tiedot { padding-top:0px;}
   position: relative;
   color: $base;
   z-index: 9991;
-  text-shadow: -0.8px 0.8px 5px $neutral1, 
-  0.8px 0.8px  5px $neutral1, 
-  0.8px -0.8px 5px $neutral1, 
-  0.8px -0.8px 5px $neutral1;
+  text-shadow: -0.8px 0.8px 5px $neutral1,
+    0.8px 0.8px 5px $neutral1,
+    0.8px -0.8px 5px $neutral1,
+    0.8px -0.8px 5px $neutral1;
 }
 
 .frontpage #weather,
@@ -1460,7 +1575,7 @@ div#noanim-tab-example-tabpane-Tiedot { padding-top:0px;}
 
 .location-management .row .description {
   font-size: .85em !important;
-  line-height:1.45em;
+  line-height: 1.45em;
   margin: 10px 20px 0px 20px;
 }
 
@@ -1591,11 +1706,13 @@ h4 .material-icons {
 
 /** Sisältösivut **/
 
-.content-page h1, 
+.content-page h1,
 .content-page h2,
 .content-page h3,
 .content-page h4,
-.content-page h5 { margin-bottom:15px;}
+.content-page h5 {
+  margin-bottom: 15px;
+}
 
 .content-page p {
   max-width: calc(100em * 0.5);
@@ -1703,6 +1820,7 @@ h4 .material-icons {
     right: 0px !important;
   }
 
+
   #location-list .leaflet-container {
     height: 50vh;
     width: 100%;
@@ -1786,34 +1904,49 @@ h4 .material-icons {
 @media screen and (max-width: 960px) {
 
   button#box-zoom-button {
-    display:none;
+    display: none;
   }
 
-nav ul li {
-  display: inline-block;
-  margin-right:0px;}
+  nav ul li {
+    display: inline-block;
+    margin-right: 0px;
+  }
 
-nav a .material-icons {
-  top:4.8px;
-  margin-right: 0px;}
+  nav a .material-icons {
+    top: 4.8px;
+    margin-right: 0px;
+  }
 
-.navbar { padding:0px;}
-a.navbar-brand { display:none;}
-nav .nav-title  { font-size:.75rem !important; display:block;}
+  .navbar {
+    padding: 0px;
+  }
 
-.navbar-nav,
-nav ul { width:100%;}
+  a.navbar-brand {
+    display: none;
+  }
 
-li.nav-item {   width:16.666%; }
+  nav .nav-title {
+    font-size: .75rem !important;
+    display: block;
+  }
 
-nav ul li a.nav-link,
-nav ul li a.nav-link:visited {
-  padding: 10px;
-  text-align: center;
-  margin: 0px 0px 0px 0px;
-  border-radius: 0px;
+  .navbar-nav,
+  nav ul {
+    width: 100%;
+  }
 
-}
+  li.nav-item {
+    width: 16.666%;
+  }
+
+  nav ul li a.nav-link,
+  nav ul li a.nav-link:visited {
+    padding: 10px;
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+    border-radius: 0px;
+
+  }
 
   .locationGrid-page .location {
     width: 100%;
@@ -1828,7 +1961,7 @@ nav ul li a.nav-link:visited {
 
 @media screen and (max-width: 875px) {
 
-  
+
   #location-list .spinner-border {
     left: 105px !important;
   }
@@ -1876,7 +2009,7 @@ nav ul li a.nav-link:visited {
 
 @media screen and (max-width: 850px) {
 
-  
+
   aside {
     width: 251px;
   }
@@ -1939,10 +2072,10 @@ nav ul li a.nav-link:visited {
     margin: 5px;
     left: 20px;
     right: 0;
-    top:145px;
+    top: 145px;
     height: 62px !important;
     width: 200px;
-    position:absolute;
+    position: absolute;
   }
 
   .locationView-page #weather {
@@ -2029,12 +2162,22 @@ nav ul li a.nav-link:visited {
 }
 
 @media screen and (max-width: 600px) {
+  #location-list #ShareAndCopy {
+    margin-right: 0px !important;
+  }
 
-  .metadata .open-page.button { line-height: 2rem;}
-  .leaflet-control-container {display: none;}
+  .metadata .open-page.button {
+    line-height: 2rem;
+  }
+
+  .leaflet-control-container {
+    display: none;
+  }
 
   .locationView-page .leaflet-control-container,
-  .map-view .leaflet-control-container {display: block;} 
+  .map-view .leaflet-control-container {
+    display: block;
+  }
 
   .frontpage .styles_simpleReactWeatherCity__zyECF {
     left: -15px;
@@ -2111,7 +2254,9 @@ nav ul li a.nav-link:visited {
     display: none;
   }
 
-  nav li.nav-item {  width:20%; }
+  nav li.nav-item {
+    width: 20%;
+  }
 
   aside {
     width: 100%;
@@ -2121,9 +2266,9 @@ nav ul li a.nav-link:visited {
 
   #page .spinner-border {
     left: 50% !important;
-    width:30px;
-    height:30px;
-    margin-left:-15px;
+    width: 30px;
+    height: 30px;
+    margin-left: -15px;
   }
 
   #location-list .spinner-border {
@@ -2254,11 +2399,20 @@ nav ul li a.nav-link:visited {
 
 
 @media screen and (max-width: 350px) {
-nav a .material-icons {top:3px;}
-nav .nav-title { display:none !important;}
+  nav a .material-icons {
+    top: 3px;
+  }
+
+  nav .nav-title {
+    display: none !important;
+  }
 }
 
 /** Disco **/
-#breakdance { display:none;}
-.modal-90w { max-width: 90% !important; }
+#breakdance {
+  display: none;
+}
 
+.modal-90w {
+  max-width: 90% !important;
+}
