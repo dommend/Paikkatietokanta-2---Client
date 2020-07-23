@@ -13,7 +13,6 @@ import ReactPlayer from 'react-player';
 import FlickrLightbox from 'react-flickr-lightbox';
 import {icon as leafletIcon} from 'leaflet';
 import MainScreen from './textScramble';
-import {Throbber, ThreeQuarters} from 'css-spinners-react';
 import ShowMoreText from 'react-show-more-text';
 import {Dropdown} from 'react-bootstrap';
 import ModalImage from 'react-modal-image';
@@ -23,6 +22,7 @@ import SEO from '@americanexpress/react-seo';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Modal, Button} from 'react-bootstrap';
+import Spinner from 'react-bootstrap/Spinner'
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -41,7 +41,6 @@ import {
   TwitterIcon,
   WhatsappIcon,
 } from 'react-share';
-
 
 toast.configure ({
   position: 'top-center',
@@ -298,7 +297,7 @@ const LocationsList = () => {
           </Dropdown>
         </div>
         
-        {isLoading ? <Throbber /> : 
+        {isLoading ? <Spinner animation="border" variant="primary" /> : 
         <ul id="places" className="list-group">
           {locations &&
             locations.map ((location, index) => (
@@ -489,7 +488,7 @@ const LocationsList = () => {
 
                       {currentLocation.flickrTag
                         ? <div className="flickr-lightbox-container">
-                            <ThreeQuarters />
+                            <Spinner animation="border" variant="primary" />
                             <div className="flickr-lightbox">
 
                               <FlickrLightbox

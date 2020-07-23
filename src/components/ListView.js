@@ -7,7 +7,7 @@ import 'react-slicer/build/react-slicer.css';
 import ShowMoreText from 'react-show-more-text';
 import Moment from 'react-moment';
 import SEO from '@americanexpress/react-seo';
-import {Throbber} from 'css-spinners-react';
+import Spinner from 'react-bootstrap/Spinner'
 
 document.onkeydown = function (evt) {
   evt = evt || window.event;
@@ -78,7 +78,7 @@ class GridView extends React.Component {
     return (
       <div id="page" className="location-management">
 
-        {this.state.isLoading && <Throbber />}
+        {this.state.isLoading && <Spinner animation="border" variant="primary" /> }
 
         <SEO
           title="Listanäkymä - Paikkatietokanta"

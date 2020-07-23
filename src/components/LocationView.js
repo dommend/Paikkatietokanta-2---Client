@@ -11,14 +11,13 @@ import ReactPlayer from 'react-player';
 import FlickrLightbox from 'react-flickr-lightbox';
 import Icon from '@material-ui/core/Icon';
 import {icon as leafletIcon} from 'leaflet';
-import {ThreeQuarters} from 'css-spinners-react';
 import Moment from 'react-moment';
 import ModalImage from 'react-modal-image';
 import Weather from 'simple-react-weather';
 import SEO from '@americanexpress/react-seo';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {Throbber} from 'css-spinners-react';
+import Spinner from 'react-bootstrap/Spinner'
 import {Modal, Button} from 'react-bootstrap'
 
 import {
@@ -232,7 +231,7 @@ const Location = props => {
                 </div>
                 <div className="col-sm details">
 
-                {isLoading ? <Throbber /> :
+                {isLoading ? <Spinner animation="border" variant="primary" />  :
                   <div className="innercontainer">
                     <button
                       type="button"
@@ -345,84 +344,119 @@ const Location = props => {
                           <Button className="shareButton" variant="primary" onClick={() => setShow(true)}>Jaa</Button>
                           </div>
 
-                  <Modal
-                    show={show}
-                    onHide={() => setShow(false)}
-                    size="sm"
-                    className="shareButtons"
-                    aria-labelledby="example-custom-modal-styling-title"
-                    centered
-                  >
+                            <Modal
+                          show={show}
+                          onHide={() => setShow (false)}
+                          size="sm"
+                          className="shareButtons"
+                          aria-labelledby="example-custom-modal-styling-title"
+                          centered
+                        >
 
-                    <Modal.Body>
-                    <FacebookShareButton
-            url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
-            subject={currentLocation.title}
-            quote={'Paikkatietokanta.net - ' + currentLocation.title + '\n \n' + currentLocation.description}
-            hashtag="#paikkatietokanta"
-          >
-            <FacebookIcon size={32} round />
-          </FacebookShareButton>
+                          <Modal.Body>
+                            <FacebookShareButton
+                              url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
+                              subject={currentLocation.title}
+                              quote={
+                                'Paikkatietokanta.net - ' +
+                                  currentLocation.title +
+                                  '\n \n' +
+                                  currentLocation.description
+                              }
+                              hashtag="#paikkatietokanta"
+                            >
+                              <FacebookIcon size={32} round />
+                            </FacebookShareButton>
 
-          <TwitterShareButton
-            url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
-            subject={currentLocation.title}
-            quote={'Paikkatietokanta.net - ' + currentLocation.title + '\n \n' + currentLocation.description}
-            hashtag="#paikkatietokanta"
-          >
-            <TwitterIcon size={32} round />
-          </TwitterShareButton>
+                            <TwitterShareButton
+                              url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
+                              subject={currentLocation.title}
+                              quote={
+                                'Paikkatietokanta.net - ' +
+                                  currentLocation.title +
+                                  '\n \n' +
+                                  currentLocation.description
+                              }
+                              hashtag="#paikkatietokanta"
+                            >
+                              <TwitterIcon size={32} round />
+                            </TwitterShareButton>
 
-          <WhatsappShareButton
-            url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
-            subject={currentLocation.title}
-            quote={'Paikkatietokanta.net - ' + currentLocation.title + '\n \n' + currentLocation.description}
-            hashtag="#paikkatietokanta"
-          >
-            <WhatsappIcon size={32} round />
-          </WhatsappShareButton>
+                            <WhatsappShareButton
+                              url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
+                              subject={currentLocation.title}
+                              quote={
+                                'Paikkatietokanta.net - ' +
+                                  currentLocation.title +
+                                  '\n \n' +
+                                  currentLocation.description
+                              }
+                              hashtag="#paikkatietokanta"
+                            >
+                              <WhatsappIcon size={32} round />
+                            </WhatsappShareButton>
 
-          <TumblrShareButton
-            url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
-            subject={currentLocation.title}
-            quote={'Paikkatietokanta.net - ' + currentLocation.title + '\n \n' + currentLocation.description}
-            hashtag="#paikkatietokanta"
-          >
-            <TumblrIcon size={32} round />
-          </TumblrShareButton>
+                            <TumblrShareButton
+                              url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
+                              subject={currentLocation.title}
+                              quote={
+                                'Paikkatietokanta.net - ' +
+                                  currentLocation.title +
+                                  '\n \n' +
+                                  currentLocation.description
+                              }
+                              hashtag="#paikkatietokanta"
+                            >
+                              <TumblrIcon size={32} round />
+                            </TumblrShareButton>
 
-          <LinkedinShareButton
-            url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
-            subject={currentLocation.title}
-            quote={'Paikkatietokanta.net - ' + currentLocation.title + '\n \n' + currentLocation.description}
-            hashtag="#paikkatietokanta"
-          >
-            <LinkedinIcon size={32} round />
-          </LinkedinShareButton>
+                            <LinkedinShareButton
+                              url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
+                              subject={currentLocation.title}
+                              quote={
+                                'Paikkatietokanta.net - ' +
+                                  currentLocation.title +
+                                  '\n \n' +
+                                  currentLocation.description
+                              }
+                              hashtag="#paikkatietokanta"
+                            >
+                              <LinkedinIcon size={32} round />
+                            </LinkedinShareButton>
 
-          <RedditShareButton
-            url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
-            subject={currentLocation.title}
-            quote={'Paikkatietokanta.net - ' + currentLocation.title + '\n \n' + currentLocation.description}
-            hashtag="#paikkatietokanta"
-          >
-            <RedditIcon size={32} round />
-          </RedditShareButton>
-          
-          <EmailShareButton
-            url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
-            subject={currentLocation.title}
-            quote={'Paikkatietokanta.net - ' + currentLocation.title + '\n \n' + currentLocation.description}
-            hashtag="#paikkatietokanta"
-          >
-            <EmailIcon size={32} round />
-          </EmailShareButton>
-                    </Modal.Body>
-                  </Modal>
+                            <RedditShareButton
+                              url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
+                              subject={currentLocation.title}
+                              quote={
+                                'Paikkatietokanta.net - ' +
+                                  currentLocation.title +
+                                  '\n \n' +
+                                  currentLocation.description
+                              }
+                              hashtag="#paikkatietokanta"
+                            >
+                              <RedditIcon size={32} round />
+                            </RedditShareButton>
+
+                            <EmailShareButton
+                              url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
+                              subject={currentLocation.title}
+                              quote={
+                                'Paikkatietokanta.net - ' +
+                                  currentLocation.title +
+                                  '\n \n' +
+                                  currentLocation.description
+                              }
+                              hashtag="#paikkatietokanta"
+                            >
+                              <EmailIcon size={32} round />
+                            </EmailShareButton>
+                          </Modal.Body>
+                        </Modal>
 
                           {currentLocation.flickrTag
                             ? <div className="flickr-lightbox-container">
-                                <ThreeQuarters />
+                                <Spinner animation="border" variant="primary" /> 
                                 <div className="flickr-lightbox">
                                   <FlickrLightbox
                                     api_key={process.env.REACT_APP_FLICKR_API}

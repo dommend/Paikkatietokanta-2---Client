@@ -7,7 +7,7 @@ import Icon from '@material-ui/core/Icon';
 import {icon as leafletIcon} from 'leaflet';
 import ShowMoreText from 'react-show-more-text';
 import SEO from '@americanexpress/react-seo';
-import {Throbber} from 'css-spinners-react';
+import Spinner from 'react-bootstrap/Spinner'
 
 
 document.onkeydown = function (evt) {
@@ -78,7 +78,7 @@ class GridView extends React.Component {
     return (
       <div id="page" className="locationGrid-page">
 
-        {this.state.isLoading && <Throbber />}
+        {this.state.isLoading && <Spinner animation="border" variant="primary" />}
 
         <SEO
           title="Ruudukkonäkymä - Paikkatietokanta"
