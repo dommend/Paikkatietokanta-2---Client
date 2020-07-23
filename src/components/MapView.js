@@ -17,10 +17,48 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
 import SEO from '@americanexpress/react-seo';
 import { BoxZoomControl } from 'react-leaflet-box-zoom';
 import ReactLeafletSearch from "react-leaflet-search";
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
+import Moment from 'react-moment';
+import {Modal, Button} from 'react-bootstrap';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ModalImage from 'react-modal-image';
 
+
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  LinkedinShareButton,
+  RedditShareButton,
+  TumblrShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+} from "react-share";
+
+import {
+  EmailIcon,
+  FacebookIcon,
+  LinkedinIcon,
+  RedditIcon,
+  TumblrIcon,
+  TwitterIcon,
+  WhatsappIcon,
+} from "react-share";
+
+toast.configure ({
+  position: 'top-center',
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+});
 
 const LocationsList = () => {
   const [locations, setLocations] = useState ([]);
+  const [show, setShow] = useState(false);
 
   useEffect (() => {
     retrieveLocations ();
@@ -59,11 +97,21 @@ const LocationsList = () => {
     if (evt.keyCode === 220) {
       window.open (process.env.REACT_APP_ADMIN_BASE_URL + '/add', '_self');
     }
+  }
+
+
+  const copyToClipBoard = async copyMe => {
+    try {
+      await navigator.clipboard.writeText (copyMe);
+      toast (
+        'Osoite kopioitu leikepöydälle');
+    } catch (err) {
+      toast ('Permalinkiä ei kopioitu');
+    }
   };
 
+
   const {BaseLayer} = LayersControl;
-
-
 
   return (
     <div id="fullpage" className="map-view">
@@ -162,7 +210,13 @@ const LocationsList = () => {
               >
                 <Popup>
                   <div className="map-innercontainer">
-                    {location.markedImportant
+
+
+
+                  <Tabs defaultActiveKey="Yleistiedot" transition={false} id="noanim-tab-example">
+  <Tab eventKey="Yleistiedot" title="Yleistiedot">
+ 
+  {location.markedImportant
                       ? <div className="float-right">
                           <Icon className="favorite">favorite</Icon>
                         </div>
@@ -173,7 +227,7 @@ const LocationsList = () => {
 
                     <div className="description white-space">
                       <ShowMoreText
-                        lines={3}
+                        lines={6}
                         more="Näytä enemmän"
                         less="Näytä vähemmän"
                         anchorClass=""
@@ -205,7 +259,236 @@ const LocationsList = () => {
                             />
                           </div>
                         : ''}
-                    </div>{' '}
+                    </div>
+
+
+  </Tab>
+  <Tab eventKey="Tiedot" title="Tiedot">
+   
+
+                        <div class="time-and-place">
+                    <div className="coordinates">
+                      <span className="material-icons">place</span>
+                      {location.coordinateN}, {location.coordinateE}
+                    </div>
+                    <div className="date">
+                      <div>
+                        <span className="material-icons" title="Julkaistu">
+                          schedule
+                        </span>
+                        <Moment format="DD.MM.YYYY">
+                          {location.createdAt}
+                        </Moment>
+                      </div>
+                      <div>
+                        <span className="material-icons" title="Päivitetty">
+                          update
+                        </span>
+                        <Moment format="DD.MM.YYYY">
+                          {location.updatedAt}
+                        </Moment>
+                      </div>
+                    </div>
+                  </div>
+
+<div className="get-directions">
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-info btn-sm"
+                        href={
+                          'https://www.google.com/maps/dir/Current+Location/' +
+                          location.coordinateN +
+                            ',' +
+                            location.coordinateE
+                        }
+                      >
+                        <span className="material-icons">near_me</span>
+                        Google Maps: Hae reittiohje
+                      </a>
+</div> 
+
+
+{location.url
+                            ? <a
+                                className="link-to-out"
+                                href={location.url}
+                              >
+                                <Icon className="material-icons">link</Icon>
+                                {location.url}
+                              </a>
+                            : ''}
+                          {location.flickrMore
+                            ? <a
+                                className="link-to-flickr"
+                                href={location.flickrMore}
+                              >
+                                <Icon className="material-icons">link</Icon>
+                                {location.flickrMore}
+                              </a>
+                            : ''}
+
+
+
+<div id="ShareAndCopy" className="flex">  
+                          <button
+                            title="Kopioi osoite leikepöydälle"
+                            className="copyToClipBoard"
+                            onClick={() =>
+                              copyToClipBoard (
+                                process.env.REACT_APP_BASE_URL +
+                                  '/view/' +
+                                  location.id
+                              )}
+                          >
+                            <span className="material-icons">content_copy</span>
+                            {' '}
+                            {process.env.REACT_APP_BASE_URL +
+                              '/view/' +
+                              location.id}
+                          </button>
+                          <Button className="shareButton" variant="primary" onClick={() => setShow(true)}>Jaa</Button>
+                          </div>
+
+                            <Modal
+                          show={show}
+                          onHide={() => setShow (false)}
+                          size="sm"
+                          className="shareButtons"
+                          aria-labelledby="example-custom-modal-styling-title"
+                          centered
+                        >
+
+                          <Modal.Body>
+                            <FacebookShareButton
+                              url={process.env.REACT_APP_BASE_URL + '/view/' + location.id}
+                              subject={location.title}
+                              quote={
+                                'Paikkatietokanta.net - ' +
+                                location.title +
+                                  '\n \n' +
+                                  location.description
+                              }
+                              hashtag="#paikkatietokanta"
+                            >
+                              <FacebookIcon size={32} round />
+                            </FacebookShareButton>
+
+                            <TwitterShareButton
+                              url={process.env.REACT_APP_BASE_URL + '/view/' + location.id}
+                              subject={location.title}
+                              quote={
+                                'Paikkatietokanta.net - ' +
+                                location.title +
+                                  '\n \n' +
+                                  location.description
+                              }
+                              hashtag="#paikkatietokanta"
+                            >
+                              <TwitterIcon size={32} round />
+                            </TwitterShareButton>
+
+                            <WhatsappShareButton
+                              url={process.env.REACT_APP_BASE_URL + '/view/' + location.id}
+                              subject={location.title}
+                              quote={
+                                'Paikkatietokanta.net - ' +
+                                location.title +
+                                  '\n \n' +
+                                  location.description
+                              }
+                              hashtag="#paikkatietokanta"
+                            >
+                              <WhatsappIcon size={32} round />
+                            </WhatsappShareButton>
+
+                            <TumblrShareButton
+                              url={process.env.REACT_APP_BASE_URL + '/view/' + location.id}
+                              subject={location.title}
+                              quote={
+                                'Paikkatietokanta.net - ' +
+                                location.title +
+                                  '\n \n' +
+                                  location.description
+                              }
+                              hashtag="#paikkatietokanta"
+                            >
+                              <TumblrIcon size={32} round />
+                            </TumblrShareButton>
+
+                            <LinkedinShareButton
+                              url={process.env.REACT_APP_BASE_URL + '/view/' + location.id}
+                              subject={location.title}
+                              quote={
+                                'Paikkatietokanta.net - ' +
+                                location.title +
+                                  '\n \n' +
+                                  location.description
+                              }
+                              hashtag="#paikkatietokanta"
+                            >
+                              <LinkedinIcon size={32} round />
+                            </LinkedinShareButton>
+
+                            <RedditShareButton
+                              url={process.env.REACT_APP_BASE_URL + '/view/' + location.id}
+                              subject={location.title}
+                              quote={
+                                'Paikkatietokanta.net - ' +
+                                location.title +
+                                  '\n \n' +
+                                  location.description
+                              }
+                              hashtag="#paikkatietokanta"
+                            >
+                              <RedditIcon size={32} round />
+                            </RedditShareButton>
+
+                            <EmailShareButton
+                              url={process.env.REACT_APP_BASE_URL + '/view/' + location.id}
+                              subject={location.title}
+                              quote={
+                                'Paikkatietokanta.net - ' +
+                                location.title +
+                                  '\n \n' +
+                                  location.description
+                              }
+                              hashtag="#paikkatietokanta"
+                            >
+                              <EmailIcon size={32} round />
+                            </EmailShareButton>
+                          </Modal.Body>
+                        </Modal>
+
+  </Tab>
+
+
+<Tab eventKey="Kuvat" title="Kuvat">
+
+{location.featuredImage
+                    ? <div id="featuredImage">
+                      <img src={location.featuredImage} alt={location.title} />
+                      </div>
+                    : ''}
+
+{location.flickrTag
+                        ? <div className="flickr-lightbox-container">
+                            <div className="flickr-lightbox">
+                              <FlickrLightbox
+                                api_key={process.env.REACT_APP_FLICKR_API}
+                                searchTerm={location.flickrTag}
+                                user_id={process.env.REACT_APP_FLICKR_USERNAME}
+                              />
+                            </div>
+                          </div>
+                        : ''}
+
+</Tab>
+
+</Tabs>
+
+
+     
                   </div>
                   <div className="metadata flex">
                     <Link

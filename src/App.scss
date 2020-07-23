@@ -107,7 +107,11 @@ $favorie: crimson;
 
 * {
   transition: none !important;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important; 
+  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important; 
+  outline: none !important;
 }
+
 
 /** General **/
 .locationView-page .details::-webkit-scrollbar,
@@ -268,6 +272,9 @@ main {
   background: $neutral1;
   margin-top: 20px;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .copyToClipBoard:hover {
@@ -277,8 +284,8 @@ main {
 
 .copyToClipBoard .material-icons {
   font-size: .85rem;
-  top: 2px;
-  margin-right: 2px;
+  top: 0px;
+  margin-right: 5px;
   position: relative;
 }
 #ShareAndCopy { margin:23px 0px 25px 0px;}
@@ -829,6 +836,7 @@ body.locations-loaded .locationGrid-page #filter {
   background: $secondary;
   color: $neutral1;
   text-decoration: none;
+  border-color:$secondary;
 }
 
 .favorite {
@@ -1031,7 +1039,7 @@ a:visited.link-to-flickr {
 }
 
 .flickr-lightbox {
-  margin: 25px 0px 10px 0px;
+  margin: 25px 0px 0px 0px;
   min-height: 45px;
   position: relative;
   z-index: 1;
@@ -1043,8 +1051,6 @@ a:visited.link-to-flickr {
   background: $neutral5;
   position: relative;
 }
-
-
 
 
 /** Map-view **/
@@ -1063,7 +1069,7 @@ a:visited.link-to-flickr {
 
 .leaflet-popup-content-wrapper {
   width: 290px;
-  max-height: 300px;
+  // max-height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -1074,7 +1080,7 @@ a:visited.link-to-flickr {
 }
 
 .leaflet-popup-content .player-wrapper {
-  margin-bottom: 60px;
+  margin-bottom: 70px;
 }
 
 .leaflet-popup-content .flickr-lightbox img {
@@ -1083,26 +1089,26 @@ a:visited.link-to-flickr {
 }
 
 .leaflet-popup-content h5 {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .leaflet-popup-content .metadata {
   font-size: 0.9em;
   line-height: 1em;
-  background: $neutral3;
+
   margin: 10px 0px;
-  border: 1px solid $neutral2;
 }
 
 .leaflet-popup-content .map-innercontainer {
-  max-height: 210px;
+  height: 280px;
   overflow-x: auto;
+  margin:20px 0;
 }
 
 .leaflet-popup-content .description {
   font-size: 1.05em !important;
   line-height:1.45em;
-  margin-bottom: -10px;
+  margin-bottom: -5px;
 }
 
 .leaflet-popup-content .meta {
@@ -1181,6 +1187,42 @@ li.search-control-info-list-item:not(.active):focus {
 li.search-control-info-list-item {
   padding: 10px 15px 10px 15px; }
 
+  .nav-tabs { border-bottom:0px; margin-bottom:0px; position: sticky; top:0; z-index:9999;
+  background:$neutral1 !important; padding-bottom:15px; margin-top:-1px;   align-items: center; justify-content: center;
+}
+  
+.nav-tabs .nav-link.active:hover,
+  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    background:$secondary;
+    color:$neutral1 !important;
+    border-color:$secondary;
+  }
+
+  
+  .leaflet-popup-content .metadata .open-page.button { border:1px solid $neutral6; border-radius:5px; margin-bottom:5px;}
+
+  .nav-tabs .nav-link {
+    background:$neutral1;
+    color:$base !important;
+    border:1px solid $neutral6;
+    width:77px;
+    text-align: center;
+    padding:10px !important;
+  }
+
+  .nav-tabs .nav-link:hover { border-color:$neutral4; background:$neutral4;}
+
+
+  .tab-content>.tab-pane img { width:auto; min-width:100%; max-width:100%;}
+
+.tab-content>.tab-pane .coordinates { width: 280px; line-height: 2.5rem; text-align:center;}
+.tab-content>.tab-pane .get-directions a.btn.btn-info.btn-sm { width:100%; padding:10px; margin:10px 0 15px 0;}
+
+.tab-content>.tab-pane #ShareAndCopy { margin-top:20px; margin-bottom:0px;}
+.tab-content>.tab-pane #ShareAndCopy span.material-icons { margin-left:30px;}
+div#noanim-tab-example-tabpane-Tiedot { padding-top:0px;}
+
+.tab-content>.tab-pane .date div { width:100px; text-align: center;}
 
 /** Location Grid **/
 .locationGrid-page {
@@ -1855,7 +1897,7 @@ nav ul li a.nav-link:visited {
 }
 
 @media screen and (max-width: 766px) {
-  #page .spinner-border { margin:50px 0px 50px 0px; position: relative !important; top:0 !important;}
+
   .locationView-page .styles_simpleReactWeatherCity__zyECF {
     left: -10px;
     font-size: .7rem !important;
