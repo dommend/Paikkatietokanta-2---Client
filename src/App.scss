@@ -2120,7 +2120,10 @@ nav ul li a.nav-link:visited {
   }
 
   #page .spinner-border {
-    left: 48% !important;
+    left: 50% !important;
+    width:30px;
+    height:30px;
+    margin-left:-15px;
   }
 
   #location-list .spinner-border {
