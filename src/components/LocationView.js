@@ -252,9 +252,7 @@ const Location = props => {
                     <div className="time-and-place">
                       <div className="coordinates">
                         <span className="material-icons">place</span>
-                        {currentLocation.coordinateN}
-                        ,
-                        {currentLocation.coordinateE}
+                        {currentLocation.coordinateN},  {currentLocation.coordinateE}
                       </div>
                       <div className="date">
                         <div>
