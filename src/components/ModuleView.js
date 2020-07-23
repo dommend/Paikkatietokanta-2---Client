@@ -89,14 +89,15 @@ const LocationsList = () => {
   const findByTitle = () => {
     LocationDataService.findByTitle (searchTitle)
       .then (response => {
-        if (searchTitle.toLowerCase === "lets have a break dance party" || 
-        "lets have a breakdance party" || "let's have a break dance party" || "let's have a breakdance party") {
+        if (searchTitle.toLowerCase() === "lets have a break dance party" || 
+        searchTitle.toLowerCase() === "let's have a break dance party" ||
+        searchTitle.toLowerCase() === "lets have a breakdance party" || 
+        searchTitle.toLowerCase() === "let's have a breakdance party") {
           document.body.classList.add("breakdance");
           toast ('Here it comes! Prepare yourselves!');
           setTimeout(function(){
             document.getElementById("breakdance").click(); 
         }, 6000);
-
         }
         setLocations (response.data);
         console.log (response.data);

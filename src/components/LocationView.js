@@ -24,7 +24,6 @@ import {Modal, Button} from 'react-bootstrap'
 import {
   EmailShareButton,
   FacebookShareButton,
-  FacebookMessengerShareButton,
   LinkedinShareButton,
   RedditShareButton,
   TumblrShareButton,
@@ -35,24 +34,11 @@ import {
 import {
   EmailIcon,
   FacebookIcon,
-  FacebookMessengerIcon,
-  InstapaperIcon,
-  LineIcon,
   LinkedinIcon,
-  LivejournalIcon,
-  MailruIcon,
-  OKIcon,
-  PinterestIcon,
-  PocketIcon,
   RedditIcon,
-  TelegramIcon,
   TumblrIcon,
   TwitterIcon,
-  ViberIcon,
-  VKIcon,
-  WeiboIcon,
   WhatsappIcon,
-  WorkplaceIcon
 } from "react-share";
 
 
