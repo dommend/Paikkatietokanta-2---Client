@@ -12,6 +12,7 @@ import ListView from "./components/ListView";
 import InfoPage from "./components/InfoPage";
 import LocationView from "./components/LocationView";
 import NotFoundPage from './components/NotFoundPage';
+import Spinner from 'react-bootstrap/Spinner'
 
 function App() {
   return (
@@ -65,7 +66,7 @@ function App() {
           <Route exact path="/module" component={ModuleView} />
           <Route exact path="/map" component={MapView} />
           <Route exact path="/grid" component={GridView} />
-          <Route exact path="/list" component={ListView} />>
+          <Route exact path="/list" component={ListView} />
           <Route exact path="/info" component={InfoPage} />
           <Route exact path="/view/:id" component={LocationView} />
           { /* 404-åage */}
@@ -74,7 +75,8 @@ function App() {
       </main>
       <Preloader>
         <Placeholder>
-          <pre>{`
+        <Spinner animation="border" variant="primary" /> 
+          {/* <pre>{`
                      ₕₑₗₗₒ    ±
                           [ºuº]
                          └|___|┐
@@ -84,7 +86,8 @@ function App() {
    Please wait... 
    Mr. Happy Robot is currently building the site...
 
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`}</pre>
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`}</pre> */}
+
         </Placeholder>
       </Preloader>
 
