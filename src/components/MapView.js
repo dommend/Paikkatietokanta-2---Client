@@ -479,14 +479,6 @@ const LocationsList = () => {
                         </Modal>
                       </Tab>
                       <Tab eventKey="Kuvat" title="Kuvat">
-                       {location.featuredImage
-                          ? <div id="featuredImage">
-                              <img
-                                src={location.featuredImage}
-                                alt={location.title}
-                              />
-                            </div>
-                          : ''}
                         {location.flickrTag
                           ? <div className="flickr-lightbox-container">
                               <div className="flickr-lightbox">
