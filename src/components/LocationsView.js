@@ -590,7 +590,10 @@ const LocationsList = () => {
                     </small>
                   </p>
                   <MainScreen />
-                  <Button id="breakdance" variant="primary" onClick={() => setShow(true)}>
+                </div>
+              </div>
+            </div>}
+            <Button id="breakdance" variant="primary" onClick={() => setShow(true)}>
                     Let's have a break dance party!
                   </Button>
 
@@ -615,9 +618,6 @@ const LocationsList = () => {
                       </div>
                     </Modal.Body>
                   </Modal>
-                </div>
-              </div>
-            </div>}
       </div>
     </div>
   );

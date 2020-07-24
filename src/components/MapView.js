@@ -23,7 +23,6 @@ import Moment from 'react-moment';
 import {Modal, Button} from 'react-bootstrap';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ModalImage from 'react-modal-image';
 
 import {
   EmailShareButton,
