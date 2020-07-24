@@ -22,7 +22,13 @@ import SEO from '@americanexpress/react-seo';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Modal, Button} from 'react-bootstrap';
-import Spinner from 'react-bootstrap/Spinner'
+import Spinner from 'react-bootstrap/Spinner';
+import preval from 'preval.macro'
+import Moment from 'react-moment';
+import TimeAgo from 'react-timeago'
+import CountUp from 'react-countup';
+
+
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -58,7 +64,7 @@ const LocationsList = () => {
   const [currentIndex, setCurrentIndex] = useState ();
   const [searchTitle, setSearchTitle] = useState ('');
   const [isLoading, setLoading] = useState (true);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState (false);
 
 
   useEffect (() => {
@@ -72,9 +78,9 @@ const LocationsList = () => {
 
   const retrieveLocations = () => {
     LocationDataService.getAll ()
-      .then (response => {      
+      .then (response => {
         setLocations (response.data);
-        setLoading(false);
+        setLoading (false);
         console.log (response.data);
       })
       .catch (e => {
@@ -90,15 +96,17 @@ const LocationsList = () => {
   const findByTitle = () => {
     LocationDataService.findByTitle (searchTitle)
       .then (response => {
-        if (searchTitle.toLowerCase() === "lets have a break dance party" || 
-        searchTitle.toLowerCase() === "let's have a break dance party" ||
-        searchTitle.toLowerCase() === "lets have a breakdance party" || 
-        searchTitle.toLowerCase() === "let's have a breakdance party") {
-          document.body.classList.add("breakdance");
+        if (
+          searchTitle.toLowerCase () === 'lets have a break dance party' ||
+          searchTitle.toLowerCase () === "let's have a break dance party" ||
+          searchTitle.toLowerCase () === 'lets have a breakdance party' ||
+          searchTitle.toLowerCase () === "let's have a breakdance party"
+        ) {
+          document.body.classList.add ('breakdance');
           toast ('Here it comes! Prepare yourselves!');
-          setTimeout(function(){
-            document.getElementById("breakdance").click(); 
-        }, 6000);
+          setTimeout (function () {
+            document.getElementById ('breakdance').click ();
+          }, 6000);
         }
         setLocations (response.data);
         console.log (response.data);
@@ -225,11 +233,14 @@ const LocationsList = () => {
   };
 
   const {BaseLayer} = LayersControl;
+  const dateTimeStamp = preval`module.exports = new Date().toLocaleString();`
+  // const lastEntry = JSON.stringify(locations.slice(-1)[0]);
+  // const lastEntry = JSON.stringify(locations[0, 0]);
 
-
+  const lastEntry = locations.map(entity => entity.createdAt)[0, 0];
 
   return (
-    <div id="location-list" className="frontpage">      
+    <div id="location-list" className="frontpage">
       <SEO
         title="Paikkalista - Paikkatietokanta"
         description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen päämäärä kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
@@ -296,42 +307,43 @@ const LocationsList = () => {
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        
-        {isLoading ? <Spinner animation="border" variant="primary" /> : 
-        <ul id="places" className="list-group">
-          {locations &&
-            locations.map ((location, index) => (
-              <LazyLoad
-                overflow
-                once={location.once}
-                placeholder={<li className="list-group-item">...</li>}
-                scroll={true}
-                key={index}
-                throttle={30}
-                height={30}
-              >
-                <li
-                  key={index}
-                  className={
-                    'list-group-item ' +
-                      (index === currentIndex ? 'active' : '')
-                  }
-                  onClick={() => setActiveLocation (location, index)}
-                >
-                  {location.markedImportant
-                    ? <div className="float-right">
-                        <Icon className="favorite">favorite</Icon>
+
+        {isLoading
+          ? <Spinner animation="border" variant="primary" />
+          : <ul id="places" className="list-group">
+              {locations &&
+                locations.map ((location, index) => (
+                  <LazyLoad
+                    overflow
+                    once={location.once}
+                    placeholder={<li className="list-group-item">...</li>}
+                    scroll={true}
+                    key={index}
+                    throttle={30}
+                    height={30}
+                  >
+                    <li
+                      key={index}
+                      className={
+                        'list-group-item ' +
+                          (index === currentIndex ? 'active' : '')
+                      }
+                      onClick={() => setActiveLocation (location, index)}
+                    >
+                      {location.markedImportant
+                        ? <div className="float-right">
+                            <Icon className="favorite">favorite</Icon>
+                          </div>
+                        : ''}
+                      {location.title} <br />
+                      <div className="coordinates">
+                        <Icon className="material-icons">place</Icon>
+                        {[location.coordinateN + ', ' + location.coordinateE]}
                       </div>
-                    : ''}
-                  {location.title} <br />
-                  <div className="coordinates">
-                    <Icon className="material-icons">place</Icon>
-                    {[location.coordinateN + ', ' + location.coordinateE]}
-                  </div>
-                </li>
-              </LazyLoad>
-            ))}
-        </ul>}
+                    </li>
+                  </LazyLoad>
+                ))}
+            </ul>}
       </aside>
       <div id="place">
         {currentLocation
@@ -391,100 +403,169 @@ const LocationsList = () => {
                           </a>
                         : ''}
 
-<div id="ShareAndCopy" className="flex">  
-                          <button
-                            title="Kopioi osoite leikepöydälle"
-                            className="copyToClipBoard"
-                            onClick={() =>
-                              copyToClipBoard (
-                                process.env.REACT_APP_BASE_URL +
-                                  '/view/' +
-                                  currentLocation.id
-                              )}
+                      <div id="ShareAndCopy" className="flex">
+                        <button
+                          title="Kopioi osoite leikepöydälle"
+                          className="copyToClipBoard"
+                          onClick={() =>
+                            copyToClipBoard (
+                              process.env.REACT_APP_BASE_URL +
+                                '/view/' +
+                                currentLocation.id
+                            )}
+                        >
+                          <span className="material-icons">content_copy</span>
+                          {' '}
+                          {process.env.REACT_APP_BASE_URL +
+                            '/view/' +
+                            currentLocation.id}
+                        </button>
+                        <Button
+                          className="shareButton"
+                          variant="primary"
+                          onClick={() => setShow (true)}
+                        >
+                          Jaa
+                        </Button>
+                      </div>
+
+                      <Modal
+                        show={show}
+                        onHide={() => setShow (false)}
+                        size="sm"
+                        className="shareButtons"
+                        aria-labelledby="example-custom-modal-styling-title"
+                        centered
+                      >
+
+                        <Modal.Body>
+                          <FacebookShareButton
+                            url={
+                              process.env.REACT_APP_BASE_URL +
+                                '/view/' +
+                                currentLocation.id
+                            }
+                            subject={currentLocation.title}
+                            quote={
+                              'Paikkatietokanta.net - ' +
+                                currentLocation.title +
+                                '\n \n' +
+                                currentLocation.description
+                            }
+                            hashtag="#paikkatietokanta"
                           >
-                            <span className="material-icons">content_copy</span>
-                            {' '}
-                            {process.env.REACT_APP_BASE_URL +
-                              '/view/' +
-                              currentLocation.id}
-                          </button>
-                          <Button className="shareButton" variant="primary" onClick={() => setShow(true)}>Jaa</Button>
-                          </div>
+                            <FacebookIcon size={32} round />
+                          </FacebookShareButton>
 
-                          <Modal
-                            show={show}
-                            onHide={() => setShow(false)}
-                            size="sm"
-                            className="shareButtons"
-                            aria-labelledby="example-custom-modal-styling-title"
-                            centered
+                          <TwitterShareButton
+                            url={
+                              process.env.REACT_APP_BASE_URL +
+                                '/view/' +
+                                currentLocation.id
+                            }
+                            subject={currentLocation.title}
+                            quote={
+                              'Paikkatietokanta.net - ' +
+                                currentLocation.title +
+                                '\n \n' +
+                                currentLocation.description
+                            }
+                            hashtag="#paikkatietokanta"
                           >
+                            <TwitterIcon size={32} round />
+                          </TwitterShareButton>
 
-                            <Modal.Body>
-                              <FacebookShareButton
-                                url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
-                                subject={currentLocation.title}
-                                quote={'Paikkatietokanta.net - ' + currentLocation.title + '\n \n' + currentLocation.description}
-                                hashtag="#paikkatietokanta"
-                              >
-                                <FacebookIcon size={32} round />
-                              </FacebookShareButton>
+                          <WhatsappShareButton
+                            url={
+                              process.env.REACT_APP_BASE_URL +
+                                '/view/' +
+                                currentLocation.id
+                            }
+                            subject={currentLocation.title}
+                            quote={
+                              'Paikkatietokanta.net - ' +
+                                currentLocation.title +
+                                '\n \n' +
+                                currentLocation.description
+                            }
+                            hashtag="#paikkatietokanta"
+                          >
+                            <WhatsappIcon size={32} round />
+                          </WhatsappShareButton>
 
-                              <TwitterShareButton
-                                url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
-                                subject={currentLocation.title}
-                                quote={'Paikkatietokanta.net - ' + currentLocation.title + '\n \n' + currentLocation.description}
-                                hashtag="#paikkatietokanta"
-                              >
-                                <TwitterIcon size={32} round />
-                              </TwitterShareButton>
+                          <TumblrShareButton
+                            url={
+                              process.env.REACT_APP_BASE_URL +
+                                '/view/' +
+                                currentLocation.id
+                            }
+                            subject={currentLocation.title}
+                            quote={
+                              'Paikkatietokanta.net - ' +
+                                currentLocation.title +
+                                '\n \n' +
+                                currentLocation.description
+                            }
+                            hashtag="#paikkatietokanta"
+                          >
+                            <TumblrIcon size={32} round />
+                          </TumblrShareButton>
 
-                              <WhatsappShareButton
-                                url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
-                                subject={currentLocation.title}
-                                quote={'Paikkatietokanta.net - ' + currentLocation.title + '\n \n' + currentLocation.description}
-                                hashtag="#paikkatietokanta"
-                              >
-                                <WhatsappIcon size={32} round />
-                              </WhatsappShareButton>
+                          <LinkedinShareButton
+                            url={
+                              process.env.REACT_APP_BASE_URL +
+                                '/view/' +
+                                currentLocation.id
+                            }
+                            subject={currentLocation.title}
+                            quote={
+                              'Paikkatietokanta.net - ' +
+                                currentLocation.title +
+                                '\n \n' +
+                                currentLocation.description
+                            }
+                            hashtag="#paikkatietokanta"
+                          >
+                            <LinkedinIcon size={32} round />
+                          </LinkedinShareButton>
 
-                              <TumblrShareButton
-                                url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
-                                subject={currentLocation.title}
-                                quote={'Paikkatietokanta.net - ' + currentLocation.title + '\n \n' + currentLocation.description}
-                                hashtag="#paikkatietokanta"
-                              >
-                                <TumblrIcon size={32} round />
-                              </TumblrShareButton>
+                          <RedditShareButton
+                            url={
+                              process.env.REACT_APP_BASE_URL +
+                                '/view/' +
+                                currentLocation.id
+                            }
+                            subject={currentLocation.title}
+                            quote={
+                              'Paikkatietokanta.net - ' +
+                                currentLocation.title +
+                                '\n \n' +
+                                currentLocation.description
+                            }
+                            hashtag="#paikkatietokanta"
+                          >
+                            <RedditIcon size={32} round />
+                          </RedditShareButton>
 
-                              <LinkedinShareButton
-                                url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
-                                subject={currentLocation.title}
-                                quote={'Paikkatietokanta.net - ' + currentLocation.title + '\n \n' + currentLocation.description}
-                                hashtag="#paikkatietokanta"
-                              >
-                                <LinkedinIcon size={32} round />
-                              </LinkedinShareButton>
-
-                              <RedditShareButton
-                                url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
-                                subject={currentLocation.title}
-                                quote={'Paikkatietokanta.net - ' + currentLocation.title + '\n \n' + currentLocation.description}
-                                hashtag="#paikkatietokanta"
-                              >
-                                <RedditIcon size={32} round />
-                              </RedditShareButton>
-
-                              <EmailShareButton
-                                url={process.env.REACT_APP_BASE_URL + '/view/' + currentLocation.id}
-                                subject={currentLocation.title}
-                                quote={'Paikkatietokanta.net - ' + currentLocation.title + '\n \n' + currentLocation.description}
-                                hashtag="#paikkatietokanta"
-                              >
-                                <EmailIcon size={32} round />
-                              </EmailShareButton>
-                            </Modal.Body>
-                          </Modal>
+                          <EmailShareButton
+                            url={
+                              process.env.REACT_APP_BASE_URL +
+                                '/view/' +
+                                currentLocation.id
+                            }
+                            subject={currentLocation.title}
+                            quote={
+                              'Paikkatietokanta.net - ' +
+                                currentLocation.title +
+                                '\n \n' +
+                                currentLocation.description
+                            }
+                            hashtag="#paikkatietokanta"
+                          >
+                            <EmailIcon size={32} round />
+                          </EmailShareButton>
+                        </Modal.Body>
+                      </Modal>
 
                       {currentLocation.flickrTag
                         ? <div className="flickr-lightbox-container">
@@ -542,11 +623,21 @@ const LocationsList = () => {
                   </BaseLayer>
 
                   <BaseLayer name="Korkealaatuinen satelliittinäkymä">
-                    <TileLayer url={"https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=" + process.env.REACT_APP_MAPTILER_API} />
+                    <TileLayer
+                      url={
+                        'https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=' +
+                          process.env.REACT_APP_MAPTILER_API
+                      }
+                    />
                   </BaseLayer>
 
                   <BaseLayer name="Matalalaatuinen satelliittinäkymä">
-                    <TileLayer url={"https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=" + process.env.REACT_APP_MAPTILER_API} />
+                    <TileLayer
+                      url={
+                        'https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=' +
+                          process.env.REACT_APP_MAPTILER_API
+                      }
+                    />
                   </BaseLayer>
                 </LayersControl>
 
@@ -579,45 +670,72 @@ const LocationsList = () => {
             </div>
           : <div className="innercontainer">
               <div id="welcome">
-                <div>
-                <video width="320" height="240" autoPlay loop muted >
-                <source src={require ('../resources/happyrobot.mp4')} type="video/mp4" />
-                Your browser does not support the video tag.
-                </video>
+                
+                <div className="welcomeinner">
+
+                <MainScreen />
+
+                  <video width="320" height="240" autoPlay loop muted>
+                    <source
+                      src={require ('../resources/happyrobot.mp4')}
+                      type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+
+                  <p className="stats">
+                  Paikkatietokanta contains <strong><CountUp duration={3} end={locations.length} /></strong> locations. <br />
+                  The last entry was <strong><Moment format="DD.MM.YYYY @ H:mm:ss">{lastEntry}</Moment></strong>.
+                  </p>
+
                   <p>
                     <small className="even-smaller">
-                      jani@penttinen.fi
+                      <p>jani@penttinen.fi</p>
+
+                      <p>Build Date: <Moment format="DD.MM.YYYY @ H:mm:ss">
+                      {preval`module.exports = new Date().toLocaleString();`}
+                      </Moment>. <br />
+
+                      The build version of the page was built <TimeAgo date={preval`module.exports = new Date().toLocaleString();`} />.</p>
                     </small>
                   </p>
-                  <MainScreen />
+                  
                 </div>
               </div>
             </div>}
-            <Button id="breakdance" variant="primary" onClick={() => setShow(true)}>
-                    Let's have a break dance party!
-                  </Button>
+        <Button
+          id="breakdance"
+          variant="primary"
+          onClick={() => setShow (true)}
+        >
+          Let's have a break dance party!
+        </Button>
 
-                  <Modal
-                    show={show}
-                    onHide={() => setShow(false)}
-                    size="lg"
-                    dialogClassName="modal-90w"
-                    aria-labelledby="example-custom-modal-styling-title"
-                    centered
-                  >
+        <Modal
+          show={show}
+          onHide={() => setShow (false)}
+          size="lg"
+          dialogClassName="modal-90w"
+          aria-labelledby="example-custom-modal-styling-title"
+          centered
+        >
 
-                    <Modal.Body>
-                    <div className="player-wrapper" style={{margin: '-20px 0px 20px 0px'}}>
-                    <ReactPlayer
-                      className="react-player"
-                      width="100%"
-                      height="100%"
-                      url="https://www.youtube.com/watch?v=_stUY1h_qmM"
-                      playing={true}    
-                    />;
-                      </div>
-                    </Modal.Body>
-                  </Modal>
+          <Modal.Body>
+            <div
+              className="player-wrapper"
+              style={{margin: '-20px 0px 20px 0px'}}
+            >
+              <ReactPlayer
+                className="react-player"
+                width="100%"
+                height="100%"
+                url="https://www.youtube.com/watch?v=_stUY1h_qmM"
+                playing={true}
+              />
+              ;
+            </div>
+          </Modal.Body>
+        </Modal>
       </div>
     </div>
   );
