@@ -58,6 +58,7 @@ const LocationsList = () => {
   const [searchTitle, setSearchTitle] = useState ('');
   const [isLoading, setLoading] = useState (true);
   const [show, setShow] = useState (false);
+  const [showBreakdance, setShowBreakdance] = useState (false);
 
   useEffect (() => {
     retrieveLocations ();
@@ -701,8 +702,8 @@ const LocationsList = () => {
         </Button>
 
         <Modal
-          show={show}
-          onHide={() => setShow (false)}
+          show={showBreakdance}
+          onHide={() => setShowBreakdance (false)}
           size="lg"
           dialogClassName="modal-90w"
           aria-labelledby="example-custom-modal-styling-title"

@@ -65,6 +65,7 @@ const LocationsList = () => {
   const [searchTitle, setSearchTitle] = useState ('');
   const [isLoading, setLoading] = useState (true);
   const [show, setShow] = useState (false);
+  const [showBreakdance, setShowBreakdance] = useState (false);
 
 
   useEffect (() => {
@@ -706,14 +707,14 @@ const LocationsList = () => {
         <Button
           id="breakdance"
           variant="primary"
-          onClick={() => setShow (true)}
+          onClick={() => setShowBreakdance (true)}
         >
           Let's have a break dance party!
         </Button>
 
         <Modal
-          show={show}
-          onHide={() => setShow (false)}
+          show={showBreakdance}
+          onHide={() => setShowBreakdance (false)}
           size="lg"
           dialogClassName="modal-90w"
           aria-labelledby="example-custom-modal-styling-title"
