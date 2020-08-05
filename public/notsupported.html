@@ -12,6 +12,8 @@
     <style type="text/css">
         html {
             overflow: hidden;
+            margin: 0px;
+            padding: 0px;
         }
 
         body {
@@ -164,6 +166,7 @@
             bottom: 0px;
             height: 29px;
             padding: 2px;
+            
         }
 
         #desktop-icons {
@@ -254,7 +257,7 @@
         body.startup #loader {
             position: absolute;
             background: #000;
-            width: 100%;
+            width: 100vw;
             height: 100vh;
             background-image: url('img/startup.gif');
             background-size: contain;
@@ -267,7 +270,7 @@
         body.error #bluescreen {
             position: absolute;
             background: #000;
-            width: 100%;
+            width: 100vw;
             height: 100vh;
             background-image: url('img/bluescreen.png');
             background-size: contain;
@@ -275,6 +278,16 @@
             background-repeat: no-repeat;
             z-index: 9;
         }
+
+
+        @media screen and (max-width: 800px) {
+            #notsupported { left:5%; width:auto;}
+         }
+ 
+
+         @media screen and (max-width: 500px) {
+            #notsupported { left:1%; top:1%;}
+         }
 
 
     </style>
@@ -290,7 +303,7 @@
         document.body.classList.add('startup');
         setTimeout(function () {
             document.body.classList.remove('startup');
-        }, 1000);
+        }, 2000);
 
         
 
@@ -305,7 +318,7 @@
         }, 2000);
         setTimeout(function () {
             document.body.classList.remove('startup');
-        }, 4000);    
+        }, 3500);    
     }
 
         var render = function (template, node) {
@@ -390,7 +403,7 @@
         <button>
             <img src="img/trashbin.png" width="40px" alt="Trashbin">
         </button>
-        <span class="icon-label">Recycle Bin</span>
+        <span class="icon-label">Rycycle Bin</span>
 
         <button>
             <img src="img/folder.png" width="40px" alt="React">
