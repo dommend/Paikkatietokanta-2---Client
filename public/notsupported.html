@@ -29,11 +29,12 @@
             background: #C0C0C0;
             border-width: 1px;
             border-color: #FFFFFF #808080 #808080 #FFFFFF;
-            margin: 50px auto 50px auto;
             font-size: 15px;
             text-align: center;
             z-index:1;
-            position: relative;
+            position: absolute;
+            left:30%;
+            top:10%;
         }
 
         .clear {
@@ -87,6 +88,7 @@
             color: #FFF;
             border: 1px solid #C0C0C0;
             font-size: 16px;
+            cursor: move;
         }
 
 
@@ -247,9 +249,7 @@
             margin-right: 4px;
         }
 
-        body.startup {
-            background: blue !important;
-        }
+
 
         body.startup #loader {
             position: absolute;
@@ -262,19 +262,51 @@
             background-repeat: no-repeat;
             z-index: 9;
         }
+
+        
+        body.error #bluescreen {
+            position: absolute;
+            background: #000;
+            width: 100%;
+            height: 100vh;
+            background-image: url('img/bluescreen.png');
+            background-size: contain;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            z-index: 9;
+        }
+
+
     </style>
 </head>
 
 <body>
 
     <div id="loader"></div>
+    <div id="bluescreen"></div>
 
 
     <script>
         document.body.classList.add('startup');
         setTimeout(function () {
             document.body.classList.remove('startup');
+        }, 100);
+
+        
+
+        function BSoD() {
+         var target = event.target || event.srcElement;
+         document.body.classList.add('error');
+         setTimeout(function () {
+            document.body.classList.remove('error');
         }, 2000);
+        setTimeout(function () {
+            document.body.classList.add('startup');
+        }, 2000);
+        setTimeout(function () {
+            document.body.classList.remove('startup');
+        }, 3000);    
+    }
 
         var render = function (template, node) {
             if (!node) return;
@@ -294,7 +326,7 @@
         window.setInterval(tick, 1000);
     </script>
 
-    <div id="notsupported">
+    <div id="notsupported" >
 
         <div class="title">
             <p class="title">No support 95</p>
@@ -369,7 +401,7 @@
 
     <div id="startmenu">
 
-        <button class="button start">
+        <button class="button start"  onclick="BSoD()">
             <div class="menu-container"><img src="img/start.jpg" alt="Start" />
                 <div class="menu-label">Start</div>
             </div>
@@ -388,6 +420,52 @@
         </button>
 
     </div>
+
+    <script>
+  //Make the DIV element draggagle:
+dragElement(document.getElementById("notsupported"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+    </script>
 
     <body>
 
