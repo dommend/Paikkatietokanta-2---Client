@@ -2,51 +2,393 @@
 <html lang="fi">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />  
-  <meta name="robots" content="noindex">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  <title>Paikkatietokanta</title>
+    <title>Paikkatietokanta</title>
 
-  <style type="text/css">
-  #notsupported {   font-family:'Roboto', sans-serif; width:500px; 
-  border:1px solid #ddd; border-radius:10px;
-    margin: 50px auto 50px auto;  font-size:1rem; padding:50px; text-align:center; }
-    h1 {font-size:4rem; font-weight: bold; line-Height:4rem; margin-top:0px; }
-    ul { margin:35px 0px 35px 0px; padding:0px;}
-    ul li { margin:10px 0px 10px 0px; line-height: 1.5rem; font-size:.85em; list-style:none; text-align:left;}    
-    small { font-size:.7rem; color:#999;}
-  </style>
+    <style type="text/css">
+        html {
+            overflow: hidden;
+        }
+
+        body {
+            background: #008080;
+            margin: 0px;
+            padding: 0px;
+            overflow: auto;
+        }
+
+
+        #notsupported {
+            font-family: 'MS Sans Serif', 'Roboto', sans-serif;
+            outline: 1px solid #000000;
+            width: 500px;
+            background: #C0C0C0;
+            border-width: 1px;
+            border-color: #FFFFFF #808080 #808080 #FFFFFF;
+            margin: 50px auto 50px auto;
+            font-size: 15px;
+            text-align: center;
+            z-index:1;
+            position: relative;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 40px;
+            margin-top: 20px;
+        }
+
+        ul {
+            margin: 35px 20px 35px 20px;
+            padding: 0px;
+        }
+
+        ul li {
+            margin: 20px 0px 20px 0px;
+            line-height: 1.5rem;
+            font-size: .85em;
+            list-style: none;
+            text-align: left;
+        }
+
+        ul li img {
+            float: left;
+            outline: 1px solid #000000;
+            background: #C0C0C0;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #FFFFFF #808080 #808080 #FFFFFF;
+            padding: 4px;
+            margin: 3px 15px 0px 10px;
+            image-rendering: pixelated;
+        }
+
+
+        ul li img:hover {
+            outline: 1px solid #000000;
+            background: #C0C0C0;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #808080 #FFFFFF #FFFFFF #808080;
+            cursor: pointer;
+        }
+
+        div.title {
+            background: #000080;
+            color: #FFF;
+            border: 1px solid #C0C0C0;
+            font-size: 16px;
+        }
+
+
+        .title button {
+            margin: 2px 2px 2px 0;
+            float: right;
+            width: 17px;
+            height: 18.5px;
+            background: #C0C0C0;
+            border-width: 1px;
+            border-color: #FFFFFF #808080 #808080 #FFFFFF;
+            padding: 0;
+            font-size: 9px;
+            font-weight: bold;
+            font-family: Tahoma;
+            text-align: center;
+        }
+
+        .button {
+            font-family: "MS Sans Serif";
+            font-size: 12px;
+            outline: 1px solid #000000;
+            background: #C0C0C0;
+            border-width: 1px;
+            border-style: solid;
+            margin-bottom: 30px;
+            padding: 10px;
+            border-color: #FFFFFF #808080 #808080;
+        }
+
+        .button:hover,
+        .button:focus {
+            outline: 1px solid #000000;
+            background: #C0C0C0;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #808080 #FFFFFF #FFFFFF #808080;
+            cursor: pointer;
+        }
+
+        p.title {
+            margin: 5px 0 0 5px;
+            float: left;
+            font-family: Tahoma;
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+
+        small {
+            display: block;
+            font-size: 12px;
+            line-height: 19px;
+            color: #333;
+            padding-bottom: 25px;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        #startmenu {
+            font-family: 'MS Sans Serif', 'Roboto', sans-serif;
+            outline: 1px solid #fff;
+            background: #C0C0C0;
+            border-width: 1px;
+            border-top-width: 5px;
+            border-bottom-width: 0px;
+            border-color: #dddddd #FFFFFF #FFFFFF #808080;
+            font-size: 15px;
+            position: absolute;
+            width: 100%;
+            bottom: 0px;
+            height: 29px;
+            padding: 2px;
+        }
+
+        #desktop-icons {
+            position: absolute;
+            top: 10px;
+            left: 5px;
+            width: 80px;
+            text-align: center;
+        }
+
+        #desktop-icons .icon-label {
+            color: #fff;
+            font-family: 'MS Sans Serif', 'Roboto', sans-serif;
+            display: block;
+            font-size: 12px;
+            margin-top: 3px;
+            margin-bottom: 20px;
+        }
+
+        #desktop-icons button {
+            background: transparent;
+            outline: 0px;
+            border: 0px;
+        }
+
+        #desktop-icons button:active,
+        #startmenu button:active {
+            left: 1px;
+            top: 1px;
+            position: relative;
+        }
+
+
+        #startmenu button {
+            padding: 0px 10px 0px 10px;
+            height: 29px;
+            font-weight: bold;
+            outline: 1px solid #333;
+            border-color: #fff #808080 #5c5c5c #fff;
+        }
+
+        #startmenu button.start {
+            height: 28px;
+            position: relative;
+            padding-left: 25px;
+            width: 100px;
+        }
+
+        #startmenu button.start img {
+            margin-left: -20px;
+            width: 20px;
+            position: relative;
+            float: left;
+        }
+
+
+        #startmenu button.nosupport {
+            width: 200px;
+            font-weight: normal;
+            text-align: left;
+            outline: none;
+            border-bottom-width: 2px;
+        }
+
+        #startmenu button .menu-label {
+            line-height: 20px;
+        }
+
+        #startmenu button.nosupport img {
+            width: 17px;
+            margin-top: 2px;
+            float: left;
+            margin-right: 8px;
+        }
+
+
+        #startmenu button.clock {
+            font-weight: normal;
+            float: right;
+            outline: none;
+            border-bottom-width: 2px;
+            border-color: #808080 #FFFFFF #FFFFFF #808080;
+            margin-right: 4px;
+        }
+
+        body.startup {
+            background: blue !important;
+        }
+
+        body.startup #loader {
+            position: absolute;
+            background: #000;
+            width: 100%;
+            height: 100vh;
+            background-image: url('img/startup.gif');
+            background-size: contain;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            z-index: 9;
+        }
+    </style>
 </head>
 
 <body>
- 
-<div id="notsupported">    
 
-<h1>¿ⓧ_ⓧ?</h1>
-<h1>Your browser is not supported.</h1>
+    <div id="loader"></div>
 
-<p>Please consider updating your browser.</p>
 
-<ul>
-<li>
-    <strong>Firefox</strong> <br />
-    <a href="https://www.google.com/intl/en/chrome">https://www.google.com/intl/en/chrome</a></li>
-<li>
-    <strong>Mozilla</strong> <br />
-    <a href="https://www.mozilla.org/firefox/all/">https://www.mozilla.org/firefox/all/</a></li>
-<li> <strong>Opera</strong> <br />
-    <a href="https://www.opera.com/download">https://www.opera.com/download</a></li>
-<li>
-    <strong>Safari</strong> <br />
-    <a href="https://www.apple.com/macos/how-to-upgrade/">https://www.apple.com/macos/how-to-upgrade/</a></li>
-<li> <strong>Internet Explorer</strong> <br />
-    <a href="https://windows.microsoft.com/en-us/internet-explorer/download-ie">https://windows.microsoft.com/en-us/internet-explorer/download-ie</a></li>
-</ul>
+    <script>
+        document.body.classList.add('startup');
+        setTimeout(function () {
+            document.body.classList.remove('startup');
+        }, 2000);
 
-<small>Paikkatietokanta.net <br /> &copy; jani@penttinen.fi</small>
-</div>
+        var render = function (template, node) {
+            if (!node) return;
+            node.innerHTML = (typeof template === 'function' ? template() : template);
+            var event = new CustomEvent('elementRenders', {
+                bubbles: true
+            });
+            node.dispatchEvent(event);
+            return node;
+        };
 
-<body>
+        var tick = function () {
+            render(new Date().toLocaleTimeString(), document.querySelector('#clock'));
+        };
+
+        tick();
+        window.setInterval(tick, 1000);
+    </script>
+
+    <div id="notsupported">
+
+        <div class="title">
+            <p class="title">No support 95</p>
+            <button>X</button>
+            <button>?</button>
+            <div class="clear"></div>
+        </div>
+
+        <h1>¿ⓧ_ⓧ? <br />
+            Your browser is not supported.</h1>
+
+        <p>Please consider updating your browser.</p>
+
+        <ul>
+
+            <li>
+                <a href="https://www.google.com/intl/en/chrome"><img
+                        src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/68.0.0/chrome/chrome_128x128.png"
+                        width="35px" alt="Chrome" /></a>
+                <strong>Chrome</strong> <br />
+                <a href="https://www.google.com/intl/en/chrome">https://www.google.com/intl/en/chrome</a></li>
+            <li>
+                <a href="https://www.mozilla.org/firefox/all/"><img
+                        src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/68.0.0/firefox/firefox_128x128.png"
+                        width="35px" alt="Firefox" /></a>
+                <strong>Firefox</strong> <br />
+                <a href="https://www.mozilla.org/firefox/all/">https://www.mozilla.org/firefox/all/</a></li>
+            <li>
+                <a href="https://www.opera.com/download"><img
+                        src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/68.0.0/opera/opera_128x128.png"
+                        width="35px" alt="Opera" /></a>
+                <strong>Opera</strong> <br />
+                <a href="https://www.opera.com/download">https://www.opera.com/download</a></li>
+            <li>
+                <a href="https://www.apple.com/macos/how-to-upgrade/"><img
+                        src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/68.0.0/safari/safari_128x128.png"
+                        width="35px" alt="Safari" /></a>
+                <strong>Safari</strong> <br />
+                <a href="https://www.apple.com/macos/how-to-upgrade/">https://www.apple.com/macos/how-to-upgrade/</a>
+            </li>
+            <li>
+                <a href="https://windows.microsoft.com/en-us/internet-explorer/download-ie"><img
+                        src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/68.0.0/archive/internet-explorer_6/internet-explorer_6_128x128.png"
+                        width="35px" alt="Internet Explorer" /></a>
+                <strong>Internet Explorer</strong> <br />
+                <a
+                    href="https://windows.microsoft.com/en-us/internet-explorer/download-ie">https://windows.microsoft.com/en-us/internet-explorer/download-ie</a>
+            </li>
+
+        </ul>
+        <button class="button" onclick="location.href='mailto:jani@penttinen.fi';">Paikkatietokanta.net <br /> &copy;
+            jani@penttinen.fi</button>
+    </div>
+
+    <div id="desktop-icons">
+        <button>
+            <img src="img/mycomputer.png" width="40px" alt="myComputer">
+        </button>
+        <span class="icon-label">My Computer</span>
+
+        <button>
+            <img src="img/trashbin.png" width="40px" alt="Trashbin">
+        </button>
+        <span class="icon-label">Rycycle Bin</span>
+
+        <button>
+            <img src="img/folder.png" width="40px" alt="React">
+        </button>
+        <span class="icon-label">React and Node stuff</span>
+    </div>
+
+
+    <div id="startmenu">
+
+        <button class="button start">
+            <div class="menu-container"><img src="img/start.jpg" alt="Start" />
+                <div class="menu-label">Start</div>
+            </div>
+        </button>
+
+        <button class="button nosupport">
+            <div class="menu-container">
+                <img src="img/folder.png" alt="Folder" />
+                <div class="menu-label">No support 95</div>
+            </div>
+        </button>
+
+
+        <button class="button clock">
+            <div id="clock"></div>
+        </button>
+
+    </div>
+
+    <body>
+
 </html>

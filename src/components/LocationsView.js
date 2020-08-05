@@ -234,10 +234,6 @@ const LocationsList = () => {
   };
 
   const {BaseLayer} = LayersControl;
-  const dateTimeStamp = preval`module.exports = new Date().toLocaleString();`
-  // const lastEntry = JSON.stringify(locations.slice(-1)[0]);
-  // const lastEntry = JSON.stringify(locations[0, 0]);
-
   const lastEntry = locations.map(entity => entity.createdAt)[0, 0];
 
   return (
