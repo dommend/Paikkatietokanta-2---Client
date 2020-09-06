@@ -3,31 +3,25 @@ module.exports = app => {
 
   var router = require("express").Router();
 
-  // Create a new Location
-  // router.post("/", locations.create);
-
   // Retrieve all Locations
   router.get("/", locations.findAll);
+
+  // Retrieve tags
+  router.get ('/tags/:tagID', locations.findByTagID);
+  router.get ('/tags/name/:name', locations.findByTagName);
+  router.get ('/tags/', locations.findAllTags);
 
   // Retrieve all markedImportant Locations
   router.get("/markedImportant", locations.findAllMarkedImportant);
 
-  // Retrieve all Locations and do pagination
-  router.get("/paged/", locations.findAllPaged);
+  // Retrieve all Locations and do advanced pagination
+  router.get("/pages/", locations.findAllAdvance);
 
-  // Retrieve all Locations and do pagination
-  router.get("/paged-long/", locations.findAllPagedLong);
-
+  // Retrieve all Titles
   router.get("/title", locations.findAllTitle);
 
   // Retrieve a single Location with id
   router.get("/:id", locations.findOne);
-
-  // Update a Location with id
-  // router.put("/:id", locations.update);
-
-  // Delete a Location with id
-  // router.delete("/:id", locations.delete);
 
   app.use('/api/locations', router);
 };

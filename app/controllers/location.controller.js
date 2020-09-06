@@ -1,70 +1,67 @@
 const db = require("../models");
 const Location = db.locations;
+const Tag = db.tags;
 const Op = db.Sequelize.Op;
-const paginate = require('jw-paginate');
+
+// Retrieve all Locations and do advanced pagination
+const getPagination = (page, size) => {
+  const limit = size ? +size : 3;
+  const offset = page ? page * limit : 0;
+  return { limit, offset };
+};
+
+const getPagingData = (data, page, limit, listOrder, listTitle) => {
+  const { count: totalItems, rows: locations } = data;
+  const currentPage = page ? +page : 0;
+  const totalPages = Math.ceil(totalItems / limit);
+  return { totalItems, locations, totalPages, currentPage, listOrder, listTitle };
+};
+
+exports.findAllAdvance = (req, res) => {
+  const { page, size, title, listOrder, listTitle } = req.query;
+  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+  const { limit, offset } = getPagination(page, size);
+
+  Location.findAndCountAll({
+    where: condition, limit, offset, order: [[`${listTitle}`, `${listOrder}`]],
+    include: [
+      {
+        model: Tag,
+        as: "tags",
+        attributes: ["id", "tagName"],
+        through: {
+          attributes: [],
+        },
+      },
+    ]
+  })
+    .then(data => {
+      const response = getPagingData(data, page, limit, listOrder, listTitle);
+      res.send(response);
+    })
+    .catch((err) => {
+      console.log(">> Error while retrieving Locations: ", err);
+    });
+};
 
 // Retrieve all Locations from the database.
 exports.findAll = (req, res) => {
   const title = req.query.title;
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
-  Location.findAll({ where: condition, order: [ [ 'createdAt', 'DESC' ]] })
+  Location.findAll({ where: condition, order: [ [ 'createdAt', 'DESC' ]],
+  include: [
+    {
+      model: Tag,
+      as: "tags",
+      attributes: ["id", "tagName"],
+      through: {
+        attributes: [],
+      },
+    },
+  ],})
     .then(data => {
       res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving locations."
-      });
-    });
-};
-
-// Find all and do pagination
-exports.findAllPaged = (req, res, next) => {
-  const title = req.query.title;
-  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
-
-  Location.findAll({ where: condition, order: [ [ 'createdAt', 'DESC' ]] })
-    .then(data => {
-      const items = data;
-      const page = parseInt(req.query.page) || 1;
-
-      // Get pager object for specified page
-      const pageSize = 12;
-      const pager = paginate(items.length, page, pageSize);
-  
-      // Get page of items from items array
-      const pageOfItems = items.slice(pager.startIndex, pager.endIndex + 1);
-
-      res.send({pager, pageOfItems});
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving locations."
-      });
-    });
-};
-
-// Find all and do long pagination
-exports.findAllPagedLong = (req, res, next) => {
-  const title = req.query.title;
-  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
-
-  Location.findAll({ where: condition, order: [ [ 'createdAt', 'DESC' ]] })
-    .then(data => {
-      const items = data;
-      const page = parseInt(req.query.page) || 1;
-
-      // Get pager object for specified page
-      const pageSize = 50;
-      const pager = paginate(items.length, page, pageSize);
-  
-      // Get page of items from items array
-      const pageOfItems = items.slice(pager.startIndex, pager.endIndex + 1);
-
-      res.send({pager, pageOfItems});
     })
     .catch(err => {
       res.status(500).send({
@@ -105,14 +102,88 @@ exports.findAllMarkedImportant = (req, res) => {
 // Find a single Location with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-
-  Location.findByPk(id)
+  Location.findByPk(id, {
+    include: [
+      {
+        model: Tag,
+        as: "tags",
+        attributes: ["id", "tagName"],
+        through: {
+          attributes: [],
+        },
+      },
+    ],
+  })
     .then(data => {
       res.send(data);
     })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error retrieving Location with id=" + id
-      });
+    .catch((err) => {
+      console.log(">> Error while finding location tag: ", err);
+    });
+};
+
+exports.findByTagID = (req, res) => {
+  const tag = req.params.tagID;
+  Tag.findByPk(tag, {
+    include: [
+      {
+        model: Location,
+        as: "locations",
+        attributes: ["id", "title", "description", "featuredImage", "URL", "coordinateN", "coordinateE"],
+        through: {
+          attributes: [],
+        },
+      },
+    ],
+  })
+    .then(data => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(">> Error while finding location tag: ", err);
+    });
+};
+
+
+
+exports.findByTagName = (req, res) => {
+  const tag = req.params.tagName;
+  Tag.findAll(tag, {
+    include: [
+      {
+        model: Location,
+        as: "locations",
+        attributes: ["id", "title"],
+        through: {
+        },
+      },
+    ],
+  })
+    .then(data => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(">> Error while finding tag: ", err);
+    });
+};
+
+exports.findAllTags = (req, res) => {
+  Tag.findAll({
+    // include: [
+    //   {
+    //     model: Location,
+    //     as: "locations",
+    //     attributes: ["id", "title"],
+    //     through: {
+    //       attributes: [],
+    //     },
+    //   },
+    // ],
+  })
+    .then(data => {
+      res.send(data);
+    })
+    .catch((err) => {
+      console.log(">> Error while retrieving tags: ", err);
     });
 };

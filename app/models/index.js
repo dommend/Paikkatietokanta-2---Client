@@ -28,5 +28,17 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.locations = require("./location.model.js")(sequelize, Sequelize);
+db.tags = require("./tag.model.js")(sequelize, Sequelize);
+
+db.tags.belongsToMany(db.locations, {
+  through: "locations_tag",
+  as: "locations",
+  foreignKey: "tag_id",
+});
+db.locations.belongsToMany(db.tags, {
+  through: "locations_tag",
+  as: "tags",
+  foreignKey: "location_id",
+});
 
 module.exports = db;
