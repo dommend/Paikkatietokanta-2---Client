@@ -354,6 +354,19 @@ const LocationsList = () => {
                         ? <Icon className="favorite">favorite</Icon>
                         : ''}
                     </h4>
+
+                    {currentLocation.tags ? 
+                  <div className="tags">
+                         {currentLocation.tags.sort((a, b) => a.tagName.localeCompare(b.tagName)).map((locationTags, index) => (        
+                              <span className="tag" key={index}>
+                                <Link to={"/tag/" + locationTags.id}>
+                                <span className="material-icons">local_offer</span>
+                                <span className="tag-name">{locationTags.tagName}</span>
+                                </Link>
+                              </span>
+                            ))} 
+                        </div> : "" }
+                    
                     <div
                       className={
                         currentLocation.description
@@ -382,7 +395,7 @@ const LocationsList = () => {
                       >
                         {currentLocation.description}
                       </ShowMoreText>
-                    </div>
+                    </div>                    
                     <div className="meta">
                       {currentLocation.url
                         ? <a className="link-to-out" href={currentLocation.url}>
@@ -399,7 +412,6 @@ const LocationsList = () => {
                             {currentLocation.flickrMore}
                           </a>
                         : ''}
-
                       <div id="ShareAndCopy" className="flex">
                         <button
                           title="Kopioi osoite leikepöydälle"

@@ -7,8 +7,9 @@ import "./App.scss";
 import LocationsView from "./components/LocationsView";
 import ModuleView from "./components/ModuleView";
 import MapView from "./components/MapView";
-import GridView from "./components/GridView";
-import ListView from "./components/ListView";
+import TagView from "./components/tagView";
+import Archive from "./components/ArchivePage";
+import GridAndListView from "./components/GridAndListView";
 import InfoPage from "./components/InfoPage";
 import LocationView from "./components/LocationView";
 import NotFoundPage from './components/NotFoundPage';
@@ -41,14 +42,14 @@ function App() {
               </li>
               <li className="nav-item">
                 <NavLink to={"/grid"} className="nav-link grid" activeClassName="active">
-                <span className="material-icons">grid_on</span> <span className="nav-title">Grid</span>
+                <span className="material-icons">grid_on</span> <span className="nav-title">Grid / List</span>
               </NavLink >
               </li>
-              <li className="nav-item">
-                <NavLink to={"/list"} className="nav-link list" activeClassName="active">
-                <span className="material-icons">reorder</span> <span className="nav-title">Lista</span>
+               <li className="nav-item">
+                <NavLink to={"/archive"} className="nav-link archive" activeClassName="active">
+                <span className="material-icons">today</span> <span className="nav-title">Arkisto</span>
               </NavLink >
-              </li>
+              </li> 
               <li className="nav-item">
                 <NavLink to={"/info"} className="nav-link info" activeClassName="active">
                 <span className="material-icons">info</span> <span className="nav-title">Info</span>
@@ -65,29 +66,18 @@ function App() {
           <Route exact path={["/", "/locations"]} component={LocationsView} />
           <Route exact path="/module" component={ModuleView} />
           <Route exact path="/map" component={MapView} />
-          <Route exact path="/grid" component={GridView} />
-          <Route exact path="/list" component={ListView} />
+          <Route exact path="/grid" component={GridAndListView} />
+          <Route exact path="/archive" component={Archive} />
           <Route exact path="/info" component={InfoPage} />
           <Route exact path="/view/:id" component={LocationView} />
-          { /* 404-åage */}
+          <Route exact path="/tag/:id" component={TagView} />
+          { /* 404-page */}
           <Route path="*" component={NotFoundPage} />
         </Switch>
       </main>
       <Preloader>
         <Placeholder>
         <Spinner animation="border" variant="primary" /> 
-          {/* <pre>{`
-                     ₕₑₗₗₒ    ±
-                          [ºuº]
-                         └|___|┐
-                           ┘ └
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                   
-
-   Please wait... 
-   Mr. Happy Robot is currently building the site...
-
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`}</pre> */}
-
         </Placeholder>
       </Preloader>
 

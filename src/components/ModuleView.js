@@ -60,6 +60,7 @@ const LocationsList = () => {
   const [show, setShow] = useState (false);
   const [showBreakdance, setShowBreakdance] = useState (false);
 
+
   useEffect (() => {
     retrieveLocations ();
   }, []);
@@ -344,33 +345,6 @@ const LocationsList = () => {
                       ? <Icon className="favorite">favorite</Icon>
                       : ''}
                   </h4>
-                  <div class="time-and-place">
-                    <div className="coordinates">
-                      <span className="material-icons">place</span>
-                      {currentLocation.coordinateN}
-                      ,
-                      {' '}
-                      {currentLocation.coordinateE}
-                    </div>
-                    <div className="date">
-                      <div>
-                        <span className="material-icons" title="Julkaistu">
-                          schedule
-                        </span>
-                        <Moment format="DD.MM.YYYY">
-                          {currentLocation.createdAt}
-                        </Moment>
-                      </div>
-                      <div>
-                        <span className="material-icons" title="Päivitetty">
-                          update
-                        </span>
-                        <Moment format="DD.MM.YYYY">
-                          {currentLocation.updatedAt}
-                        </Moment>
-                      </div>
-                    </div>
-                  </div>
                   <div className="get-directions">
                     <a
                       target="_blank"
@@ -387,6 +361,19 @@ const LocationsList = () => {
                       Google Maps: Hae reittiohje
                     </a>
                   </div>
+                  {currentLocation.tags ? 
+                  <div className="tags">
+                         {currentLocation.tags.sort((a, b) => a.tagName.localeCompare(b.tagName)).map((locationTags, index) => (        
+                              <span className="tag" key={index}>
+                                <Link to={"/tag/" + locationTags.id}>
+                                <span className="material-icons">local_offer</span>
+                                <span className="tag-name">{locationTags.tagName}</span>
+                                </Link>
+                              </span>
+                            ))} 
+                        </div> : "" }
+
+
                   {currentLocation.featuredImage
                     ? <div id="featuredImage">
                         <ModalImage
@@ -444,6 +431,35 @@ const LocationsList = () => {
                           Jaa
                         </Button>
                       </div>
+
+
+                      <div class="time-and-place">
+                    <div className="coordinates">
+                      <span className="material-icons">place</span>
+                      {currentLocation.coordinateN}
+                      ,
+                      {' '}
+                      {currentLocation.coordinateE}
+                    </div>
+                    <div className="date">
+                      <div>
+                        <span className="material-icons" title="Julkaistu">
+                          schedule
+                        </span>
+                        <Moment format="DD.MM.YYYY">
+                          {currentLocation.createdAt}
+                        </Moment>
+                      </div>
+                      <div>
+                        <span className="material-icons" title="Päivitetty">
+                          update
+                        </span>
+                        <Moment format="DD.MM.YYYY">
+                          {currentLocation.updatedAt}
+                        </Moment>
+                      </div>
+                    </div>
+                  </div>
 
                       <Modal
                         show={show}

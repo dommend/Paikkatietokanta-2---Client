@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import LocationDataService from '../services/LocationService';
 import {
   Map as LeafletMap,
@@ -66,13 +67,15 @@ const Location = props => {
   };
 
   const [currentLocation, setCurrentLocation] = useState (initialLocationState);
+  const [locationTags, setLocationTags] = useState(null);
   const [isLoading, setLoading] = useState (true);
   const [show, setShow] = useState(false);
   
   const getLocation = id => {
-    LocationDataService.get (id)
+    LocationDataService.get(id)
       .then (response => {
         setCurrentLocation (response.data);
+        setLocationTags(response.data.tags);
         setLoading(false);
         console.log (response.data);
       })
@@ -230,7 +233,6 @@ const Location = props => {
                   </div>
                 </div>
                 <div className="col-sm details">
-
                 {isLoading ? <Spinner animation="border" variant="primary" />  :
                   <div className="innercontainer">
                     <button
@@ -249,30 +251,7 @@ const Location = props => {
                           </div>
                         : ''}
                     </h4>
-                    <div className="time-and-place">
-                      <div className="coordinates">
-                        <span className="material-icons">place</span>
-                        {currentLocation.coordinateN},  {currentLocation.coordinateE}
-                      </div>
-                      <div className="date">
-                        <div>
-                          <span className="material-icons" title="Julkaistu">
-                            schedule
-                          </span>
-                          <Moment format="DD.MM.YYYY">
-                            {currentLocation.createdAt}
-                          </Moment>
-                        </div>
-                        <div>
-                          <span className="material-icons" title="Päivitetty">
-                            update
-                          </span>
-                          <Moment format="DD.MM.YYYY">
-                            {currentLocation.updatedAt}
-                          </Moment>
-                        </div>
-                      </div>
-                    </div>
+         
                     <div className="get-directions">
                       <a
                         target="_blank"
@@ -289,6 +268,19 @@ const Location = props => {
                         Google Maps: Hae reittiohje
                       </a>
                     </div>
+
+                    <div className="tags">
+                        {locationTags &&
+                            locationTags.map((locationTags, index) => (        
+                              <span className="tag" key={index}>
+                                <Link to={"/tag/" + locationTags.id}>
+                                <span className="material-icons">local_offer</span>
+                                <span className="tag-name">{locationTags.tagName}</span>
+                                </Link>
+                              </span>
+                            ))}
+                        </div> 
+
                     {currentLocation.featuredImage
                       ? <div id="featuredImage">
                           <ModalImage
@@ -323,7 +315,7 @@ const Location = props => {
                                 {currentLocation.flickrMore}
                               </a>
                             : ''}
-
+                            
                           <div id="ShareAndCopy" className="flex">  
                           <button
                             title="Kopioi osoite leikepöydälle"
@@ -344,7 +336,7 @@ const Location = props => {
                           <Button className="shareButton" variant="primary" onClick={() => setShow(true)}>Jaa</Button>
                           </div>
 
-                            <Modal
+                          <Modal
                           show={show}
                           onHide={() => setShow (false)}
                           size="sm"
@@ -453,6 +445,32 @@ const Location = props => {
                             </EmailShareButton>
                           </Modal.Body>
                         </Modal>
+                        
+                        <div className="time-and-place">
+                      <div className="coordinates">
+                        <span className="material-icons">place</span>
+                        {currentLocation.coordinateN},  {currentLocation.coordinateE}
+                      </div>
+
+                      <div className="date">
+                        <div>
+                          <span className="material-icons" title="Julkaistu">
+                            schedule
+                          </span>
+                          <Moment format="DD.MM.YYYY">
+                            {currentLocation.createdAt}
+                          </Moment>
+                        </div>
+                        <div> 
+                          <span className="material-icons" title="Päivitetty">
+                            update
+                          </span>
+                          <Moment format="DD.MM.YYYY">
+                            {currentLocation.updatedAt}
+                          </Moment>
+                        </div>
+                      </div>
+                    </div>
 
                           {currentLocation.flickrTag
                             ? <div className="flickr-lightbox-container">
