@@ -47,7 +47,7 @@ const TagView = (props) => {
   return (
     <div id="page" className="content-page archive">
       <SEO
-        title="Info - Paikkatietokanta"
+        title="Arkisto - Paikkatietokanta"
         description="Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen päämäärä kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön."
         locale="fi_FI"
         siteUrl={process.env.REACT_APP_BASE_URL + '/info/'}
@@ -55,7 +55,7 @@ const TagView = (props) => {
           src: process.env.REACT_APP_BASE_URL + '/logo512.png',
         }}
         openGraph={{
-          title: 'Info - Paikkatietokanta',
+          title: 'Arkisto - Paikkatietokanta',
           description: 'Paikkatietokanta yhdistää valokuvaharrastus, historiallinen dokumentointi ja ammatillinen päämäärä kehittyä paremmaksi koodariksi. Sivuston on tarkoitettu henkilökohtaiseen käyttöön.',
           type: 'article',
           siteName: 'Paikkatietokanta',
@@ -63,7 +63,7 @@ const TagView = (props) => {
           locale: 'fi_FI',
           image: {
             src: process.env.REACT_APP_BASE_URL + '/logo512.png',
-            alt: 'Info - Paikkatietokanta',
+            alt: 'Arkisto - Paikkatietokanta',
           },
         }}
       />
