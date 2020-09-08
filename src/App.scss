@@ -282,9 +282,7 @@ a:active {
   margin: 20px;
 }
 
-#page.grid-and-list .innercontainer {
-  margin: 20px 25px 30px 10px;
-}
+
 
 #page.content-page .innercontainer {
   background: $neutral1 !important;
@@ -2312,6 +2310,8 @@ h4 .material-icons {
  
 @media screen and (max-width: 600px) {
 
+  
+
   .archive-content  {
     column-count: 1;
   }
@@ -2519,6 +2519,11 @@ h4 .material-icons {
 
 
 @media screen and (max-width:500px) {
+
+  div#gird {
+    margin: 20px 0px 30px -10px !important;
+  }
+
   span.nav-title { display:none !important;}
   #page {height: calc(100vh - 41px) !important; }
 
