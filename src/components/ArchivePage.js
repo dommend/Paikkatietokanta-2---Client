@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '@americanexpress/react-seo';
 import LocationDataService from '../services/LocationService';
+import Spinner from 'react-bootstrap/Spinner';
 
 
 document.onkeydown = function (evt) {
@@ -69,6 +70,11 @@ const TagView = (props) => {
       />
       <div className="innerwidth">
         <div className="innercontainer">
+        {isLoading
+                        ? <div className="loader">
+                            <Spinner animation="border" variant="primary" />
+                        </div>
+                        : <> 
             <h4>Avainsanat</h4>
             <hr />
             <div className="tags">
@@ -98,9 +104,10 @@ const TagView = (props) => {
                 </li>
               ))}
           </ul>
-        </div>
-      </div>
-    </div>
-  );
-};
+          </>}
+        </div> 
+      </div> 
+    </div> 
+  ); 
+}; 
 export default TagView;
