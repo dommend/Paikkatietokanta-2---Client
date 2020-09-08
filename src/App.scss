@@ -282,7 +282,9 @@ a:active {
   margin: 20px;
 }
 
-
+#page.grid-and-list .innercontainer {
+  margin: 20px 25px 30px 10px;
+}
 
 #page.content-page .innercontainer {
   background: $neutral1 !important;
