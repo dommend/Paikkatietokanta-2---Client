@@ -2519,6 +2519,8 @@ h4 .material-icons {
 
 
 @media screen and (max-width:500px) {
+  #page.content-page .innerwidth:first-child {margin-top:0px !important;}
+  #page.content-page .innercontainer {margin: 0px;}
 
   div#gird {
     margin: 20px 0px 30px -10px !important;
