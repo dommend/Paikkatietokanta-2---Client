@@ -83,7 +83,7 @@ const TagView = (props) => {
     document.onkeydown = function (evt) {
         evt = evt || window.event;
         if (evt.keyCode === 220) {
-            window.open(process.env.REACT_APP_ADMIN_BASE_URL + '/add', '_self');
+            window.open(process.env.REACT_APP_ADMIN_BASE_URL + '/tagedit/' + currentTags.id, '_self');
         }
     };
 
