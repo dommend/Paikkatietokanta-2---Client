@@ -128,8 +128,13 @@ const TagView = (props) => {
       />
           
                     {isLoading
-                        ? <div className="loader">
+                        ? 
+                        <div id="page" className="tagview-page">
+                        <div className="container">
+                        <div className="loader">
                             <Spinner animation="border" variant="primary" />
+                        </div>
+                        </div>
                         </div>
                         :
                         <div id="page" className="tagview-page">
