@@ -102,7 +102,7 @@ const TagView = (props) => {
             toast(
                 'Osoite kopioitu leikepöydälle ' +
                 process.env.REACT_APP_BASE_URL +
-                '/view/' +
+                '/tag/' +
                 currentTags.id
             );
         } catch (err) {
@@ -116,13 +116,13 @@ const TagView = (props) => {
         title={currentTags.tagName + ' - Paikkatietokanta'}
         description={currentTags.tagDescription}
         locale="fi_FI"
-        siteUrl={process.env.REACT_APP_BASE_URL + '/view/' + currentTags.id}
+        siteUrl={process.env.REACT_APP_BASE_URL + '/tag/' + currentTags.id}
         openGraph={{
           title: currentTags.tagName + ' - Paikkatietokanta',
           description: currentTags.tagDescription,
           type: 'article',
           siteName: 'Paikkatietokanta',
-          url: process.env.REACT_APP_BASE_URL + '/view/' + currentTags.id,
+          url: process.env.REACT_APP_BASE_URL + '/tag/' + currentTags.id,
           locale: 'fi_FI',
         }}
       />
@@ -216,14 +216,14 @@ const TagView = (props) => {
                                             onClick={() =>
                                                 copyToClipBoard(
                                                     process.env.REACT_APP_BASE_URL +
-                                                    '/view/' +
+                                                    '/tag/' +
                                                     currentTags.id
                                                 )}
                                         >
                                             <span className="material-icons">content_copy</span>
                                             {' '}
                                             {process.env.REACT_APP_BASE_URL +
-                                                '/view/' +
+                                                '/tag/' +
                                                 currentTags.id}
                                         </button>
                                         <Button className="shareButton" variant="primary" onClick={() => setShow(true)}>Jaa</Button>
