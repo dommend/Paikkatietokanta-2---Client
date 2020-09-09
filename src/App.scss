@@ -1918,9 +1918,6 @@ h4 .material-icons {
 }
 @media screen and (max-width: 1100px) {
 
-
-
-
   .module-view .styles_simpleReactWeather__3uy4l {
     display: flex;
   }
@@ -2046,12 +2043,9 @@ h4 .material-icons {
   #gridfilter #filter-selections {  width:calc(100% - 270px); text-align:right; }
   #gridfilter #filter-search { margin-top:10px !important; width:100%; text-align:left;}
   #gridfilter #filter-search input { width:calc(100% - 60px);}
-
-
 }
 
 @media screen and (max-height: 550px) {
-
   .module-view #weather,
   .module-view #weather-bg {
     display: none;
@@ -2064,7 +2058,6 @@ h4 .material-icons {
 }
 
 @media screen and (max-width: 960px) {
-
   .archive-content  {
     column-count: 2;
   }
@@ -2128,7 +2121,6 @@ h4 .material-icons {
     top:63px;
   }
 }
-
 
 @media screen and (max-width: 850px) {
 
@@ -2311,9 +2303,6 @@ h4 .material-icons {
 }
  
 @media screen and (max-width: 600px) {
-
-  
-
   .archive-content  {
     column-count: 1;
   }
@@ -2518,11 +2507,13 @@ h4 .material-icons {
   }
 }
 
-
-
 @media screen and (max-width:500px) {
   #page.content-page .innerwidth:first-child {margin-top:0px !important;}
   #page.content-page .innercontainer {margin: 0px;}
+
+  #fullpage.map-view .leaflet-container {
+    height: calc(100vh - 40px);
+}
 
   div#gird {
     margin: 20px 0px 30px -10px !important;
@@ -2550,8 +2541,6 @@ h4 .material-icons {
   .flickr-lightbox {
     overflow: hidden;
   }
-
-
 }
 
 @media screen and (max-width: 350px) {
