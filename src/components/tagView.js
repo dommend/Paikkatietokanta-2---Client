@@ -126,13 +126,14 @@ const TagView = (props) => {
           locale: 'fi_FI',
         }}
       />
-            <div id="page" className="tagview-page">
-                <div className="container">
+          
                     {isLoading
                         ? <div className="loader">
                             <Spinner animation="border" variant="primary" />
                         </div>
                         :
+                        <div id="page" className="tagview-page">
+                        <div className="container">
                         <div className="row">
                             <div className="col-sm tag-details">
                                 <div id="tag-map">
@@ -391,8 +392,9 @@ const TagView = (props) => {
                                     : <div> Error </div>}
                             </div>
                         </div>
-                    } </div>
-            </div>
+                        </div>
+                    </div>
+                    } 
         </div>
 
     );
