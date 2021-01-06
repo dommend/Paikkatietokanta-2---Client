@@ -13,7 +13,7 @@ import GridAndListView from "./components/GridAndListView";
 import InfoPage from "./components/InfoPage";
 import LocationView from "./components/LocationView";
 import NotFoundPage from './components/NotFoundPage';
-import Spinner from 'react-bootstrap/Spinner'
+import Spinner from 'react-bootstrap/Spinner';
 
 function App() {
   return (

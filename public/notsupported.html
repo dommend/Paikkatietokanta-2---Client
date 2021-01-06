@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="basicLightbox.min.css">
+    <script src="basicLightbox.min.js"></script>
+
+
 
     <title>Paikkatietokanta</title>
 
@@ -276,6 +280,17 @@
         }
 
 
+        #netscape { 
+            z-index:999; border:1px solid #333; width:1024px; height:768px; background:#fff url('img/netscape2.png') no-repeat
+        }
+
+        #netscape iframe {
+            width:1010px;
+            height:630px;
+            margin:110px 0 0 6px;
+        }
+
+
         @media screen and (max-width: 800px) {
             #notsupported { left:5%; width:auto;}
          }
@@ -299,7 +314,7 @@
         document.body.classList.add('startup');
         setTimeout(function () {
             document.body.classList.remove('startup');
-        }, 2000);
+        }, 0);
 
         
 
@@ -333,6 +348,8 @@
 
         tick();
         window.setInterval(tick, 1000);
+
+
     </script>
 
     <div id="notsupported" >
@@ -405,6 +422,11 @@
             <img src="img/folder.png" width="40px" alt="React">
         </button>
         <span class="icon-label">React and Node stuff</span>
+
+        <button class="netscape">
+            <img src="img/folder.png" width="40px" alt="React">
+        </button>
+        <span class="icon-label">Netscape</span>
     </div>
 
 
@@ -474,8 +496,18 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
-    </script>
 
+
+document.querySelector('button.netscape').onclick = () => {
+
+basicLightbox.create(`
+<div id="netscape">
+<iframe  src="https://web.archive.org/web/19961019172654/http://blizzard.com" title="Netspace"></iframe>
+</div>
+`).show()
+
+}
+    </script>
     <body>
 
 </html>

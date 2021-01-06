@@ -7,6 +7,7 @@
   "dependencies": {
     "@americanexpress/react-seo": "^2.1.0",
     "@material-ui/core": "^4.9.12",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "cache-manager": "^3.3.0",
@@ -26,8 +27,10 @@
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
     "patch-package": "^6.2.2",
+    "preval.macro": "^5.0.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
+    "react-countup": "^4.3.3",
     "react-dom": "^16.13.1",
     "react-eternal-list": "^1.0.6",
     "react-flickr-lightbox": "^1.8.5",
@@ -46,7 +49,9 @@
     "react-share": "^4.2.1",
     "react-show-more-text": "^1.4.2",
     "react-slicer": "^0.5.1",
+    "react-snapshot": "^1.3.0",
     "react-textscramble": "^1.0.7",
+    "react-timeago": "^4.4.0",
     "react-toastify": "^6.0.8",
     "react-virtualized": "^9.21.2",
     "react-virtualized-auto-sizer": "^1.0.2",
@@ -58,7 +63,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && react-snapshot",
     "dev": "nodemon server.js",
     "eject": "react-scripts eject",
     "postinstall": "patch-package"
